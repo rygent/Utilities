@@ -42,6 +42,11 @@
     }, {
         "matchUpdateTypes": ["lockFileMaintenance"],
         "semanticCommitScope": null
+    }, {
+        "matchPackageNames": ["node"],
+        "matchManagers": ["npm"],
+        "matchDepTypes": ["engines"],
+        "enabled": false
     }],
     "schedule": ["after 9:00am every weekend"],
     "timezone": "Asia/Tokyo",
