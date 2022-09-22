@@ -2,15 +2,15 @@
     "pipeline": {
         "build": {
             "dependsOn": ["^build"],
-			"outputs": ["dist/**"]
+            "outputs": ["dist/**"]
         },
         "lint": {
             "dependsOn": [],
-			"outputs": []
+            "outputs": []
         },
         "test": {
             "dependsOn": [],
-			"outputs": ["coverage/**"]
+            "outputs": ["coverage/**"]
         }
     }
 }

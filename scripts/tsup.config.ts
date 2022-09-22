@@ -26,7 +26,11 @@ export const createTsupConfig = ({
 		target,
 		tsconfig: relative(__dirname, resolve(process.cwd(), 'src', 'tsconfig.json')),
 		keepNames: true,
-		globalName,
+		globalName: globalName
+			?.replace(/@/g, '')
+			.split(/[\/-]/g)
+			.map((l) => l[0].toUpperCase() + l.slice(1))
+			.join(''),
 		esbuildOptions
 	});
 

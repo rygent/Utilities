@@ -57,6 +57,6 @@
         "commitMessageSuffix": "[SECURITY]",
         "branchTopic": "{{{datasource}}}-{{{depName}}}-vulnerability",
         "prCreation": "immediate",
-		"addLabels": ["security"]
+        "addLabels": ["security"]
     }
 }
