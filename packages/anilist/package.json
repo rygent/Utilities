@@ -1,0 +1,38 @@
+{
+  "name": "@rygent/anilist",
+  "version": "0.1.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    "require": "./dist/index.js",
+    "import": "./dist/index.mjs",
+    "types": "./dist/index.d.ts"
+  },
+  "scripts": {
+    "lint": "eslint src --ext ts --fix -c ../../.eslintrc",
+    "build": "tsup",
+    "prepack": "yarn build"
+  },
+  "devDependencies": {
+    "@types/he": "^1.1.2",
+    "tsup": "^6.2.3",
+    "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "graphql": "^16.6.0",
+    "he": "^1.2.0",
+    "undici": "^5.10.0"
+  },
+  "files": [
+    "./dist/**/*.js*",
+    "./dist/**/*.mjs*",
+    "./dist/**/*.d*"
+  ],
+  "engines": {
+    "node": ">=16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "packageManager": "yarn@3.2.3"
+}
