@@ -6963,3 +6963,5 @@ export interface AnilistResponse {
 		Page: Page;
 	};
 }
+
+export type SearchType = 'anime' | 'manga';
