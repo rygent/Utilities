@@ -16,7 +16,7 @@
   "devDependencies": {
     "@types/he": "^1.1.2",
     "tsup": "^6.2.3",
-    "typescript": "^4.8.3"
+    "typescript": "^4.8.4"
   },
   "dependencies": {
     "graphql": "^16.6.0",
