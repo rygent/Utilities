@@ -1,10 +1,11 @@
 {
     "eslint.validate": ["typescript"],
-    "[javascript][typescript]": {
-        "editor.tabSize": 4,
-        "editor.useTabStops": true,
-        "editor.insertSpaces": false,
-        "editor.detectIndentation": false,
+    "editor.tabSize": 4,
+    "editor.useTabStops": true,
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false,
+    "[json]": {
+        "editor.insertSpaces": true
     },
     "files.eol": "\n"
 }
