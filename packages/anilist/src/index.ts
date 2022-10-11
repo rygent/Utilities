@@ -6,7 +6,7 @@ export class Anilist {
 	public async search(variables: { type: SearchType; search: string; page?: number; perPage?: number }): Promise<AnilistResponse> {
 		const { type, search, page = 1, perPage = 10 } = variables;
 		try {
-			const body = JSON.stringify({ query: getQueryFragment(type), variables: { search, page, perPage } });
+			const body = JSON.stringify({ query: resolveQueryFragment(type), variables: { search, page, perPage } });
 			const headers = { 'Content-Type': 'application/json' };
 			const res = await fetch(BaseEndpoint, { method: 'POST', body, headers });
 
@@ -21,14 +21,14 @@ export class Anilist {
 	}
 }
 
-function getQueryFragment(type: SearchType): string {
+function resolveQueryFragment(type: SearchType): string {
 	switch (type) {
 		case 'anime':
 			return AnimeFragment;
 		case 'manga':
 			return MangaFragment;
 		default:
-			throw new Error(`${type} is not found!`);
+			return '';
 	}
 }
 
