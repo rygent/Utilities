@@ -1,0 +1,5 @@
+name: '*next*'
+verbose: true
+package:
+  - '@rygent/anilist'
+  - '@rygent/spotify'
