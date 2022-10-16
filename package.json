@@ -11,6 +11,7 @@
     "update": "yarn upgrade-interactive"
   },
   "devDependencies": {
+    "@favware/cliff-jumper": "^1.8.8",
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
