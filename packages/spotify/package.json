@@ -1,6 +1,8 @@
 {
   "name": "@rygent/spotify",
   "version": "1.0.1",
+  "description": "A simple to use API library for the Spotify REST API.",
+  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -22,6 +24,15 @@
   },
   "dependencies": {
     "undici": "^5.11.0"
+  },
+  "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rygent/Utilities.git",
+    "directory": "packages/spotify"
+  },
+  "bugs": {
+    "url": "https://github.com/Rygent/Utilities/issues"
   },
   "files": [
     "./dist/**/*.js*",
