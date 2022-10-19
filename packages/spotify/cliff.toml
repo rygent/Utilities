@@ -21,15 +21,15 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
     ## {{ group | upper_first }}
     {% for commit in commits %}
-		- {% if commit.scope %}\
-			**{{commit.scope}}:** \
-		  {% endif %}\
+        - {% if commit.scope %}\
+            **{{commit.scope}}:** \
+          {% endif %}\
             {{ commit.message | upper_first }} ([{{ commit.id | truncate(length=7, end="") }}](https://github.com/Rygent/Utilities/commit/{{ commit.id }}))\
-		{% if commit.breaking %}\
-			{% for breakingChange in commit.footers %}\
-				\n{% raw %}  {% endraw %}- 💥 **{{ breakingChange.token }}{{ breakingChange.separator }}** {{ breakingChange.value }}\
-			{% endfor %}\
-		{% endif %}\
+        {% if commit.breaking %}\
+            {% for breakingChange in commit.footers %}\
+                \n{% raw %}  {% endraw %}- **{{ breakingChange.token }}{{ breakingChange.separator }}** {{ breakingChange.value }}\
+            {% endfor %}\
+        {% endif %}\
     {% endfor %}
 {% endfor %}\n
 """
@@ -40,21 +40,21 @@ footer = ""
 conventional_commits = true
 filter_unconventional = true
 commit_parsers = [
-    { message = "^feat", group = "🚀 Features"},
-    { message = "^fix", group = "🐛 Bug Fixes"},
-    { message = "^docs", group = "📝 Documentation"},
-    { message = "^perf", group = "🏃 Performance"},
-    { message = "^refactor", group = "🏠 Refactor"},
-    { message = "^typings", group = "⌨️ Typings"},
-    { message = "^types", group = "⌨️ Typings"},
-    { message = ".*deprecated", body = ".*deprecated", group = "🚨 Deprecation"},
+    { message = "^feat", group = "Features"},
+    { message = "^fix", group = "Bug Fixes"},
+    { message = "^docs", group = "Documentation"},
+    { message = "^perf", group = "Performance"},
+    { message = "^refactor", group = "Refactor"},
+    { message = "^typings", group = "Typings"},
+    { message = "^types", group = "Typings"},
+    { message = ".*deprecated", body = ".*deprecated", group = "Deprecation"},
     { message = "^revert", skip = true},
-    { message = "^style", group = "🪞 Styling"},
-    { message = "^test", group = "🧪 Testing"},
+    { message = "^style", group = "Styling"},
+    { message = "^test", group = "Testing"},
     { message = "^chore", skip = true},
     { message = "^ci", skip = true},
     { message = "^build", skip = true},
-    { body = ".*security", group = "🛡️ Security"},
+    { body = ".*security", group = "Security"},
 ]
 filter_commits = true
 tag_pattern = "@rygent/spotify@[0-9]*"
