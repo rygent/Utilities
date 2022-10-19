@@ -42,7 +42,7 @@ jobs:
           for d in packages/*; do
             pushd $d
             yarn bump --preid "${TAG}.$(git rev-parse --verify --short HEAD)"
-            yarn npm publish --tag ${TAG}
+            yarn npm publish --tag ${TAG} || true
             popd
           done
         env:
