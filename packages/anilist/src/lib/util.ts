@@ -29,24 +29,8 @@ const htmlEntityReplacements = Object.freeze({
 } as const);
 
 export function parseDescription(description: string) {
-	return cutText(
-		decode(description.replace(htmlEntityRegex, (_, type: keyof typeof htmlEntityReplacements) => htmlEntityReplacements[type])).replace(
-			excessiveNewLinesRegex,
-			'\n\n'
-		),
-		500
+	return decode(description.replace(htmlEntityRegex, (_, type: keyof typeof htmlEntityReplacements) => htmlEntityReplacements[type])).replace(
+		excessiveNewLinesRegex,
+		'\n\n'
 	);
-}
-
-function splitText(str: string, length: number, char = ' ') {
-	const x = str.substring(0, length).lastIndexOf(char);
-	const pos = x === -1 ? length : x;
-	return str.substring(0, pos);
-}
-
-function cutText(str: string, length: number) {
-	if (str.length < length) return str;
-	const cut = splitText(str, length - 3);
-	if (cut.length < length - 3) return `${cut}...`;
-	return `${cut.slice(0, length - 3)}...`;
 }
