@@ -41,7 +41,7 @@ jobs:
         run: yarn turbo run build
       - name: Run tests
         run: |
-          curl -LJO ${ENV_FILE_URL}
+          curl -L ${ENV_FILE_URL} -o .env
 
           yarn test
         env:
