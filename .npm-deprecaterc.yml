@@ -2,4 +2,5 @@ name: '*next*'
 verbose: true
 package:
   - '@rygent/anilist'
+  - '@rygent/igdb'
   - '@rygent/spotify'
