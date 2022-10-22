@@ -34,13 +34,13 @@
   },
   "commitlint": {
     "extends": [
-          "@commitlint/config-conventional"
-      ]
+      "@commitlint/config-conventional"
+    ]
   },
   "config": {
-      "commitizen": {
-          "path": "./node_modules/cz-conventional-changelog"
-      }
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "packageManager": "yarn@3.2.4"
 }
