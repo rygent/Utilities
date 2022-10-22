@@ -21,6 +21,7 @@ export const BaseFields = [
 	'summary',
 	'total_rating',
 	'total_rating_count',
+	'url',
 	'websites.category',
 	'websites.url'
 ].join(',');
