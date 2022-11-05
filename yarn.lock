@@ -467,13 +467,13 @@ __metadata:
   dependencies:
     "@favware/cliff-jumper": ^1.8.8
     "@types/he": ^1.1.2
-    "@vitest/coverage-c8": ^0.24.3
+    "@vitest/coverage-c8": ^0.24.5
     graphql: ^16.6.0
     he: ^1.2.0
     tsup: ^6.3.0
     typescript: ^4.8.4
     undici: ^5.12.0
-    vitest: ^0.24.3
+    vitest: ^0.24.5
   languageName: unknown
   linkType: soft
 
@@ -482,11 +482,11 @@ __metadata:
   resolution: "@rygent/igdb@workspace:packages/igdb"
   dependencies:
     "@favware/cliff-jumper": ^1.8.8
-    "@vitest/coverage-c8": ^0.24.3
+    "@vitest/coverage-c8": ^0.24.5
     tsup: ^6.3.0
     typescript: ^4.8.4
     undici: ^5.12.0
-    vitest: ^0.24.3
+    vitest: ^0.24.5
   languageName: unknown
   linkType: soft
 
@@ -509,11 +509,11 @@ __metadata:
   resolution: "@rygent/spotify@workspace:packages/spotify"
   dependencies:
     "@favware/cliff-jumper": ^1.8.8
-    "@vitest/coverage-c8": ^0.24.3
+    "@vitest/coverage-c8": ^0.24.5
     tsup: ^6.3.0
     typescript: ^4.8.4
     undici: ^5.12.0
-    vitest: ^0.24.3
+    vitest: ^0.24.5
   languageName: unknown
   linkType: soft
 
@@ -780,13 +780,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vitest/coverage-c8@npm:^0.24.3":
-  version: 0.24.3
-  resolution: "@vitest/coverage-c8@npm:0.24.3"
+"@vitest/coverage-c8@npm:^0.24.5":
+  version: 0.24.5
+  resolution: "@vitest/coverage-c8@npm:0.24.5"
   dependencies:
     c8: ^7.12.0
-    vitest: 0.24.3
-  checksum: 75f79fcf7cee7dbdfa4b8978aa80d791288e5975ed6ca723d8b4985ea744c3b022138075065058a9a679346910ae054e23f6ee922b779e8f6e7b88baf0a496fa
+    vitest: 0.24.5
+  checksum: 54ca01a281df13f6c312a9fd14cff31a214b5886549ebe8179b94423aad831e6c3d5438a45464596703f02c7a4117f1b1a7c31fb84c3779d20c47cbb0dc9a3fb
   languageName: node
   linkType: hard
 
@@ -4556,7 +4556,7 @@ __metadata:
     "@types/node": ^18.11.9
     "@typescript-eslint/eslint-plugin": ^5.41.0
     "@typescript-eslint/parser": ^5.41.0
-    "@vitest/coverage-c8": ^0.24.3
+    "@vitest/coverage-c8": ^0.24.5
     cz-conventional-changelog: ^3.3.0
     dotenv: ^16.0.3
     eslint: ^8.26.0
@@ -4566,7 +4566,7 @@ __metadata:
     tsup: ^6.3.0
     turbo: ^1.6.3
     typescript: ^4.8.4
-    vitest: ^0.24.3
+    vitest: ^0.24.5
   languageName: unknown
   linkType: soft
 
@@ -5002,10 +5002,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinybench@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "tinybench@npm:2.3.0"
-  checksum: 6556e42b3b7700795caca07f5bbc2c78e33261ffe5db4c434d54bcfa1cd5c64863357c5b7fff53e031ee236d098313dac78938e12f8f1a9b47f1d7ad55417ce8
+"tinybench@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "tinybench@npm:2.3.1"
+  checksum: 74d45fa546d964a8123f98847fc59550945ed7f0d3e5a4ce0f9596d836b51c1d340c2ae0277a8023c15dc9ea3d7cb948a79173bfc46338c9b367c6323ea1eaf3
   languageName: node
   linkType: hard
 
@@ -5454,9 +5454,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:0.24.3, vitest@npm:^0.24.3":
-  version: 0.24.3
-  resolution: "vitest@npm:0.24.3"
+"vitest@npm:0.24.5, vitest@npm:^0.24.5":
+  version: 0.24.5
+  resolution: "vitest@npm:0.24.5"
   dependencies:
     "@types/chai": ^4.3.3
     "@types/chai-subset": ^1.3.3
@@ -5465,7 +5465,7 @@ __metadata:
     debug: ^4.3.4
     local-pkg: ^0.4.2
     strip-literal: ^0.4.2
-    tinybench: ^2.3.0
+    tinybench: ^2.3.1
     tinypool: ^0.3.0
     tinyspy: ^1.0.2
     vite: ^3.0.0
@@ -5488,7 +5488,7 @@ __metadata:
       optional: true
   bin:
     vitest: vitest.mjs
-  checksum: dd954f57396b81df466dd4346aa6c95709a1b3c2409d5526d3172fa34ec684f756a855f885778929a6b903a22b2517ff79d22f936fb3e4d7d54ff24e8e577459
+  checksum: 801d153082ec9d237d8720783dc939aa8c8a4cdd71625ddac997f99a98664b055a0e3efbcb3af648d44f0b8b80c014d48150b2c281870023628c1bdffa336d08
   languageName: node
   linkType: hard
 
