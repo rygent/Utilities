@@ -19,7 +19,7 @@
   "devDependencies": {
     "@favware/cliff-jumper": "^1.8.8",
     "tsup": "^6.5.0",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.3"
   },
   "dependencies": {
     "colorette": "^2.0.19",
