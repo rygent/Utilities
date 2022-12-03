@@ -23,7 +23,7 @@
     "@vitest/coverage-c8": "^0.25.3",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.0.3",
-    "eslint": "^8.28.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "prettier": "^2.8.0",
