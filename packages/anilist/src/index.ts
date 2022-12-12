@@ -11,7 +11,7 @@ export class Anilist {
 			const res = await fetch(BaseEndpoint, { method: 'POST', body, headers });
 
 			if (res.status === 200) {
-				return res.json().then<AnilistResponse>();
+				return (await res.json()) as AnilistResponse;
 			}
 
 			throw new Error(`Received status ${res.status} (${res.statusText})`);
@@ -33,3 +33,4 @@ function resolveQueryFragment(type: SearchType): string {
 }
 
 export { parseDescription } from './lib/util.js';
+export * from './lib/types/Anilist.js';
