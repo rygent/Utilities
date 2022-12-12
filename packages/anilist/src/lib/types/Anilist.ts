@@ -498,6 +498,12 @@ export interface Deleted {
 	readonly deleted?: Maybe<Scalars['Boolean']>;
 }
 
+export const enum ExternalLinkType {
+	Info = 'INFO',
+	Streaming = 'STREAMING',
+	Social = 'SOCIAL'
+}
+
 /** User's favourite anime, manga, characters, staff & studios */
 export interface Favourites {
 	readonly __typename?: 'Favourites';
@@ -1300,6 +1306,16 @@ export interface MediaExternalLink {
 	readonly url: Scalars['String'];
 	/** The site location of the external link */
 	readonly site: Scalars['String'];
+	/** The links website site id */
+	readonly siteId: Scalars['Int'];
+	readonly type: ExternalLinkType;
+	/** Language the site content is in. See Staff language field for values. */
+	readonly language: Scalars['String'];
+	readonly color: Scalars['String'];
+	/** The icon image url of the site. Not available for all links. Transparent PNG 64x64 */
+	readonly icon: Scalars['String'];
+	readonly notes: Scalars['String'];
+	readonly isDisabled: Scalars['Boolean'];
 }
 
 /** An external link to another site related to the media */
