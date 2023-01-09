@@ -1845,4 +1845,4 @@ export interface SpotifyOauth2Result {
 
 export type SearchType = 'artist' | 'album' | 'track' | 'playlist' | 'show' | 'episode';
 
-export type NonNullObject = Record<string, unknown> & object;
+type NonNullObject = Record<string, unknown> & object;
