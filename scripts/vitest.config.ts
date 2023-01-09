@@ -12,7 +12,8 @@ export const createVitestConfig = (options: UserConfig = {}) =>
 				enabled: true,
 				reporter: ['text', 'lcov', 'clover'],
 				exclude: [...(options.test?.coverage?.exclude ?? []), '**/node_modules/**', '**/dist/**', '**/tests/**']
-			}
+			},
+			threads: false
 		},
 		esbuild: {
 			...options?.esbuild,
