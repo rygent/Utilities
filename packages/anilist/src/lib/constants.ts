@@ -84,5 +84,3 @@ export const MangaFragment = gql`
 		}
 	}
 `;
-
-export const BaseEndpoint = 'https://graphql.anilist.co/';
