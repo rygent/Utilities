@@ -1,6 +1,6 @@
 {
   "name": "@rygent/spotify",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A simple to use API library for the Spotify REST API.",
   "license": "MIT",
   "main": "./dist/index.js",
