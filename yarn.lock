@@ -862,7 +862,7 @@ __metadata:
     he: ^1.2.0
     tsup: ^6.6.3
     typescript: ^4.9.5
-    undici: ^5.18.0
+    undici: ^5.21.0
     vitest: ^0.29.2
   languageName: unknown
   linkType: soft
@@ -875,7 +875,7 @@ __metadata:
     "@vitest/coverage-c8": ^0.29.2
     tsup: ^6.6.3
     typescript: ^4.9.5
-    undici: ^5.18.0
+    undici: ^5.21.0
     vitest: ^0.29.2
   languageName: unknown
   linkType: soft
@@ -889,7 +889,7 @@ __metadata:
     moment: ^2.29.4
     tsup: ^6.6.3
     typescript: ^4.9.5
-    undici: ^5.18.0
+    undici: ^5.21.0
     winston: ^3.8.2
   languageName: unknown
   linkType: soft
@@ -902,7 +902,7 @@ __metadata:
     "@vitest/coverage-c8": ^0.29.2
     tsup: ^6.6.3
     typescript: ^4.9.5
-    undici: ^5.18.0
+    undici: ^5.21.0
     vitest: ^0.29.2
   languageName: unknown
   linkType: soft
@@ -5976,12 +5976,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.18.0":
-  version: 5.18.0
-  resolution: "undici@npm:5.18.0"
+"undici@npm:^5.21.0":
+  version: 5.21.0
+  resolution: "undici@npm:5.21.0"
   dependencies:
     busboy: ^1.6.0
-  checksum: 74e0f357c376c745fcca612481a5742866ae36086ad387e626255f4c4a15fc5357d9d0fa4355271b6a633d50f5556c3e85720844680c44861c66e23afca7245f
+  checksum: 013d5fd503b631d607942c511c2ab3f3fa78ebcab302acab998b43176b4815503ec15ed9752c5a47918b3bff8a0137768001d3eb57625b2bb6f6d30d8a794d6c
   languageName: node
   linkType: hard
 
