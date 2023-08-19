@@ -25,7 +25,7 @@
     "vitest": "^0.31.4"
   },
   "dependencies": {
-    "graphql": "^16.7.1",
+    "graphql": "^16.8.0",
     "he": "^1.2.0",
     "undici": "^5.23.0"
   },
