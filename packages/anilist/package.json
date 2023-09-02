@@ -17,7 +17,7 @@
     "bump": "cliff-jumper"
   },
   "devDependencies": {
-    "@favware/cliff-jumper": "^2.1.1",
+    "@favware/cliff-jumper": "^2.1.2",
     "@types/he": "^1.2.0",
     "@vitest/coverage-c8": "^0.31.4",
     "tsup": "^6.7.0",
