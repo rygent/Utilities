@@ -27,7 +27,7 @@
   "dependencies": {
     "graphql": "^16.8.0",
     "he": "^1.2.0",
-    "undici": "^5.23.0"
+    "undici": "^5.24.0"
   },
   "files": [
     "./dist/**/*.js*",
