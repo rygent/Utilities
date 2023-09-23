@@ -17,7 +17,7 @@
     "@favware/cliff-jumper": "^2.2.0",
     "@favware/npm-deprecate": "^1.0.7",
     "@sapphire/utilities": "^3.13.0",
-    "@types/node": "^18.17.18",
+    "@types/node": "^18.17.19",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@vitest/coverage-c8": "^0.31.4",
