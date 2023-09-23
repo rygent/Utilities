@@ -893,7 +893,7 @@ __metadata:
     "@favware/cliff-jumper": ^2.1.3
     "@types/he": ^1.2.1
     "@vitest/coverage-c8": ^0.31.4
-    graphql: ^16.8.0
+    graphql: ^16.8.1
     he: ^1.2.0
     tsup: ^6.7.0
     typescript: ^4.9.5
@@ -3312,7 +3312,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:^16.8.0":
+"graphql@npm:^16.8.1":
   version: 16.8.1
   resolution: "graphql@npm:16.8.1"
   checksum: 8d304b7b6f708c8c5cc164b06e92467dfe36aff6d4f2cf31dd19c4c2905a0e7b89edac4b7e225871131fd24e21460836b369de0c06532644d15b461d55b1ccc0
