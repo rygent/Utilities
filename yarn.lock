@@ -905,7 +905,7 @@ __metadata:
   resolution: "@rygent/anilist@workspace:packages/anilist"
   dependencies:
     "@favware/cliff-jumper": ^2.2.0
-    "@types/he": ^1.2.1
+    "@types/he": ^1.2.2
     "@vitest/coverage-c8": ^0.31.4
     graphql: ^16.8.1
     he: ^1.2.0
@@ -1044,10 +1044,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/he@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@types/he@npm:1.2.1"
-  checksum: 9acb0e115c22507bbff6c9400ee8c66616c5443236bd078fc55befe9fbc23f8abafc4c8fa86f0682791271397135720f83d027bfac99e11cde74ec6941aa8790
+"@types/he@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@types/he@npm:1.2.2"
+  checksum: dd00311004007d9224f94ee4e7cdc9c2efd53b69d005d7fdb4397c320071058e07f00633ba5ad43555e5d5e690ff804b0aecdea022daee3b70c37aa84b293791
   languageName: node
   linkType: hard
 
