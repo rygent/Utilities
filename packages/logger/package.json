@@ -24,7 +24,7 @@
   "dependencies": {
     "colorette": "^2.0.20",
     "moment": "^2.29.4",
-    "undici": "^5.26.3",
+    "undici": "^5.26.4",
     "winston": "^3.11.0"
   },
   "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/logger",
