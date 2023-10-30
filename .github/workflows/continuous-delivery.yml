@@ -7,8 +7,6 @@ on:
         description: The {owner}/{repository} that is being deployed.
         required: false
         default: Rygent/Utilities
-  schedule:
-    - cron: '0 */12 * * *'
 
 jobs:
   Publish:
