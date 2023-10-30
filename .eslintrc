@@ -1,21 +1,25 @@
 {
     "root": true,
-    "env": {
+	"extends": [
+		"plugin:import/recommended",
+		"plugin:prettier/recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "extraFileExtensions": [".mjs"],
+        "project": ["./tsconfig.eslint.json", "./packages/*/tsconfig.eslint.json"],
+        "sourceType": "module",
+        "ecmaVersion": 2021,
+        "warnOnUnsupportedTypeScriptVersion": false
+    },
+	"env": {
         "node": true,
         "es6": true,
         "es2017": true,
         "es2021": true,
         "browser": true,
         "commonjs": true
-    },
-    "extends": ["plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "extraFileExtensions": [".mjs"],
-        "project": "./tsconfig.eslint.json",
-        "sourceType": "module",
-        "ecmaVersion": 2021,
-        "warnOnUnsupportedTypeScriptVersion": false
     },
     "rules": {
         "@typescript-eslint/adjacent-overload-signatures": "error",
@@ -67,9 +71,6 @@
         }],
         "@typescript-eslint/no-base-to-string": "error",
         "@typescript-eslint/no-dupe-class-members": "error",
-        "@typescript-eslint/no-duplicate-imports": ["error", {
-            "includeExports": false
-        }],
         "@typescript-eslint/no-empty-interface": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-extra-non-null-assertion": "error",
@@ -128,6 +129,8 @@
         "id-blacklist": "off",
         "id-length": "off",
         "id-match": "off",
+		"import/no-duplicates": ["error", { "prefer-inline": true }],
+		"import/no-unresolved": "off",
         "init-declarations": "off",
         "line-comment-position": "off",
         "lines-between-class-members": ["error", "always", {
