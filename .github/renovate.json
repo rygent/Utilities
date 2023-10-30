@@ -1,10 +1,9 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["config:base", ":enableVulnerabilityAlerts"],
-    "labels": ["dependencies"],
+    "extends": ["config:base"],
     "lockFileMaintenance": {
-        "extends": [":dependencyDashboardApproval"],
         "enabled": true,
+        "dependencyDashboardApproval": true,
         "recreateClosed": true,
         "rebaseStalePrs": true,
         "branchTopic": "lock-file-maintenance",
@@ -18,15 +17,14 @@
         "matchUpdateTypes": ["major"],
         "dependencyDashboardApproval": true
     }, {
-        "matchUpdateTypes": ["minor", "patch", "digest"],
-        "automerge": true
-    }, {
         "matchPackagePatterns": ["*"],
         "semanticCommitType": "chore",
         "commitMessageAction": "Bump",
+        "commitMessageExtra": "to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if newValue}}{{{prettyNewVersion}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}",
         "commitMessageTopic": "{{depName}}",
         "rangeStrategy": "bump",
-        "recreateClosed": true
+        "recreateClosed": true,
+        "addLabels": ["dependencies"]
     }, {
         "matchDepTypes": ["dependencies", "require"],
         "semanticCommitType": "chore"
@@ -52,6 +50,7 @@
     "prHourlyLimit": 5,
     "schedule": ["every weekend"],
     "vulnerabilityAlerts": {
+        "enabled": true,
         "schedule": ["at any time"],
         "addLabels": ["security"],
         "stabilityDays": 0,
