@@ -1,0 +1,9 @@
+packages:anilist:
+  - packages/anilist/*
+  - packages/anilist/**/*
+packages:igdb:
+  - packages/igdb/*
+  - packages/igdb/**/*
+packages:spotify:
+  - packages/spotify/*
+  - packages/spotify/**/*
