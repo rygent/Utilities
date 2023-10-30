@@ -1042,7 +1042,7 @@ __metadata:
     graphql: "npm:^16.8.1"
     he: "npm:^1.2.0"
     tsup: "npm:^7.2.0"
-    typescript: "npm:^4.9.5"
+    typescript: "npm:^5.2.2"
     undici: "npm:^5.27.0"
     vitest: "npm:^0.34.6"
   languageName: unknown
@@ -1055,7 +1055,7 @@ __metadata:
     "@favware/cliff-jumper": "npm:^2.2.0"
     "@vitest/coverage-v8": "npm:^0.34.6"
     tsup: "npm:^7.2.0"
-    typescript: "npm:^4.9.5"
+    typescript: "npm:^5.2.2"
     undici: "npm:^5.27.0"
     vitest: "npm:^0.34.6"
   languageName: unknown
@@ -1069,7 +1069,7 @@ __metadata:
     colorette: "npm:^2.0.20"
     moment: "npm:^2.29.4"
     tsup: "npm:^7.2.0"
-    typescript: "npm:^4.9.5"
+    typescript: "npm:^5.2.2"
     undici: "npm:^5.27.0"
     winston: "npm:^3.11.0"
   languageName: unknown
@@ -1082,7 +1082,7 @@ __metadata:
     "@favware/cliff-jumper": "npm:^2.2.0"
     "@vitest/coverage-v8": "npm:^0.34.6"
     tsup: "npm:^7.2.0"
-    typescript: "npm:^4.9.5"
+    typescript: "npm:^5.2.2"
     undici: "npm:^5.27.0"
     vitest: "npm:^0.34.6"
   languageName: unknown
@@ -6158,7 +6158,7 @@ __metadata:
     prettier: "npm:^3.0.3"
     tsup: "npm:^7.2.0"
     turbo: "npm:^1.10.16"
-    typescript: "npm:^4.9.5"
+    typescript: "npm:^5.2.2"
     vitest: "npm:^0.34.6"
   languageName: unknown
   linkType: soft
@@ -7134,7 +7134,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^4.6.4, typescript@npm:^4.9.5":
+"typescript@npm:^4.6.4":
   version: 4.9.5
   resolution: "typescript@npm:4.9.5"
   bin:
@@ -7144,13 +7144,33 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A^4.9.5#optional!builtin<compat/typescript>":
+"typescript@npm:^5.2.2":
+  version: 5.2.2
+  resolution: "typescript@npm:5.2.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 91ae3e6193d0ddb8656d4c418a033f0f75dec5e077ebbc2bd6d76439b93f35683936ee1bdc0e9cf94ec76863aa49f27159b5788219b50e1cd0cd6d110aa34b07
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^4.6.4#optional!builtin<compat/typescript>":
   version: 4.9.5
   resolution: "typescript@patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: e3333f887c6829dfe0ab6c1dbe0dd1e3e2aeb56c66460cb85c5440c566f900c833d370ca34eb47558c0c69e78ced4bfe09b8f4f98b6de7afed9b84b8d1dd06a1
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.2.2#optional!builtin<compat/typescript>":
+  version: 5.2.2
+  resolution: "typescript@patch:typescript@npm%3A5.2.2#optional!builtin<compat/typescript>::version=5.2.2&hash=f3b441"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 062c1cee1990e6b9419ce8a55162b8dc917eb87f807e4de0327dbc1c2fa4e5f61bc0dd4e034d38ff541d1ed0479b53bcee8e4de3a4075c51a1724eb6216cb6f5
   languageName: node
   linkType: hard
 
