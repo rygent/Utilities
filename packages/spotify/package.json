@@ -1,52 +1,52 @@
 {
-  "name": "@rygent/spotify",
-  "version": "1.1.1",
-  "description": "A simple to use API library for the Spotify REST API.",
-  "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs",
-    "types": "./dist/index.d.ts"
-  },
-  "scripts": {
-    "test": "vitest run",
-    "lint": "eslint src --ext ts --fix -c ../../.eslintrc",
-    "build": "tsup",
-    "prepack": "yarn build",
-    "bump": "cliff-jumper"
-  },
-  "devDependencies": {
-    "@favware/cliff-jumper": "^2.2.0",
-    "@vitest/coverage-v8": "^0.34.6",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2",
-    "vitest": "^0.34.6"
-  },
-  "dependencies": {
-    "undici": "^5.27.0"
-  },
-  "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rygent/Utilities.git",
-    "directory": "packages/spotify"
-  },
-  "bugs": {
-    "url": "https://github.com/Rygent/Utilities/issues"
-  },
-  "files": [
-    "./dist/**/*.js*",
-    "./dist/**/*.mjs*",
-    "./dist/**/*.d*"
-  ],
-  "engines": {
-    "node": ">=16.8.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "packageManager": "yarn@4.0.1"
+	"name": "@rygent/spotify",
+	"version": "1.1.1",
+	"description": "A simple to use API library for the Spotify REST API.",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		"require": "./dist/index.js",
+		"import": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"scripts": {
+		"test": "vitest run",
+		"lint": "eslint src --ext ts --fix -c ../../.eslintrc",
+		"build": "tsup",
+		"prepack": "yarn build",
+		"bump": "cliff-jumper"
+	},
+	"devDependencies": {
+		"@favware/cliff-jumper": "^2.2.0",
+		"@vitest/coverage-v8": "^0.34.6",
+		"tsup": "^7.2.0",
+		"typescript": "^5.2.2",
+		"vitest": "^0.34.6"
+	},
+	"dependencies": {
+		"undici": "^5.27.0"
+	},
+	"homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Rygent/Utilities.git",
+		"directory": "packages/spotify"
+	},
+	"bugs": {
+		"url": "https://github.com/Rygent/Utilities/issues"
+	},
+	"files": [
+		"./dist/**/*.js*",
+		"./dist/**/*.mjs*",
+		"./dist/**/*.d*"
+	],
+	"engines": {
+		"node": ">=16.8.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"packageManager": "yarn@4.0.1"
 }

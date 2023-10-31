@@ -1,51 +1,51 @@
 {
-  "name": "@rygent/logger",
-  "version": "1.0.0",
-  "license": "MIT",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs",
-    "types": "./dist/index.d.ts"
-  },
-  "scripts": {
-    "lint": "eslint src --ext ts --fix -c ../../.eslintrc",
-    "build": "tsup",
-    "prepack": "yarn build",
-    "bump": "cliff-jumper"
-  },
-  "devDependencies": {
-    "@favware/cliff-jumper": "^2.2.0",
-    "tsup": "^7.2.0",
-    "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "colorette": "^2.0.20",
-    "moment": "^2.29.4",
-    "undici": "^5.27.0",
-    "winston": "^3.11.0"
-  },
-  "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/logger",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rygent/Utilities.git",
-    "directory": "packages/logger"
-  },
-  "bugs": {
-    "url": "https://github.com/Rygent/Utilities/issues"
-  },
-  "files": [
-    "./dist/**/*.js*",
-    "./dist/**/*.mjs*",
-    "./dist/**/*.d*"
-  ],
-  "engines": {
-    "node": ">=16.8.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "packageManager": "yarn@4.0.1"
+	"name": "@rygent/logger",
+	"version": "1.0.0",
+	"license": "MIT",
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		"require": "./dist/index.js",
+		"import": "./dist/index.mjs",
+		"types": "./dist/index.d.ts"
+	},
+	"scripts": {
+		"lint": "eslint src --ext ts --fix -c ../../.eslintrc",
+		"build": "tsup",
+		"prepack": "yarn build",
+		"bump": "cliff-jumper"
+	},
+	"devDependencies": {
+		"@favware/cliff-jumper": "^2.2.0",
+		"tsup": "^7.2.0",
+		"typescript": "^5.2.2"
+	},
+	"dependencies": {
+		"colorette": "^2.0.20",
+		"moment": "^2.29.4",
+		"undici": "^5.27.0",
+		"winston": "^3.11.0"
+	},
+	"homepage": "https://github.com/Rygent/Utilities/tree/main/packages/logger",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Rygent/Utilities.git",
+		"directory": "packages/logger"
+	},
+	"bugs": {
+		"url": "https://github.com/Rygent/Utilities/issues"
+	},
+	"files": [
+		"./dist/**/*.js*",
+		"./dist/**/*.mjs*",
+		"./dist/**/*.d*"
+	],
+	"engines": {
+		"node": ">=16.8.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"packageManager": "yarn@4.0.1"
 }
