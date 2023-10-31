@@ -2,12 +2,12 @@
   "compileOnSave": true,
   "compilerOptions": {
     "incremental": true,
-    "target": "ES2021",
-    "lib": ["ESNext"],
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "experimentalDecorators": false,
     "emitDecoratorMetadata": false,
     "useDefineForClassFields": true,
-    "module": "CommonJS",
+	"module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "declaration": true,
@@ -15,10 +15,10 @@
     "sourceMap": true,
     "removeComments": false,
     "importHelpers": true,
-    "importsNotUsedAsValues": "error",
     "newLine": "lf",
     "noEmitHelpers": true,
     "preserveConstEnums": true,
+	"verbatimModuleSyntax": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -33,5 +33,6 @@
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "pretty": true
-  }
+  },
+  "exclude": ["node_modules"]
 }
