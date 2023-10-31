@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+# [@rygent/anilist@1.4.0](https://github.com/Rygent/Utilities/compare/@rygent/anilist@1.4.0...@rygent/anilist@1.4.0) - (2023-10-31)
+
+## Features
+
+- Required node 18 ([6c4eb57](https://github.com/Rygent/Utilities/commit/6c4eb577e014d3ae18062cdb549f88b9be9de5b3))
+
+## Refactor
+
+- Use axios instead ([115383d](https://github.com/Rygent/Utilities/commit/115383de3544b52f39ed8410098ab133dc5b6647))
+
+## Testing
+
+- Update vitest to coverage v8 ([1749373](https://github.com/Rygent/Utilities/commit/174937385bd488e2a11f8d4244a189b37f88d3ea))
+
 # [@rygent/anilist@1.3.0](https://github.com/Rygent/Utilities/compare/@rygent/anilist@1.2.0...@rygent/anilist@1.3.0) - (2023-01-11)
 
 ## Features
