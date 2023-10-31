@@ -1,0 +1,29 @@
+version = 1
+
+[merge]
+require_automerge_label = false
+blocking_labels = ["blocked"]
+method = "squash"
+delete_branch_on_merge = true
+optimistic_updates = true
+prioritize_ready_to_merge = true
+
+[merge.automerge_dependencies]
+versions = ["minor", "patch"]
+usernames = ["renovate"]
+
+[merge.message]
+title = "pull_request_title"
+body = "github_default"
+include_pr_number = true
+body_type = "markdown"
+strip_html_comments = true
+
+[update]
+always = true
+require_automerge_label = false
+ignored_usernames = ["renovate"]
+
+[approve]
+auto_approve_usernames = ["rygent"]
+auto_approve_labels = ["dependencies"]
