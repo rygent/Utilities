@@ -1025,6 +1025,7 @@ __metadata:
   resolution: "@rygent/spotify@workspace:packages/spotify"
   dependencies:
     "@favware/cliff-jumper": "npm:^2.2.1"
+    "@types/spotify-api": "npm:^0.0.25"
     "@vitest/coverage-v8": "npm:^0.34.6"
     tsup: "npm:^7.2.0"
     typescript: "npm:^5.2.2"
@@ -1159,6 +1160,13 @@ __metadata:
   version: 7.5.4
   resolution: "@types/semver@npm:7.5.4"
   checksum: dee66a71d9f089c118be74b5937d4fef42864d68d9472a3f4f5399b9e3ad74d56a8e155020c846667b9ecf9de78fdb9ea55a53fff5067af28e06779b282b6c40
+  languageName: node
+  linkType: hard
+
+"@types/spotify-api@npm:^0.0.25":
+  version: 0.0.25
+  resolution: "@types/spotify-api@npm:0.0.25"
+  checksum: 21fc548a41bc08e1423bb316f9e4f5699f00b1e97179fcfb9f854cc526d1442c7305f5765cdaa92a9a38f1ff07792edd16adde6ced8b666e8bf0accd04e0a5d1
   languageName: node
   linkType: hard
 
