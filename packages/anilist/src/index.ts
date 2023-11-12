@@ -1,30 +1,25 @@
 import type { AnilistResponse, SearchType } from './lib/types/Anilist.js';
-import { AnimeFragment, MangaFragment } from './lib/constants.js';
+import { endpoint } from './lib/constants.js';
+import { resolveQueryFragment } from './lib/util.js';
 import axios, { AxiosError } from 'axios';
 
 export class Anilist {
-	public async search(variables: { type: SearchType; search: string; page?: number; perPage?: number }): Promise<AnilistResponse> {
+	public async search<Type extends SearchType>(variables: {
+		type: Type;
+		search: string;
+		page?: number;
+		perPage?: number;
+	}): Promise<AnilistResponse> {
 		const { type, search, page = 1, perPage = 10 } = variables;
 
 		try {
 			const body = JSON.stringify({ query: resolveQueryFragment(type), variables: { search, page, perPage } });
-			const response = await axios.post('https://graphql.anilist.co/', body, { headers: { 'Content-Type': 'application/json' } });
+			const response = await axios.post(endpoint, body, { headers: { 'Content-Type': 'application/json' } });
 
 			return response.data as AnilistResponse;
 		} catch (error: unknown) {
 			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
 		}
-	}
-}
-
-function resolveQueryFragment(type: SearchType): string {
-	switch (type) {
-		case 'anime':
-			return AnimeFragment;
-		case 'manga':
-			return MangaFragment;
-		default:
-			return '';
 	}
 }
 

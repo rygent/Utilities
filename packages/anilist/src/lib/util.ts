@@ -1,3 +1,5 @@
+import type { SearchType } from './types/Anilist.js';
+import { AnimeFragment, MangaFragment } from './constants.js';
 import he from 'he';
 const { decode } = he;
 
@@ -33,4 +35,15 @@ export function parseDescription(description: string) {
 		excessiveNewLinesRegex,
 		'\n\n'
 	);
+}
+
+export function resolveQueryFragment(type: SearchType): string {
+	switch (type) {
+		case 'anime':
+			return AnimeFragment;
+		case 'manga':
+			return MangaFragment;
+		default:
+			return '';
+	}
 }

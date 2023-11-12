@@ -1,5 +1,7 @@
 import { gql } from './util.js';
 
+export const endpoint = 'https://graphql.anilist.co/';
+
 const MediaFragment = gql`
 	fragment MediaFragment on Media {
 		id
