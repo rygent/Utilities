@@ -1027,9 +1027,9 @@ __metadata:
     "@favware/cliff-jumper": "npm:^2.2.1"
     "@types/spotify-api": "npm:^0.0.25"
     "@vitest/coverage-v8": "npm:^0.34.6"
+    axios: "npm:^1.6.1"
     tsup: "npm:^7.2.0"
     typescript: "npm:^5.2.2"
-    undici: "npm:^5.27.2"
     vitest: "npm:^0.34.6"
   languageName: unknown
   linkType: soft

@@ -1,10 +1,8 @@
 import type { SearchType, SpotifyBearerToken, SpotifyOauth2Result } from './lib/types/Spotify.js';
-import { request, errors } from 'undici';
+import { endpoint, oauth2 } from './lib/constants.js';
+import axios, { AxiosError } from 'axios';
 
 export class Spotify {
-	private readonly endpoint = 'https://api.spotify.com/v1/';
-	private readonly oauth2 = 'https://accounts.spotify.com/api/token/';
-
 	private clientId: string;
 	private clientSecret: string;
 
@@ -18,21 +16,22 @@ export class Spotify {
 		this.clientSecret = configuration.secret;
 	}
 
-	public async search(variable: { type: SearchType; query: string; offset?: number; limit?: number }): Promise<SpotifyApi.SearchResponse> {
+	public async search<Type extends SearchType>(variable: {
+		type: Type;
+		query: string;
+		offset?: number;
+		limit?: number;
+	}): Promise<SpotifyApi.SearchResponse> {
 		const { type, query, offset = 0, limit = 10 } = variable;
+
 		try {
-			const { body } = await request(`${this.endpoint}search?q=${encodeURIComponent(query)}&type=${type}&offset=${offset}&limit=${limit}`, {
-				method: 'GET',
-				headers: {
-					Authorization: `Bearer ${await this.getAccessToken()}`
-				}
+			const response = await axios.get(`${endpoint}search?q=${encodeURIComponent(query)}&type=${type}&offset=${offset}&limit=${limit}`, {
+				headers: { Authorization: `Bearer ${await this.getAccessToken()}` }
 			});
 
-			return body.json() as SpotifyApi.SearchResponse;
+			return response.data as SpotifyApi.SearchResponse;
 		} catch (error: unknown) {
-			throw new Error(
-				`Received status ${(error as errors.ResponseStatusCodeError).status} (${(error as errors.ResponseStatusCodeError).message})`
-			);
+			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
 		}
 	}
 
@@ -45,21 +44,14 @@ export class Spotify {
 
 	private async generateBearerToken(): Promise<string> {
 		try {
-			const { body } = await request(this.oauth2, {
-				method: 'POST',
-				body: `grant_type=client_credentials&client_id=${this.clientId}&client_secret=${this.clientSecret}`,
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-				}
-			});
+			const body = `grant_type=client_credentials&client_id=${this.clientId}&client_secret=${this.clientSecret}`;
+			const response = await axios.post(oauth2, body, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
 
-			const response = (await body.json()) as SpotifyOauth2Result;
-			this.bearer = { token: response.access_token, expire: Date.now() + response.expires_in * 1e3 };
-			return response.access_token;
+			const data = response.data as SpotifyOauth2Result;
+			this.bearer = { token: data.access_token, expire: Date.now() + data.expires_in * 1e3 };
+			return data.access_token;
 		} catch (error: unknown) {
-			throw new Error(
-				`Received status ${(error as errors.ResponseStatusCodeError).status} (${(error as errors.ResponseStatusCodeError).message})`
-			);
+			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
 		}
 	}
 }

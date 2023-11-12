@@ -5,7 +5,7 @@ Only supports searching for `track | album | artist` however the 2 former ones h
 
 #### What's Different?
 
--   Uses `undici` instead.
+-   Uses `axios` instead.
 -   The code base has been completely rewritten to typescript.
 
 ## Installation

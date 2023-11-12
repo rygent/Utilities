@@ -27,7 +27,7 @@
 	},
 	"dependencies": {
 		"@types/spotify-api": "^0.0.25",
-		"undici": "^5.27.2"
+		"axios": "^1.6.1"
 	},
 	"homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
 	"repository": {
