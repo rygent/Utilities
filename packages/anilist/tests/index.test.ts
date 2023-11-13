@@ -17,7 +17,7 @@ describe('Anilist', () => {
 	test('Get anime "Cowboy Bebop" should be defined', async () => {
 		const response = await anilist.getAnime({ id: 1 });
 
-		expect(response.data.Page.media![0]).toBeDefined();
+		expect(response.data.Media).toBeDefined();
 	});
 
 	test('Search manga "Naruto" should be defined', async () => {
@@ -29,6 +29,6 @@ describe('Anilist', () => {
 	test('Get manga "Naruto" should be defined', async () => {
 		const response = await anilist.getManga({ id: 30011 });
 
-		expect(response.data.Page.media![0]).toBeDefined();
+		expect(response.data.Media).toBeDefined();
 	});
 });

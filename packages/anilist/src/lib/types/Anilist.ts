@@ -6977,6 +6977,7 @@ export type IResolvers<ContextType = any> = Resolvers<ContextType>;
 export interface AnilistResponse {
 	data: {
 		Page: Page;
+		Media: Media;
 	};
 }
 

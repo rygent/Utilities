@@ -1,5 +1,5 @@
 import type { SearchType } from './types/Anilist.js';
-import { AnimeFragment, MangaFragment } from './constants.js';
+import { SearchAnimeQuery, SearchMangaQuery } from './constants.js';
 import he from 'he';
 const { decode } = he;
 
@@ -39,8 +39,8 @@ export function parseDescription(description: string) {
 
 export function resolveQuery<Type extends SearchType>(type: Type): string {
 	const queryMap = {
-		anime: AnimeFragment,
-		manga: MangaFragment
+		anime: SearchAnimeQuery,
+		manga: SearchMangaQuery
 	};
 
 	return queryMap[type];

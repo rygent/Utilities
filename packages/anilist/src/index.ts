@@ -1,5 +1,5 @@
 import type { AnilistResponse, SearchType } from './lib/types/Anilist.js';
-import { AnimeFragment, MangaFragment, endpoint } from './lib/constants.js';
+import { GetAnimeQuery, GetMangaQuery, endpoint } from './lib/constants.js';
 import { resolveQuery } from './lib/util.js';
 import axios, { AxiosError } from 'axios';
 
@@ -26,7 +26,7 @@ export class Anilist {
 		const { id } = variables;
 
 		try {
-			const body = JSON.stringify({ query: AnimeFragment, variables: { id } });
+			const body = JSON.stringify({ query: GetAnimeQuery, variables: { id } });
 			const response = await axios.post(endpoint, body, { headers: { 'Content-Type': 'application/json' } });
 
 			return response.data as AnilistResponse;
@@ -39,7 +39,7 @@ export class Anilist {
 		const { id } = variables;
 
 		try {
-			const body = JSON.stringify({ query: MangaFragment, variables: { id } });
+			const body = JSON.stringify({ query: GetMangaQuery, variables: { id } });
 			const response = await axios.post(endpoint, body, { headers: { 'Content-Type': 'application/json' } });
 
 			return response.data as AnilistResponse;
