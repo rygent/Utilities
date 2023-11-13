@@ -31,7 +31,7 @@ export class Spotify {
 
 			return response.data as SpotifyApi.SearchResponse;
 		} catch (error: unknown) {
-			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
+			throw new Error((error as AxiosError).message);
 		}
 	}
 
@@ -51,7 +51,7 @@ export class Spotify {
 			this.bearer = { token: data.access_token, expire: Date.now() + data.expires_in * 1e3 };
 			return data.access_token;
 		} catch (error: unknown) {
-			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
+			throw new Error((error as AxiosError).message);
 		}
 	}
 }
