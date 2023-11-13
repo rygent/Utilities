@@ -47,9 +47,9 @@ export class Spotify {
 			const body = `grant_type=client_credentials&client_id=${this.clientId}&client_secret=${this.clientSecret}`;
 			const response = await axios.post(oauth2, body, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } });
 
-			const data = response.data as SpotifyOauth2Result;
-			this.bearer = { token: data.access_token, expire: Date.now() + data.expires_in * 1e3 };
-			return data.access_token;
+			const result = response.data as SpotifyOauth2Result;
+			this.bearer = { token: result.access_token, expire: Date.now() + result.expires_in * 1e3 };
+			return result.access_token;
 		} catch (error: unknown) {
 			throw new Error((error as AxiosError).message);
 		}
