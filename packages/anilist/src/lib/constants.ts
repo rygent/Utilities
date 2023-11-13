@@ -51,9 +51,9 @@ const MediaFragment = gql`
 
 export const AnimeFragment = gql`
 	${MediaFragment}
-	query ($search: String!, $page: Int, $perPage: Int) {
+	query ($id: Int, $search: String, $page: Int, $perPage: Int) {
 		Page(page: $page, perPage: $perPage) {
-			media(search: $search, type: ANIME) {
+			media(id: $id, search: $search, type: ANIME) {
 				...MediaFragment
 				season
 				seasonYear
@@ -76,9 +76,9 @@ export const AnimeFragment = gql`
 
 export const MangaFragment = gql`
 	${MediaFragment}
-	query ($search: String!, $page: Int, $perPage: Int) {
+	query ($id: Int, $search: String, $page: Int, $perPage: Int) {
 		Page(page: $page, perPage: $perPage) {
-			media(search: $search, type: MANGA) {
+			media(id: $id, search: $search, type: MANGA) {
 				...MediaFragment
 				chapters
 				volumes
