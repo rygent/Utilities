@@ -4,7 +4,7 @@ import { defineConfig, type Options } from 'tsup';
 export const createTsupConfig = ({
 	globalName = undefined,
 	format = ['esm', 'cjs', 'iife'],
-	target = 'es2021',
+	target = 'es2022',
 	sourcemap = true,
 	dts = true,
 	esbuildOptions = (options, context) => {

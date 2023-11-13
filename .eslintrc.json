@@ -6,14 +6,14 @@
 		"extraFileExtensions": [".mjs"],
 		"project": ["./tsconfig.eslint.json", "./packages/*/tsconfig.eslint.json"],
 		"sourceType": "module",
-		"ecmaVersion": 2021,
+		"ecmaVersion": 2022,
 		"warnOnUnsupportedTypeScriptVersion": false
 	},
 	"env": {
 		"node": true,
 		"es6": true,
 		"es2017": true,
-		"es2021": true,
+		"es2022": true,
 		"browser": true,
 		"commonjs": true
 	},
