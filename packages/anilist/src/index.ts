@@ -1,6 +1,6 @@
 import type { AnilistResponse, SearchType } from './lib/types/Anilist.js';
 import { AnimeFragment, MangaFragment, endpoint } from './lib/constants.js';
-import { resolveQueryFragment } from './lib/util.js';
+import { resolveQuery } from './lib/util.js';
 import axios, { AxiosError } from 'axios';
 
 export class Anilist {
@@ -13,7 +13,7 @@ export class Anilist {
 		const { type, search, page = 1, perPage = 10 } = variables;
 
 		try {
-			const body = JSON.stringify({ query: resolveQueryFragment(type), variables: { search, page, perPage } });
+			const body = JSON.stringify({ query: resolveQuery(type), variables: { search, page, perPage } });
 			const response = await axios.post(endpoint, body, { headers: { 'Content-Type': 'application/json' } });
 
 			return response.data as AnilistResponse;

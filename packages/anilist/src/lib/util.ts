@@ -37,13 +37,11 @@ export function parseDescription(description: string) {
 	);
 }
 
-export function resolveQueryFragment(type: SearchType): string {
-	switch (type) {
-		case 'anime':
-			return AnimeFragment;
-		case 'manga':
-			return MangaFragment;
-		default:
-			return '';
-	}
+export function resolveQuery<Type extends SearchType>(type: Type): string {
+	const queryMap = {
+		anime: AnimeFragment,
+		manga: MangaFragment
+	};
+
+	return queryMap[type];
 }
