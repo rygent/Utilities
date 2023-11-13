@@ -18,7 +18,7 @@ export class Anilist {
 
 			return response.data as AnilistResponse;
 		} catch (error: unknown) {
-			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
+			throw new Error((error as AxiosError).message);
 		}
 	}
 
@@ -31,7 +31,7 @@ export class Anilist {
 
 			return response.data as AnilistResponse;
 		} catch (error: unknown) {
-			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
+			throw new Error((error as AxiosError).message);
 		}
 	}
 
@@ -44,7 +44,7 @@ export class Anilist {
 
 			return response.data as AnilistResponse;
 		} catch (error: unknown) {
-			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
+			throw new Error((error as AxiosError).message);
 		}
 	}
 }
