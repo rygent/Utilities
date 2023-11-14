@@ -1,36 +1,28 @@
-# Spotify API
+# Spotify Wrapper
 
-A simple to use API library for the Spotify REST API.
-Only supports searching for `track | album | artist` however the 2 former ones have not been tested.
+An UNOFFICIAL wrapper for Spotify REST API written in typescript.
 
-#### What's Different?
+You can visit the official docs for Spotify [here][spotify docs] to find out everything you can do.
 
--   Uses `axios` instead.
--   The code base has been completely rewritten to typescript.
+> [!IMPORTANT]
+> This project is still under development, not everything supported yet.
 
 ## Installation
 
 ```sh-session
 npm i @rygent/spotify
 yarn add @rygent/spotify
+pnpm i @rygent/spotify
 ```
 
-## API
+## Usage
 
-### Search
-
-```js
-<spotify>.search({ type: 'artist|album|track', query: 'My search query', offset: 0, limit: 20 });
-```
-
-#### Example
-
-```js
-const { Spotify } = require('@rygent/spotify');
+```ts
+import { Spotify } from '@rygent/spotify';
 
 const spotify = new Spotify({
-	id: 'your client id',
-	secret: 'your client secret'
+  id: 'your client id',
+  secret: 'your client secret'
 });
 
 // later on ...
@@ -39,8 +31,14 @@ await spotify.search({ type: 'album', query: 'Let It Be' });
 await spotify.search({ type: 'artist', query: 'The Beatles' });
 ```
 
-> **Note**
-> The `offset` property is optional and the search will default to `0` if one is not supplied.
+> [!NOTE]
+> - **offset**: This property is optional and the default value is `0`.
+> - **limit**: This property is optional and the default value is `20`.
 
-> **Note**
-> The `limit` property is optional and the search will default to `20` if one is not supplied.
+---
+
+<i>This project is not affiliated with nor endorsed by Spotify.</i>
+
+<!-- LINKS -->
+
+[spotify docs]: https://developer.spotify.com/documentation/web-api

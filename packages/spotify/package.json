@@ -1,15 +1,20 @@
 {
 	"name": "@rygent/spotify",
 	"version": "1.1.1",
-	"description": "A simple to use API library for the Spotify REST API.",
+	"description": "An UNOFFICIAL wrapper for Spotify REST API written in typescript.",
 	"license": "MIT",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"exports": {
-		"require": "./dist/index.js",
-		"import": "./dist/index.mjs",
-		"types": "./dist/index.d.ts"
+        "import": {
+            "types": "./dist/index.d.mts",
+            "default": "./dist/index.mjs"
+        },
+		"require": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
 	},
 	"scripts": {
 		"test": "vitest run",
@@ -24,10 +29,6 @@
 		"tsup": "^7.2.0",
 		"typescript": "^5.2.2",
 		"vitest": "^0.34.6"
-	},
-	"dependencies": {
-		"@types/spotify-api": "^0.0.25",
-		"axios": "^1.6.1"
 	},
 	"homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
 	"repository": {
@@ -46,6 +47,12 @@
 	"engines": {
 		"node": ">=18.12.0"
 	},
+    "keywords": [
+        "spotify",
+        "wrapper",
+        "api",
+        "spotify-api"
+    ],
 	"publishConfig": {
 		"access": "public"
 	},
