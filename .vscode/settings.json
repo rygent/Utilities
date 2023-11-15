@@ -1,11 +1,10 @@
 {
 	"eslint.validate": ["typescript"],
-	"editor.tabSize": 4,
-	"editor.useTabStops": true,
-	"editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"[json]": {
-		"editor.insertSpaces": true
+	"search.exclude": {
+	  "**/node_modules": true,
+	  "**/.yarn": true,
+	  "**/.git/": true
 	},
-	"files.eol": "\n"
-}
+	"typescript.tsdk": "./node_modules/typescript/lib",
+	"typescript.enablePromptUseWorkspaceTsdk": true
+  }
