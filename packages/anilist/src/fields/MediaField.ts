@@ -50,7 +50,12 @@ export class MediaField {
 		return result.Media!;
 	}
 
-	public async search<T extends keyof typeof MediaType>(options: { type: T; search: string; page?: number; perPage?: number }) {
+	public async search<T extends keyof typeof MediaType>(options: {
+		type: T;
+		search: string;
+		page?: number;
+		perPage?: number;
+	}) {
 		const { type, search, page = 1, perPage = 20 } = options;
 
 		const query = gql`

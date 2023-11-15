@@ -32,8 +32,7 @@ export function parseHtmlEntity(text: string | null | undefined) {
 	if (text === null) return null;
 	if (text === undefined) return undefined;
 
-	return decode(text.replace(htmlEntityRegex, (_, type: keyof typeof htmlEntityReplacements) => htmlEntityReplacements[type])).replace(
-		excessiveNewLinesRegex,
-		'\n\n'
-	);
+	return decode(
+		text.replace(htmlEntityRegex, (_, type: keyof typeof htmlEntityReplacements) => htmlEntityReplacements[type])
+	).replace(excessiveNewLinesRegex, '\n\n');
 }

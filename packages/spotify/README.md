@@ -21,8 +21,8 @@ pnpm i @rygent/spotify
 import { Spotify } from '@rygent/spotify';
 
 const spotify = new Spotify({
-  id: 'your client id',
-  secret: 'your client secret'
+    id: 'your client id',
+    secret: 'your client secret'
 });
 
 // later on ...
@@ -32,8 +32,9 @@ await spotify.search({ type: 'artist', query: 'The Beatles' });
 ```
 
 > [!NOTE]
-> - **offset**: This property is optional and the default value is `0`.
-> - **limit**: This property is optional and the default value is `20`.
+>
+> -   **offset**: This property is optional and the default value is `0`.
+> -   **limit**: This property is optional and the default value is `20`.
 
 ---
 

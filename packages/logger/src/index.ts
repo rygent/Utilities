@@ -19,7 +19,9 @@ export class Logger {
 	private format = combine(
 		timestamp(),
 		printf(({ timestamp, level, message }) => {
-			return `${resolveTimestamp(timestamp)} ${resolveLevel(level)}: ${resolveShardId(this.client?.shard?.ids[0])} ${message}`;
+			return `${resolveTimestamp(timestamp)} ${resolveLevel(level)}: ${resolveShardId(
+				this.client?.shard?.ids[0]
+			)} ${message}`;
 		})
 	);
 

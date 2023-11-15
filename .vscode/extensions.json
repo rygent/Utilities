@@ -1,3 +1,8 @@
 {
-	"recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "editorconfig.editorconfig", "tamasfe.even-better-toml"]
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "tamasfe.even-better-toml"
+  ]
 }
