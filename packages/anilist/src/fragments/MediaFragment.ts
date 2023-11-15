@@ -1,6 +1,7 @@
-import { gql } from './util.js';
+import { CharacterSort, StudioSort } from '../types/Anilist.js';
+import { gql } from '../utils/functions.js';
 
-const MediaFragment = gql`
+export const MediaFragment = gql`
 	fragment MediaFragment on Media {
 		id
 		idMal
@@ -29,7 +30,7 @@ const MediaFragment = gql`
 		averageScore
 		popularity
 		favourites
-		characters(sort: RELEVANCE) {
+		characters(sort: ${CharacterSort.Relevance}) {
 			nodes {
 				name {
 					full
@@ -47,15 +48,13 @@ const MediaFragment = gql`
 	}
 `;
 
-export const AnimeMediaFragment = gql`
-	${MediaFragment}
-	fragment AnimeMediaFragment on Media {
-		...MediaFragment
+export const AnimeFragment = gql`
+	fragment AnimeFragment on Media {
 		season
 		seasonYear
 		episodes
 		duration
-		studios(sort: NAME, isMain: true) {
+		studios(sort: ${StudioSort.Name}, isMain: true) {
 			nodes {
 				name
 				isAnimationStudio
@@ -68,10 +67,8 @@ export const AnimeMediaFragment = gql`
 	}
 `;
 
-export const MangaMediaFragment = gql`
-	${MediaFragment}
-	fragment MangaMediaFragment on Media {
-		...MediaFragment
+export const MangaFragment = gql`
+	fragment MangaFragment on Media {
 		chapters
 		volumes
 	}

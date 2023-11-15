@@ -9,26 +9,26 @@ describe('Anilist', () => {
 	});
 
 	test('Searching for the anime "Cowboy Bebop" should be defined', async () => {
-		const response = await anilist.search({ type: 'anime', search: 'Cowboy Bebop' });
+		const response = await anilist.media.search({ type: 'Anime', search: 'Cowboy Bebop' });
 
-		expect(response.data.Page.media![0]).toBeDefined();
+		expect(response[0]).toBeDefined();
 	});
 
 	test('Getting the "Cowboy Bebop" anime should be defined', async () => {
-		const response = await anilist.getAnime({ id: 1 });
+		const response = await anilist.media.anime({ id: 1 });
 
-		expect(response.data.Media).toBeDefined();
+		expect(response).toBeDefined();
 	});
 
 	test('Searching for the manga "Naruto" should be defined', async () => {
-		const response = await anilist.search({ type: 'manga', search: 'Naruto' });
+		const response = await anilist.media.search({ type: 'Manga', search: 'Naruto' });
 
-		expect(response.data.Page.media![0]).toBeDefined();
+		expect(response[0]).toBeDefined();
 	});
 
 	test('Getting the "Naruto" manga should be defined', async () => {
-		const response = await anilist.getManga({ id: 30011 });
+		const response = await anilist.media.manga({ id: 30011 });
 
-		expect(response.data.Media).toBeDefined();
+		expect(response).toBeDefined();
 	});
 });
