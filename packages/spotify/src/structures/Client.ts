@@ -11,7 +11,7 @@ export class Client {
 	public async search(options: Omit<SearchForItemParameterObject, 'market'>): Promise<SearchResponse> {
 		const { type, query, offset = 0, limit = 20 } = options;
 
-		const params = `?q=${encodeURIComponent(query)}&type=${type}&offset=${offset}&limit=${limit}`;
+		const params = `?q=${encodeURIComponent(query)}&type=${type.join(',')}&offset=${offset}&limit=${limit}`;
 		const response = await this.utils.fetch({ endpoint: '/search', params });
 
 		return response as SearchResponse;

@@ -19,16 +19,15 @@ pnpm i @rygent/spotify
 
 ```ts
 import { Spotify } from '@rygent/spotify';
+import config from './config.js';
 
 const spotify = new Spotify({
-    id: 'your client id',
-    secret: 'your client secret'
+    id: config.client_id, // Your client_id
+    secret: config.client_secret // Your client_secret
 });
 
-// later on ...
-await spotify.search({ type: 'track', query: 'I Me Mine' });
-await spotify.search({ type: 'album', query: 'Let It Be' });
-await spotify.search({ type: 'artist', query: 'The Beatles' });
+await spotify.search({ type: ['track', 'album'], query: 'Happier Than Ever' });
+await spotify.search({ type: ['artist'], query: 'Billie Eilish' });
 ```
 
 > [!NOTE]
