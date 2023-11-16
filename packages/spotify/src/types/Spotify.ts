@@ -13,7 +13,7 @@ export interface SearchForItemParameterObject {
 	/**
 	 * The search query's keywords (and optional field filters and operators).
 	 */
-	q: string;
+	query: string;
 	/**
 	 * A comma-separated list of item types to search across. Valid types are: `album`, `artist`, `playlist`, `track`, `shows`, and `episodes`.
 	 * Search results include hits from all the specified item types.
