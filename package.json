@@ -5,10 +5,10 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint packages --ext mjs,js,ts,tsx --fix",
-    "format": "prettier --write \"packages/**/{src,tests,scripts}/**/*.{mjs,ts,js}\"",
-    "test": "vitest run",
-    "build": "turbo run build",
+    "build": "turbo run build --concurrency=3",
+    "test": "turbo run test --concurrency=3",
+    "lint": "turbo run build --concurrency=3",
+    "format": "turbo run format --concurrency=3",
     "update": "yarn upgrade-interactive"
   },
   "devDependencies": {

@@ -1,4 +1,5 @@
-.turbo
-dist/
-coverage/
-.yarn/
+.yarn
+CHANGELOG.md
+tsup.config.bundled*
+vitest.config.ts.timestamp*
+yarn.lock

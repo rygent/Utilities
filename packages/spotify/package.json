@@ -17,9 +17,10 @@
     }
   },
   "scripts": {
-    "test": "vitest run",
-    "lint": "eslint src --ext ts --fix -c ../../.eslintrc",
     "build": "tsup",
+    "test": "vitest run",
+    "lint": "eslint src --ext ts",
+    "format": "prettier . --write",
     "prepack": "yarn build",
     "bump": "cliff-jumper"
   },

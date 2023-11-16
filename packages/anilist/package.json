@@ -16,10 +16,11 @@
     }
   },
   "scripts": {
-    "test": "vitest run",
-    "lint": "eslint src --ext ts --fix -c ../../.eslintrc",
-    "codegen": "graphql-codegen --config codegen.ts",
     "build": "tsup",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "test": "vitest run",
+    "lint": "eslint src --ext ts",
+    "format": "prettier . --write",
     "prepack": "yarn build",
     "bump": "cliff-jumper"
   },

@@ -1,6 +1,8 @@
 import { Spotify } from '../dist/index';
 import { isClass } from '@sapphire/utilities';
-import 'dotenv/config';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../.env' });
 
 const spotify = new Spotify({ id: process.env.SPOTIFY_ID!, secret: process.env.SPOTIFY_SECRET! });
 

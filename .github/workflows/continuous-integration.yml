@@ -2,64 +2,49 @@ name: Continuous Integration
 
 on:
   push:
-    branches: ['main']
   pull_request:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
-  Linting:
-    name: Linting
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Project
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Use Node.js v20
+        with:
+          fetch-depth: 0
+      - name: Install node.js v20
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: yarn
           registry-url: https://registry.yarnpkg.org/
-      - name: Install Dependencies
+      - name: Install dependencies
         run: yarn --immutable
-      - name: Run ESLint
-        run: yarn lint --fix=false
-
-  Testing:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-          registry-url: https://registry.yarnpkg.org/
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Build test dependencies
-        run: yarn turbo run build
-      - name: Run tests
+      - name: Build packages (PR)
+        if: ${{ github.event_name != 'push' }}
+        run: yarn turbo run build --filter="...[origin/${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'main' }}]" --concurrency=3
+      - name: Build packages (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: yarn turbo run build --filter="...[HEAD^1]" --concurrency=3
+      - name: ESLint (PR)
+        if: ${{ github.event_name != 'push' }}
+        run: yarn turbo run lint --filter="...[origin/${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'main' }}]" --concurrency=3
+      - name: ESLint (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: yarn turbo run lint --filter="...[HEAD^1]" --concurrency=3
+      - name: Tests (PR)
+        if: ${{ github.event_name != 'push' }}
         run: |
-          curl -L ${ENV_FILE_URL} -o .env
+          curl -s -L ${{ secrets.ENV_FILE }} -o .env
 
-          yarn test
-        env:
-          ENV_FILE_URL: ${{ secrets.ENV_FILE_URL }}
+          yarn turbo run test --filter="...[origin/${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'main' }}]" --concurrency=3
+      - name: Tests (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: |
+          curl -s -L ${{ secrets.ENV_FILE }} -o .env
 
-  Building:
-    name: Compile source code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: yarn
-          registry-url: https://registry.yarnpkg.org/
-      - name: Install Dependencies
-        run: yarn --immutable
-      - name: Compile Projects
-        run: yarn build
+          yarn turbo run test --filter="...[HEAD^1]" --concurrency=3
