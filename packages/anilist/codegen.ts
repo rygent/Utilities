@@ -4,7 +4,7 @@ const config: CodegenConfig = {
 	overwrite: true,
 	schema: 'https://graphql.anilist.co',
 	generates: {
-		'src/types/Anilist.ts': {
+		'src/lib/types/Anilist.ts': {
 			plugins: ['typescript']
 		}
 	}

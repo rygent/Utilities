@@ -1,1 +1,1 @@
-export { Client as Spotify } from './structures/Client.js';
+export { Client as Spotify } from './lib/structures/Client.js';

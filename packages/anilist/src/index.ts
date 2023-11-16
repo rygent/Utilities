@@ -1,1 +1,1 @@
-export { Client as Anilist } from './structures/Client.js';
+export { Client as Anilist } from './lib/structures/Client.js';
