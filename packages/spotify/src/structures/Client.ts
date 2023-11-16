@@ -8,7 +8,7 @@ export class Client {
 		this.utils = new Util({ id: options.id, secret: options.secret });
 	}
 
-	public async search(options: SearchForItemParameterObject): Promise<SearchResponse> {
+	public async search(options: Omit<SearchForItemParameterObject, 'market'>): Promise<SearchResponse> {
 		const { type, query, offset = 0, limit = 20 } = options;
 
 		const params = `?q=${encodeURIComponent(query)}&type=${type}&offset=${offset}&limit=${limit}`;
