@@ -8,8 +8,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  tests:
-    name: Tests
+  testing:
+    name: Testing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
