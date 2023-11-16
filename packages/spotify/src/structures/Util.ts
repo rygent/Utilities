@@ -36,14 +36,14 @@ export class Util {
 		}
 	}
 
-	private getAccessToken(): string | Promise<string> {
+	private getAccessToken() {
 		const { token, expire } = this.bearer;
 		if (!expire || !token) return this.generateBearerToken();
 		if (Date.now() > expire) return this.generateBearerToken();
 		return token;
 	}
 
-	private async generateBearerToken(): Promise<string> {
+	private async generateBearerToken() {
 		const params = `grant_type=client_credentials&client_id=${this.clientId}&client_secret=${this.clientSecret}`;
 
 		try {
