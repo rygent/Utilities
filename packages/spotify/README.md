@@ -5,6 +5,7 @@ An UNOFFICIAL wrapper for Spotify REST API written in typescript.
 You can visit the official docs for Spotify [here][spotify docs] to find out everything you can do.
 
 > [!IMPORTANT]
+>
 > This project is still under development, not everything supported yet.
 
 ## Installation
@@ -32,8 +33,8 @@ await spotify.search({ type: ['artist'], query: 'Billie Eilish' });
 
 > [!NOTE]
 >
-> -   **offset**: This property is optional and the default value is `0`.
-> -   **limit**: This property is optional and the default value is `20`.
+> - **offset**: This property is optional and the default value is `0`.
+> - **limit**: This property is optional and the default value is `20`.
 
 ---
 
