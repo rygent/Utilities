@@ -5,31 +5,29 @@ export const createTsupConfig = ({
 	format = ['esm', 'cjs', 'iife'],
 	target = 'es2022',
 	sourcemap = true,
-	dts = true,
-	esbuildOptions = (options, context) => {
-		if (context.format === 'cjs') {
-			options.banner = {
-				js: '"use strict";'
-			};
-		}
-	}
+	splitting = true,
+	bundle = true,
+	dts = true
 }: ConfigOptions = {}) =>
 	defineConfig({
+		bundle,
 		clean: true,
 		dts,
 		entry: ['src/index.ts'],
 		format,
+		keepNames: true,
 		minify: false,
+		platform: 'node',
 		skipNodeModulesBundle: true,
 		sourcemap,
+		splitting,
 		target,
-		keepNames: true,
+		treeshake: true,
 		globalName: globalName
 			?.replace(/@/g, '')
-			.split(/[\/-]/g)
-			.map((l) => l[0].toUpperCase() + l.slice(1))
-			.join(''),
-		esbuildOptions
+			.split(/[\\/-]/g)
+			.map((l) => l[0]?.toUpperCase() + l.slice(1))
+			.join('')
 	});
 
-type ConfigOptions = Pick<Options, 'esbuildOptions' | 'sourcemap' | 'target' | 'format' | 'globalName' | 'dts'>;
+type ConfigOptions = Pick<Options, 'globalName' | 'format' | 'target' | 'sourcemap' | 'splitting' | 'bundle' | 'dts'>;
