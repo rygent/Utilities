@@ -15,13 +15,13 @@ export interface SearchForItemParameterObject {
 	/**
 	 * The search query's keywords (and optional field filters and operators).
 	 */
-	query: string;
+	q: string;
 	/**
 	 * A comma-separated list of item types to search across. Valid types are: `album`, `artist`, `playlist`, `track`, `shows`, and `episodes`.
 	 * Search results include hits from all the specified item types.
 	 * For example: `q=name:abacab&type=album,track` returns both albums and tracks with `“abacab”` included in their name.
 	 */
-	type: SearchForItemType[];
+	type: string;
 	/**
 	 * An [ISO 3166-1 alpha-2 country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) or the string `from_token`.
 	 * If a country code is specified, only artists, albums, and tracks with content that is playable in that market is returned.
@@ -45,8 +45,6 @@ export interface SearchForItemParameterObject {
 	 */
 	include_external?: string | undefined;
 }
-
-export type SearchForItemType = 'album' | 'artist' | 'playlist' | 'track' | 'shows' | 'episodes';
 
 /**
  * Object for use in Recommendations Based on Seeds.
