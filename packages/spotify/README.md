@@ -27,8 +27,8 @@ const spotify = new Spotify({
     secret: config.client_secret // Your client_secret
 });
 
-await spotify.search({ type: ['track', 'album'], query: 'Happier Than Ever' });
-await spotify.search({ type: ['artist'], query: 'Billie Eilish' });
+await spotify.search({ type: 'track,album', q: 'Happier Than Ever' });
+await spotify.search({ type: 'artist', q: 'Billie Eilish' });
 ```
 
 > [!NOTE]
