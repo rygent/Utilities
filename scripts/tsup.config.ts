@@ -1,4 +1,3 @@
-import { relative, resolve } from 'node:path';
 import { defineConfig, type Options } from 'tsup';
 
 export const createTsupConfig = ({
@@ -24,7 +23,6 @@ export const createTsupConfig = ({
 		skipNodeModulesBundle: true,
 		sourcemap,
 		target,
-		tsconfig: relative(__dirname, resolve(process.cwd(), 'src', 'tsconfig.json')),
 		keepNames: true,
 		globalName: globalName
 			?.replace(/@/g, '')
