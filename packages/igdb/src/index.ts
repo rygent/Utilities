@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-catch */
+
 import type { TwitchHelixBearerToken, TwitchHelixOauth2Result } from './lib/types/Twitch.js';
 import type { Game } from './lib/types/Igdb.js';
 import { BaseEndpoint, BaseOAuth2, BaseFields } from './lib/constants.js';
@@ -5,8 +7,8 @@ import { URLSearchParams } from 'node:url';
 import { fetch } from 'undici';
 
 export class Igdb {
-	private clientId: string;
-	private clientSecret: string;
+	private readonly clientId: string;
+	private readonly clientSecret: string;
 
 	private bearer: TwitchHelixBearerToken = {
 		expire: null,
@@ -33,7 +35,7 @@ export class Igdb {
 			});
 
 			if (res.status === 200) {
-				return res.json().then<Game[]>();
+				return await res.json().then<Game[]>();
 			}
 
 			throw new Error(`Received status ${res.status} (${res.statusText})`);

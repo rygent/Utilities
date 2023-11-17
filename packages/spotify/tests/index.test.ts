@@ -1,5 +1,6 @@
-import { Spotify } from '../dist/index';
+import { describe, expect, test } from 'vitest';
 import { isClass } from '@sapphire/utilities';
+import { Spotify } from '../dist/index';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '../../.env' });

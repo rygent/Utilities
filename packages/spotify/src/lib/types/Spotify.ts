@@ -1,3 +1,5 @@
+/* eslint-disable max-len, no-inline-comments */
+
 /**
  * Object for search parameters for searching for tracks, playlists, artists or albums.
  * See: [Search for an item](https://developer.spotify.com/web-api/search-item/)

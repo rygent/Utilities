@@ -4,7 +4,7 @@ import { type Util } from '../structures/Util.js';
 import { gql, parseHtmlEntity } from '../utils/functions.js';
 
 export class MediaField {
-	private utils: Util;
+	private readonly utils: Util;
 
 	public constructor(utils: Util) {
 		this.utils = utils;

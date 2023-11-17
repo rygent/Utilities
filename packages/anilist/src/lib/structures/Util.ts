@@ -1,3 +1,5 @@
+/* eslint-disable no-useless-catch */
+
 import type { Query } from '../types/Anilist.js';
 
 export class Util {

@@ -1,8 +1,10 @@
+/* eslint-disable no-useless-catch */
+
 import type { SpotifyBearerToken, SpotifyOauth2Result } from '../types/Spotify.js';
 
 export class Util {
-	private clientId: string;
-	private clientSecret: string;
+	private readonly clientId: string;
+	private readonly clientSecret: string;
 
 	private bearer: SpotifyBearerToken = {
 		expire: null,

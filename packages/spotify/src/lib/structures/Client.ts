@@ -2,7 +2,7 @@ import type { SearchForItemParameterObject, SearchResponse } from '../types/Spot
 import { Util } from './Util.js';
 
 export class Client {
-	private utils: Util;
+	private readonly utils: Util;
 
 	public constructor(options: { id: string; secret: string }) {
 		this.utils = new Util({ id: options.id, secret: options.secret });

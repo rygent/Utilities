@@ -1,5 +1,6 @@
-import { Anilist } from '../dist/index';
+import { describe, expect, test } from 'vitest';
 import { isClass } from '@sapphire/utilities';
+import { Anilist } from '../dist/index';
 
 const anilist = new Anilist();
 
