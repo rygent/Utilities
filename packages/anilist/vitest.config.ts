@@ -1,3 +1,3 @@
-import { createVitestConfig } from '../../scripts/vitest.config';
+import { createVitestConfig } from '../../vitest.config';
 
-export default createVitestConfig();
+export default createVitestConfig({ esbuild: { target: 'es2022' } });
