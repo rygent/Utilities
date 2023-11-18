@@ -25,7 +25,7 @@
     "bump": "cliff-jumper"
   },
   "devDependencies": {
-    "@favware/cliff-jumper": "^2.2.1",
+    "@favware/cliff-jumper": "^2.2.3",
     "@graphql-codegen/cli": "^5.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
     "@vitest/coverage-v8": "^0.34.6",

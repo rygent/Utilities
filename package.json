@@ -14,7 +14,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
     "@commitlint/config-conventional": "^18.4.0",
-    "@favware/cliff-jumper": "^2.2.1",
+    "@favware/cliff-jumper": "^2.2.3",
     "@favware/npm-deprecate": "^1.0.7",
     "@sapphire/utilities": "^3.13.0",
     "@types/node": "^20.9.0",
