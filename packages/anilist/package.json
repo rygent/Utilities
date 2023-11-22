@@ -1,7 +1,7 @@
 {
   "name": "@rygent/anilist",
   "version": "1.4.0",
-  "description": "An UNOFFICIAL wrapper for Anilist GraphQL API written in typescript.",
+  "description": "An UNOFFICIAL lightweight Node.js wrapper for Anilist GraphQL API written in typescript.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",

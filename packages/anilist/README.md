@@ -1,6 +1,6 @@
 # Anilist Wrapper
 
-An UNOFFICIAL wrapper for Anilist GraphQL API written in typescript.
+An UNOFFICIAL lightweight Node.js wrapper for Anilist GraphQL API written in typescript.
 
 You can visit the official graphql docs for Anilist [here][anilist docs] to find out everything you can do.
 
