@@ -28,7 +28,7 @@
     "@favware/cliff-jumper": "^2.2.3",
     "@vitest/coverage-v8": "^0.34.6",
     "tsup": "^8.0.1",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
