@@ -23,8 +23,8 @@ import { Anilist } from '@rygent/anilist';
 
 const anilist = new Anilist();
 
-await anilist.media.search({ type: 'Anime', search: 'Naruto' });
-await anilist.media.search({ type: 'Manga', search: 'Naruto' });
+await anilist.search.anime({ search: 'Cowboy Bebop' });
+await anilist.search.manga({ search: 'Naruto' });
 ```
 
 > [!NOTE]

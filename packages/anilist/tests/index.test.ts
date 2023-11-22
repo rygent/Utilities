@@ -10,7 +10,7 @@ describe('Anilist', () => {
 	});
 
 	test('Searching for the anime "Cowboy Bebop" should be defined', async () => {
-		const response = await anilist.media.search({ type: 'Anime', search: 'Cowboy Bebop' });
+		const response = await anilist.search.anime({ search: 'Cowboy Bebop' });
 
 		expect(response[0]).toBeDefined();
 	});
@@ -22,7 +22,7 @@ describe('Anilist', () => {
 	});
 
 	test('Searching for the manga "Naruto" should be defined', async () => {
-		const response = await anilist.media.search({ type: 'Manga', search: 'Naruto' });
+		const response = await anilist.search.manga({ search: 'Naruto' });
 
 		expect(response[0]).toBeDefined();
 	});
