@@ -1,3 +1,6 @@
-node_modules/
+.turbo/
+.vscode/
+.yarn/
+**/coverage/
 **/dist/
-**/*.d.ts
+node_modules/

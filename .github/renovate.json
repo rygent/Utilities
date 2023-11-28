@@ -9,6 +9,7 @@
     "branchTopic": "lock-file-maintenance",
     "commitMessageAction": "Lockfile maintenance",
     "schedule": ["before 6am on sunday"],
+    "addLabels": ["blocked"],
     "prBodyDefinitions": {
       "Change": "All locks refreshed"
     }
@@ -16,7 +17,8 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "dependencyDashboardApproval": true
+      "dependencyDashboardApproval": true,
+      "addLabels": ["blocked"]
     },
     {
       "matchPackagePatterns": ["*"],

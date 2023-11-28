@@ -1,21 +1,32 @@
 {
   "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": ["tsconfig.json"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "inputs": ["src/**", "package.json", "tsconfig.json", "tsup.config.ts", "vite.config.ts"],
+      "outputs": ["dist/**"],
+      "outputMode": "errors-only"
     },
     "lint": {
-      "dependsOn": [],
-      "outputs": []
-    },
-    "bump": {
-      "dependsOn": [],
-      "outputs": ["CHANGELOG.md"]
+      "dependsOn": ["^build"],
+      "inputs": [
+        "../../.eslintrc.json",
+        "../../.prettierrc.json",
+        "../../tsconfig.eslint.json",
+        ".prettierrc.js",
+        "src/**",
+        "package.json",
+        "tsconfig.eslint.json"
+      ],
+      "outputs": [],
+      "outputMode": "errors-only"
     },
     "test": {
-      "dependsOn": [],
-      "outputs": ["coverage/**"]
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "tests/**", "package.json", "tsconfig.json"],
+      "outputs": ["coverage/**"],
+      "outputMode": "new-only"
     }
   }
 }
