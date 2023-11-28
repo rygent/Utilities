@@ -1,10 +1,10 @@
 {
-	"eslint.validate": ["typescript"],
-	"search.exclude": {
-	  "**/node_modules": true,
-	  "**/.yarn": true,
-	  "**/.git/": true
-	},
-	"typescript.tsdk": "./node_modules/typescript/lib",
-	"typescript.enablePromptUseWorkspaceTsdk": true
-  }
+  "eslint.validate": ["typescript"],
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.yarn": true,
+    "**/.git/": true
+  },
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}

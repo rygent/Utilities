@@ -18,20 +18,30 @@ export class Spotify {
 		this.clientSecret = configuration.secret;
 	}
 
-	public async search(variable: { type: SearchType; query: string; offset?: number; limit?: number }): Promise<SearchResponse> {
+	public async search(variable: {
+		type: SearchType;
+		query: string;
+		offset?: number;
+		limit?: number;
+	}): Promise<SearchResponse> {
 		const { type, query, offset = 0, limit = 10 } = variable;
 		try {
-			const { body } = await request(`${this.endpoint}search?q=${encodeURIComponent(query)}&type=${type}&offset=${offset}&limit=${limit}`, {
-				method: 'GET',
-				headers: {
-					Authorization: `Bearer ${await this.getAccessToken()}`
+			const { body } = await request(
+				`${this.endpoint}search?q=${encodeURIComponent(query)}&type=${type}&offset=${offset}&limit=${limit}`,
+				{
+					method: 'GET',
+					headers: {
+						Authorization: `Bearer ${await this.getAccessToken()}`
+					}
 				}
-			});
+			);
 
 			return body.json() as SearchResponse;
 		} catch (error: unknown) {
 			throw new Error(
-				`Received status ${(error as errors.ResponseStatusCodeError).status} (${(error as errors.ResponseStatusCodeError).message})`
+				`Received status ${(error as errors.ResponseStatusCodeError).status} (${
+					(error as errors.ResponseStatusCodeError).message
+				})`
 			);
 		}
 	}
@@ -58,7 +68,9 @@ export class Spotify {
 			return response.access_token;
 		} catch (error: unknown) {
 			throw new Error(
-				`Received status ${(error as errors.ResponseStatusCodeError).status} (${(error as errors.ResponseStatusCodeError).message})`
+				`Received status ${(error as errors.ResponseStatusCodeError).status} (${
+					(error as errors.ResponseStatusCodeError).message
+				})`
 			);
 		}
 	}

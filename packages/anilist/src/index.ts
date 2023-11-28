@@ -5,7 +5,12 @@ import { request, errors } from 'undici';
 export class Anilist {
 	private readonly endpoint = 'https://graphql.anilist.co/';
 
-	public async search(variables: { type: SearchType; search: string; page?: number; perPage?: number }): Promise<AnilistResponse> {
+	public async search(variables: {
+		type: SearchType;
+		search: string;
+		page?: number;
+		perPage?: number;
+	}): Promise<AnilistResponse> {
 		const { type, search, page = 1, perPage = 10 } = variables;
 		try {
 			const { body } = await request(this.endpoint, {
@@ -17,7 +22,9 @@ export class Anilist {
 			return (await body.json()) as AnilistResponse;
 		} catch (error: unknown) {
 			throw new Error(
-				`Received status ${(error as errors.ResponseStatusCodeError).status} (${(error as errors.ResponseStatusCodeError).message})`
+				`Received status ${(error as errors.ResponseStatusCodeError).status} (${
+					(error as errors.ResponseStatusCodeError).message
+				})`
 			);
 		}
 	}

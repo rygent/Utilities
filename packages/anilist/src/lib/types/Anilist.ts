@@ -10,7 +10,9 @@ export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K]
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
-export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
+export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & {
+	[P in K]-?: NonNullable<T[P]>;
+};
 /** All built-in and custom scalars, mapped to their actual values */
 export interface Scalars {
 	ID: string;
@@ -4436,7 +4438,13 @@ export type SubscriptionObject<TResult, TKey extends string, TParent, TContext, 
 	| SubscriptionSubscriberObject<TResult, TKey, TParent, TContext, TArgs>
 	| SubscriptionResolverObject<TResult, TParent, TContext, TArgs>;
 
-export type SubscriptionResolver<TResult, TKey extends string, TParent = NonNullObject, TContext = NonNullObject, TArgs = NonNullObject> =
+export type SubscriptionResolver<
+	TResult,
+	TKey extends string,
+	TParent = NonNullObject,
+	TContext = NonNullObject,
+	TArgs = NonNullObject
+> =
 	| ((...args: any[]) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
 	| SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>;
 
@@ -4454,7 +4462,12 @@ export type IsTypeOfResolverFn<T = NonNullObject, TContext = NonNullObject> = (
 
 export type NextResolverFn<T> = () => Promise<T>;
 
-export type DirectiveResolverFn<TResult = NonNullObject, TParent = NonNullObject, TContext = NonNullObject, TArgs = NonNullObject> = (
+export type DirectiveResolverFn<
+	TResult = NonNullObject,
+	TParent = NonNullObject,
+	TContext = NonNullObject,
+	TArgs = NonNullObject
+> = (
 	next: NextResolverFn<TResult>,
 	parent: TParent,
 	args: TArgs,
@@ -4464,7 +4477,9 @@ export type DirectiveResolverFn<TResult = NonNullObject, TParent = NonNullObject
 
 /** Mapping between all available schema types and the resolvers types */
 export interface ResolversTypes {
-	ActivityLikeNotification: ResolverTypeWrapper<Omit<ActivityLikeNotification, 'activity'> & { activity?: Maybe<ResolversTypes['ActivityUnion']> }>;
+	ActivityLikeNotification: ResolverTypeWrapper<
+		Omit<ActivityLikeNotification, 'activity'> & { activity?: Maybe<ResolversTypes['ActivityUnion']> }
+	>;
 	Int: ResolverTypeWrapper<Scalars['Int']>;
 	String: ResolverTypeWrapper<Scalars['String']>;
 	ActivityMentionNotification: ResolverTypeWrapper<
@@ -4683,19 +4698,30 @@ export interface ResolversTypes {
 
 /** Mapping between all available schema types and the resolvers parents */
 export interface ResolversParentTypes {
-	ActivityLikeNotification: Omit<ActivityLikeNotification, 'activity'> & { activity?: Maybe<ResolversParentTypes['ActivityUnion']> };
+	ActivityLikeNotification: Omit<ActivityLikeNotification, 'activity'> & {
+		activity?: Maybe<ResolversParentTypes['ActivityUnion']>;
+	};
 	Int: Scalars['Int'];
 	String: Scalars['String'];
-	ActivityMentionNotification: Omit<ActivityMentionNotification, 'activity'> & { activity?: Maybe<ResolversParentTypes['ActivityUnion']> };
+	ActivityMentionNotification: Omit<ActivityMentionNotification, 'activity'> & {
+		activity?: Maybe<ResolversParentTypes['ActivityUnion']>;
+	};
 	ActivityMessageNotification: ActivityMessageNotification;
 	ActivityReply: ActivityReply;
 	Boolean: Scalars['Boolean'];
-	ActivityReplyLikeNotification: Omit<ActivityReplyLikeNotification, 'activity'> & { activity?: Maybe<ResolversParentTypes['ActivityUnion']> };
-	ActivityReplyNotification: Omit<ActivityReplyNotification, 'activity'> & { activity?: Maybe<ResolversParentTypes['ActivityUnion']> };
+	ActivityReplyLikeNotification: Omit<ActivityReplyLikeNotification, 'activity'> & {
+		activity?: Maybe<ResolversParentTypes['ActivityUnion']>;
+	};
+	ActivityReplyNotification: Omit<ActivityReplyNotification, 'activity'> & {
+		activity?: Maybe<ResolversParentTypes['ActivityUnion']>;
+	};
 	ActivityReplySubscribedNotification: Omit<ActivityReplySubscribedNotification, 'activity'> & {
 		activity?: Maybe<ResolversParentTypes['ActivityUnion']>;
 	};
-	ActivityUnion: ResolversParentTypes['TextActivity'] | ResolversParentTypes['ListActivity'] | ResolversParentTypes['MessageActivity'];
+	ActivityUnion:
+		| ResolversParentTypes['TextActivity']
+		| ResolversParentTypes['ListActivity']
+		| ResolversParentTypes['MessageActivity'];
 	AiringNotification: AiringNotification;
 	AiringProgression: AiringProgression;
 	Float: Scalars['Float'];
@@ -4869,7 +4895,8 @@ export interface ActivityLikeNotificationResolvers<
 
 export interface ActivityMentionNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ActivityMentionNotification'] = ResolversParentTypes['ActivityMentionNotification']
+	ParentType extends
+		ResolversParentTypes['ActivityMentionNotification'] = ResolversParentTypes['ActivityMentionNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -4884,7 +4911,8 @@ export interface ActivityMentionNotificationResolvers<
 
 export interface ActivityMessageNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ActivityMessageNotification'] = ResolversParentTypes['ActivityMessageNotification']
+	ParentType extends
+		ResolversParentTypes['ActivityMessageNotification'] = ResolversParentTypes['ActivityMessageNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -4904,7 +4932,12 @@ export interface ActivityReplyResolvers<
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	activityId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-	text?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<ActivityReplyTextArgs, never>>;
+	text?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<ActivityReplyTextArgs, never>
+	>;
 	likeCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	isLiked?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	createdAt?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -4915,7 +4948,8 @@ export interface ActivityReplyResolvers<
 
 export interface ActivityReplyLikeNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ActivityReplyLikeNotification'] = ResolversParentTypes['ActivityReplyLikeNotification']
+	ParentType extends
+		ResolversParentTypes['ActivityReplyLikeNotification'] = ResolversParentTypes['ActivityReplyLikeNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -4930,7 +4964,8 @@ export interface ActivityReplyLikeNotificationResolvers<
 
 export interface ActivityReplyNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ActivityReplyNotification'] = ResolversParentTypes['ActivityReplyNotification']
+	ParentType extends
+		ResolversParentTypes['ActivityReplyNotification'] = ResolversParentTypes['ActivityReplyNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -4945,7 +4980,8 @@ export interface ActivityReplyNotificationResolvers<
 
 export interface ActivityReplySubscribedNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ActivityReplySubscribedNotification'] = ResolversParentTypes['ActivityReplySubscribedNotification']
+	ParentType extends
+		ResolversParentTypes['ActivityReplySubscribedNotification'] = ResolversParentTypes['ActivityReplySubscribedNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -5031,11 +5067,19 @@ export interface AniChartUserResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface CharacterResolvers<ContextType = any, ParentType extends ResolversParentTypes['Character'] = ResolversParentTypes['Character']> {
+export interface CharacterResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Character'] = ResolversParentTypes['Character']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	name?: Resolver<Maybe<ResolversTypes['CharacterName']>, ParentType, ContextType>;
 	image?: Resolver<Maybe<ResolversTypes['CharacterImage']>, ParentType, ContextType>;
-	description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<CharacterDescriptionArgs, never>>;
+	description?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<CharacterDescriptionArgs, never>
+	>;
 	gender?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	dateOfBirth?: Resolver<Maybe<ResolversTypes['FuzzyDate']>, ParentType, ContextType>;
 	age?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -5043,7 +5087,12 @@ export interface CharacterResolvers<ContextType = any, ParentType extends Resolv
 	isFavourite?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 	isFavouriteBlocked?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 	siteUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-	media?: Resolver<Maybe<ResolversTypes['MediaConnection']>, ParentType, ContextType, RequireFields<CharacterMediaArgs, never>>;
+	media?: Resolver<
+		Maybe<ResolversTypes['MediaConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<CharacterMediaArgs, never>
+	>;
 	updatedAt?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	favourites?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	modNotes?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -5126,7 +5175,8 @@ export interface CharacterSubmissionResolvers<
 
 export interface CharacterSubmissionConnectionResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['CharacterSubmissionConnection'] = ResolversParentTypes['CharacterSubmissionConnection']
+	ParentType extends
+		ResolversParentTypes['CharacterSubmissionConnection'] = ResolversParentTypes['CharacterSubmissionConnection']
 > {
 	edges?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['CharacterSubmissionEdge']>>>, ParentType, ContextType>;
 	nodes?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['CharacterSubmission']>>>, ParentType, ContextType>;
@@ -5141,7 +5191,11 @@ export interface CharacterSubmissionEdgeResolvers<
 	node?: Resolver<Maybe<ResolversTypes['CharacterSubmission']>, ParentType, ContextType>;
 	role?: Resolver<Maybe<ResolversTypes['CharacterRole']>, ParentType, ContextType>;
 	voiceActors?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Staff']>>>, ParentType, ContextType>;
-	submittedVoiceActors?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['StaffSubmission']>>>, ParentType, ContextType>;
+	submittedVoiceActors?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['StaffSubmission']>>>,
+		ParentType,
+		ContextType
+	>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
@@ -5149,17 +5203,48 @@ export interface CountryCodeScalarConfig extends GraphQLScalarTypeConfig<Resolve
 	name: 'CountryCode';
 }
 
-export interface DeletedResolvers<ContextType = any, ParentType extends ResolversParentTypes['Deleted'] = ResolversParentTypes['Deleted']> {
+export interface DeletedResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Deleted'] = ResolversParentTypes['Deleted']
+> {
 	deleted?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface FavouritesResolvers<ContextType = any, ParentType extends ResolversParentTypes['Favourites'] = ResolversParentTypes['Favourites']> {
-	anime?: Resolver<Maybe<ResolversTypes['MediaConnection']>, ParentType, ContextType, RequireFields<FavouritesAnimeArgs, never>>;
-	manga?: Resolver<Maybe<ResolversTypes['MediaConnection']>, ParentType, ContextType, RequireFields<FavouritesMangaArgs, never>>;
-	characters?: Resolver<Maybe<ResolversTypes['CharacterConnection']>, ParentType, ContextType, RequireFields<FavouritesCharactersArgs, never>>;
-	staff?: Resolver<Maybe<ResolversTypes['StaffConnection']>, ParentType, ContextType, RequireFields<FavouritesStaffArgs, never>>;
-	studios?: Resolver<Maybe<ResolversTypes['StudioConnection']>, ParentType, ContextType, RequireFields<FavouritesStudiosArgs, never>>;
+export interface FavouritesResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Favourites'] = ResolversParentTypes['Favourites']
+> {
+	anime?: Resolver<
+		Maybe<ResolversTypes['MediaConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<FavouritesAnimeArgs, never>
+	>;
+	manga?: Resolver<
+		Maybe<ResolversTypes['MediaConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<FavouritesMangaArgs, never>
+	>;
+	characters?: Resolver<
+		Maybe<ResolversTypes['CharacterConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<FavouritesCharactersArgs, never>
+	>;
+	staff?: Resolver<
+		Maybe<ResolversTypes['StaffConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<FavouritesStaffArgs, never>
+	>;
+	studios?: Resolver<
+		Maybe<ResolversTypes['StudioConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<FavouritesStudiosArgs, never>
+	>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
@@ -5185,7 +5270,10 @@ export interface FormatStatsResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface FuzzyDateResolvers<ContextType = any, ParentType extends ResolversParentTypes['FuzzyDate'] = ResolversParentTypes['FuzzyDate']> {
+export interface FuzzyDateResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['FuzzyDate'] = ResolversParentTypes['FuzzyDate']
+> {
 	year?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	month?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	day?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -5196,7 +5284,10 @@ export interface FuzzyDateIntScalarConfig extends GraphQLScalarTypeConfig<Resolv
 	name: 'FuzzyDateInt';
 }
 
-export interface GenreStatsResolvers<ContextType = any, ParentType extends ResolversParentTypes['GenreStats'] = ResolversParentTypes['GenreStats']> {
+export interface GenreStatsResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['GenreStats'] = ResolversParentTypes['GenreStats']
+> {
 	genre?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	amount?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	meanScore?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -5232,7 +5323,12 @@ export interface InternalPageResolvers<
 		ContextType,
 		RequireFields<InternalPageRevisionHistoryArgs, never>
 	>;
-	reports?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Report']>>>, ParentType, ContextType, RequireFields<InternalPageReportsArgs, never>>;
+	reports?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Report']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageReportsArgs, never>
+	>;
 	modActions?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['ModAction']>>>,
 		ParentType,
@@ -5240,16 +5336,36 @@ export interface InternalPageResolvers<
 		RequireFields<InternalPageModActionsArgs, never>
 	>;
 	pageInfo?: Resolver<Maybe<ResolversTypes['PageInfo']>, ParentType, ContextType>;
-	users?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>, ParentType, ContextType, RequireFields<InternalPageUsersArgs, never>>;
-	media?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Media']>>>, ParentType, ContextType, RequireFields<InternalPageMediaArgs, never>>;
+	users?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageUsersArgs, never>
+	>;
+	media?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Media']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageMediaArgs, never>
+	>;
 	characters?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['Character']>>>,
 		ParentType,
 		ContextType,
 		RequireFields<InternalPageCharactersArgs, never>
 	>;
-	staff?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Staff']>>>, ParentType, ContextType, RequireFields<InternalPageStaffArgs, never>>;
-	studios?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Studio']>>>, ParentType, ContextType, RequireFields<InternalPageStudiosArgs, never>>;
+	staff?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Staff']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageStaffArgs, never>
+	>;
+	studios?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Studio']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageStudiosArgs, never>
+	>;
 	mediaList?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaList']>>>,
 		ParentType,
@@ -5298,21 +5414,36 @@ export interface InternalPageResolvers<
 		ContextType,
 		RequireFields<InternalPageActivityRepliesArgs, never>
 	>;
-	threads?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Thread']>>>, ParentType, ContextType, RequireFields<InternalPageThreadsArgs, never>>;
+	threads?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Thread']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageThreadsArgs, never>
+	>;
 	threadComments?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['ThreadComment']>>>,
 		ParentType,
 		ContextType,
 		RequireFields<InternalPageThreadCommentsArgs, never>
 	>;
-	reviews?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Review']>>>, ParentType, ContextType, RequireFields<InternalPageReviewsArgs, never>>;
+	reviews?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Review']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageReviewsArgs, never>
+	>;
 	recommendations?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['Recommendation']>>>,
 		ParentType,
 		ContextType,
 		RequireFields<InternalPageRecommendationsArgs, never>
 	>;
-	likes?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>, ParentType, ContextType, RequireFields<InternalPageLikesArgs, never>>;
+	likes?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<InternalPageLikesArgs, never>
+	>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
@@ -5363,14 +5494,27 @@ export interface ListScoreStatsResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaResolvers<ContextType = any, ParentType extends ResolversParentTypes['Media'] = ResolversParentTypes['Media']> {
+export interface MediaResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Media'] = ResolversParentTypes['Media']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	idMal?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	title?: Resolver<Maybe<ResolversTypes['MediaTitle']>, ParentType, ContextType>;
 	type?: Resolver<Maybe<ResolversTypes['MediaType']>, ParentType, ContextType>;
 	format?: Resolver<Maybe<ResolversTypes['MediaFormat']>, ParentType, ContextType>;
-	status?: Resolver<Maybe<ResolversTypes['MediaStatus']>, ParentType, ContextType, RequireFields<MediaStatusArgs, never>>;
-	description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MediaDescriptionArgs, never>>;
+	status?: Resolver<
+		Maybe<ResolversTypes['MediaStatus']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaStatusArgs, never>
+	>;
+	description?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaDescriptionArgs, never>
+	>;
 	startDate?: Resolver<Maybe<ResolversTypes['FuzzyDate']>, ParentType, ContextType>;
 	endDate?: Resolver<Maybe<ResolversTypes['FuzzyDate']>, ParentType, ContextType>;
 	season?: Resolver<Maybe<ResolversTypes['MediaSeason']>, ParentType, ContextType>;
@@ -5382,7 +5526,12 @@ export interface MediaResolvers<ContextType = any, ParentType extends ResolversP
 	volumes?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	countryOfOrigin?: Resolver<Maybe<ResolversTypes['CountryCode']>, ParentType, ContextType>;
 	isLicensed?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-	source?: Resolver<Maybe<ResolversTypes['MediaSource']>, ParentType, ContextType, RequireFields<MediaSourceArgs, never>>;
+	source?: Resolver<
+		Maybe<ResolversTypes['MediaSource']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaSourceArgs, never>
+	>;
 	hashtag?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	trailer?: Resolver<Maybe<ResolversTypes['MediaTrailer']>, ParentType, ContextType>;
 	updatedAt?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -5398,9 +5547,24 @@ export interface MediaResolvers<ContextType = any, ParentType extends ResolversP
 	favourites?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	tags?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaTag']>>>, ParentType, ContextType>;
 	relations?: Resolver<Maybe<ResolversTypes['MediaConnection']>, ParentType, ContextType>;
-	characters?: Resolver<Maybe<ResolversTypes['CharacterConnection']>, ParentType, ContextType, RequireFields<MediaCharactersArgs, never>>;
-	staff?: Resolver<Maybe<ResolversTypes['StaffConnection']>, ParentType, ContextType, RequireFields<MediaStaffArgs, never>>;
-	studios?: Resolver<Maybe<ResolversTypes['StudioConnection']>, ParentType, ContextType, RequireFields<MediaStudiosArgs, never>>;
+	characters?: Resolver<
+		Maybe<ResolversTypes['CharacterConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaCharactersArgs, never>
+	>;
+	staff?: Resolver<
+		Maybe<ResolversTypes['StaffConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaStaffArgs, never>
+	>;
+	studios?: Resolver<
+		Maybe<ResolversTypes['StudioConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaStudiosArgs, never>
+	>;
 	isFavourite?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 	isAdult?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	nextAiringEpisode?: Resolver<Maybe<ResolversTypes['AiringSchedule']>, ParentType, ContextType>;
@@ -5410,12 +5574,26 @@ export interface MediaResolvers<ContextType = any, ParentType extends ResolversP
 		ContextType,
 		RequireFields<MediaAiringScheduleArgs, never>
 	>;
-	trends?: Resolver<Maybe<ResolversTypes['MediaTrendConnection']>, ParentType, ContextType, RequireFields<MediaTrendsArgs, never>>;
+	trends?: Resolver<
+		Maybe<ResolversTypes['MediaTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaTrendsArgs, never>
+	>;
 	externalLinks?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaExternalLink']>>>, ParentType, ContextType>;
-	streamingEpisodes?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaStreamingEpisode']>>>, ParentType, ContextType>;
+	streamingEpisodes?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaStreamingEpisode']>>>,
+		ParentType,
+		ContextType
+	>;
 	rankings?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaRank']>>>, ParentType, ContextType>;
 	mediaListEntry?: Resolver<Maybe<ResolversTypes['MediaList']>, ParentType, ContextType>;
-	reviews?: Resolver<Maybe<ResolversTypes['ReviewConnection']>, ParentType, ContextType, RequireFields<MediaReviewsArgs, never>>;
+	reviews?: Resolver<
+		Maybe<ResolversTypes['ReviewConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaReviewsArgs, never>
+	>;
 	recommendations?: Resolver<
 		Maybe<ResolversTypes['RecommendationConnection']>,
 		ParentType,
@@ -5465,10 +5643,18 @@ export interface MediaCoverImageResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['MediaEdge'] = ResolversParentTypes['MediaEdge']> {
+export interface MediaEdgeResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MediaEdge'] = ResolversParentTypes['MediaEdge']
+> {
 	node?: Resolver<Maybe<ResolversTypes['Media']>, ParentType, ContextType>;
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-	relationType?: Resolver<Maybe<ResolversTypes['MediaRelation']>, ParentType, ContextType, RequireFields<MediaEdgeRelationTypeArgs, never>>;
+	relationType?: Resolver<
+		Maybe<ResolversTypes['MediaRelation']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaEdgeRelationTypeArgs, never>
+	>;
 	isMainStudio?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 	characters?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Character']>>>, ParentType, ContextType>;
 	characterRole?: Resolver<Maybe<ResolversTypes['CharacterRole']>, ParentType, ContextType>;
@@ -5502,7 +5688,10 @@ export interface MediaExternalLinkResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaListResolvers<ContextType = any, ParentType extends ResolversParentTypes['MediaList'] = ResolversParentTypes['MediaList']> {
+export interface MediaListResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MediaList'] = ResolversParentTypes['MediaList']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	mediaId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -5515,7 +5704,12 @@ export interface MediaListResolvers<ContextType = any, ParentType extends Resolv
 	private?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	notes?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	hiddenFromStatusLists?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
-	customLists?: Resolver<Maybe<ResolversTypes['Json']>, ParentType, ContextType, RequireFields<MediaListCustomListsArgs, never>>;
+	customLists?: Resolver<
+		Maybe<ResolversTypes['Json']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaListCustomListsArgs, never>
+	>;
 	advancedScores?: Resolver<Maybe<ResolversTypes['Json']>, ParentType, ContextType>;
 	startedAt?: Resolver<Maybe<ResolversTypes['FuzzyDate']>, ParentType, ContextType>;
 	completedAt?: Resolver<Maybe<ResolversTypes['FuzzyDate']>, ParentType, ContextType>;
@@ -5587,7 +5781,10 @@ export interface MediaListTypeOptionsResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaRankResolvers<ContextType = any, ParentType extends ResolversParentTypes['MediaRank'] = ResolversParentTypes['MediaRank']> {
+export interface MediaRankResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MediaRank'] = ResolversParentTypes['MediaRank']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	rank?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	type?: Resolver<ResolversTypes['MediaRankType'], ParentType, ContextType>;
@@ -5599,10 +5796,25 @@ export interface MediaRankResolvers<ContextType = any, ParentType extends Resolv
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaStatsResolvers<ContextType = any, ParentType extends ResolversParentTypes['MediaStats'] = ResolversParentTypes['MediaStats']> {
-	scoreDistribution?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['ScoreDistribution']>>>, ParentType, ContextType>;
-	statusDistribution?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['StatusDistribution']>>>, ParentType, ContextType>;
-	airingProgression?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['AiringProgression']>>>, ParentType, ContextType>;
+export interface MediaStatsResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MediaStats'] = ResolversParentTypes['MediaStats']
+> {
+	scoreDistribution?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['ScoreDistribution']>>>,
+		ParentType,
+		ContextType
+	>;
+	statusDistribution?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['StatusDistribution']>>>,
+		ParentType,
+		ContextType
+	>;
+	airingProgression?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['AiringProgression']>>>,
+		ParentType,
+		ContextType
+	>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
@@ -5630,7 +5842,11 @@ export interface MediaSubmissionResolvers<
 	changes?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
 	media?: Resolver<Maybe<ResolversTypes['Media']>, ParentType, ContextType>;
 	submission?: Resolver<Maybe<ResolversTypes['Media']>, ParentType, ContextType>;
-	characters?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaSubmissionComparison']>>>, ParentType, ContextType>;
+	characters?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaSubmissionComparison']>>>,
+		ParentType,
+		ContextType
+	>;
 	staff?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaSubmissionComparison']>>>, ParentType, ContextType>;
 	studios?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaSubmissionComparison']>>>, ParentType, ContextType>;
 	relations?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaEdge']>>>, ParentType, ContextType>;
@@ -5641,7 +5857,8 @@ export interface MediaSubmissionResolvers<
 
 export interface MediaSubmissionComparisonResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['MediaSubmissionComparison'] = ResolversParentTypes['MediaSubmissionComparison']
+	ParentType extends
+		ResolversParentTypes['MediaSubmissionComparison'] = ResolversParentTypes['MediaSubmissionComparison']
 > {
 	submission?: Resolver<Maybe<ResolversTypes['MediaSubmissionEdge']>, ParentType, ContextType>;
 	character?: Resolver<Maybe<ResolversTypes['MediaCharacter']>, ParentType, ContextType>;
@@ -5672,7 +5889,10 @@ export interface MediaSubmissionEdgeResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaTagResolvers<ContextType = any, ParentType extends ResolversParentTypes['MediaTag'] = ResolversParentTypes['MediaTag']> {
+export interface MediaTagResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MediaTag'] = ResolversParentTypes['MediaTag']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -5684,10 +5904,28 @@ export interface MediaTagResolvers<ContextType = any, ParentType extends Resolve
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaTitleResolvers<ContextType = any, ParentType extends ResolversParentTypes['MediaTitle'] = ResolversParentTypes['MediaTitle']> {
-	romaji?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MediaTitleRomajiArgs, never>>;
-	english?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MediaTitleEnglishArgs, never>>;
-	native?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MediaTitleNativeArgs, never>>;
+export interface MediaTitleResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MediaTitle'] = ResolversParentTypes['MediaTitle']
+> {
+	romaji?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaTitleRomajiArgs, never>
+	>;
+	english?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaTitleEnglishArgs, never>
+	>;
+	native?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<MediaTitleNativeArgs, never>
+	>;
 	userPreferred?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
@@ -5702,7 +5940,10 @@ export interface MediaTrailerResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MediaTrendResolvers<ContextType = any, ParentType extends ResolversParentTypes['MediaTrend'] = ResolversParentTypes['MediaTrend']> {
+export interface MediaTrendResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['MediaTrend'] = ResolversParentTypes['MediaTrend']
+> {
 	mediaId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	date?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	trending?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -5742,7 +5983,12 @@ export interface MessageActivityResolvers<
 	messengerId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	type?: Resolver<Maybe<ResolversTypes['ActivityType']>, ParentType, ContextType>;
 	replyCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-	message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<MessageActivityMessageArgs, never>>;
+	message?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<MessageActivityMessageArgs, never>
+	>;
 	isLocked?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	isSubscribed?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	likeCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -5757,7 +6003,10 @@ export interface MessageActivityResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface ModActionResolvers<ContextType = any, ParentType extends ResolversParentTypes['ModAction'] = ResolversParentTypes['ModAction']> {
+export interface ModActionResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['ModAction'] = ResolversParentTypes['ModAction']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	user?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
 	mod?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
@@ -5769,9 +6018,22 @@ export interface ModActionResolvers<ContextType = any, ParentType extends Resolv
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> {
-	UpdateUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationUpdateUserArgs, never>>;
-	SaveMediaListEntry?: Resolver<Maybe<ResolversTypes['MediaList']>, ParentType, ContextType, RequireFields<MutationSaveMediaListEntryArgs, never>>;
+export interface MutationResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']
+> {
+	UpdateUser?: Resolver<
+		Maybe<ResolversTypes['User']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationUpdateUserArgs, never>
+	>;
+	SaveMediaListEntry?: Resolver<
+		Maybe<ResolversTypes['MediaList']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationSaveMediaListEntryArgs, never>
+	>;
 	UpdateMediaListEntries?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaList']>>>,
 		ParentType,
@@ -5784,16 +6046,36 @@ export interface MutationResolvers<ContextType = any, ParentType extends Resolve
 		ContextType,
 		RequireFields<MutationDeleteMediaListEntryArgs, never>
 	>;
-	DeleteCustomList?: Resolver<Maybe<ResolversTypes['Deleted']>, ParentType, ContextType, RequireFields<MutationDeleteCustomListArgs, never>>;
-	SaveTextActivity?: Resolver<Maybe<ResolversTypes['TextActivity']>, ParentType, ContextType, RequireFields<MutationSaveTextActivityArgs, never>>;
+	DeleteCustomList?: Resolver<
+		Maybe<ResolversTypes['Deleted']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationDeleteCustomListArgs, never>
+	>;
+	SaveTextActivity?: Resolver<
+		Maybe<ResolversTypes['TextActivity']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationSaveTextActivityArgs, never>
+	>;
 	SaveMessageActivity?: Resolver<
 		Maybe<ResolversTypes['MessageActivity']>,
 		ParentType,
 		ContextType,
 		RequireFields<MutationSaveMessageActivityArgs, never>
 	>;
-	SaveListActivity?: Resolver<Maybe<ResolversTypes['ListActivity']>, ParentType, ContextType, RequireFields<MutationSaveListActivityArgs, never>>;
-	DeleteActivity?: Resolver<Maybe<ResolversTypes['Deleted']>, ParentType, ContextType, RequireFields<MutationDeleteActivityArgs, never>>;
+	SaveListActivity?: Resolver<
+		Maybe<ResolversTypes['ListActivity']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationSaveListActivityArgs, never>
+	>;
+	DeleteActivity?: Resolver<
+		Maybe<ResolversTypes['Deleted']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationDeleteActivityArgs, never>
+	>;
 	ToggleActivitySubscription?: Resolver<
 		Maybe<ResolversTypes['ActivityUnion']>,
 		ParentType,
@@ -5806,28 +6088,78 @@ export interface MutationResolvers<ContextType = any, ParentType extends Resolve
 		ContextType,
 		RequireFields<MutationSaveActivityReplyArgs, never>
 	>;
-	DeleteActivityReply?: Resolver<Maybe<ResolversTypes['Deleted']>, ParentType, ContextType, RequireFields<MutationDeleteActivityReplyArgs, never>>;
-	ToggleLike?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>, ParentType, ContextType, RequireFields<MutationToggleLikeArgs, never>>;
-	ToggleLikeV2?: Resolver<Maybe<ResolversTypes['LikeableUnion']>, ParentType, ContextType, RequireFields<MutationToggleLikeV2Args, never>>;
-	ToggleFollow?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationToggleFollowArgs, never>>;
-	ToggleFavourite?: Resolver<Maybe<ResolversTypes['Favourites']>, ParentType, ContextType, RequireFields<MutationToggleFavouriteArgs, never>>;
+	DeleteActivityReply?: Resolver<
+		Maybe<ResolversTypes['Deleted']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationDeleteActivityReplyArgs, never>
+	>;
+	ToggleLike?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationToggleLikeArgs, never>
+	>;
+	ToggleLikeV2?: Resolver<
+		Maybe<ResolversTypes['LikeableUnion']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationToggleLikeV2Args, never>
+	>;
+	ToggleFollow?: Resolver<
+		Maybe<ResolversTypes['User']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationToggleFollowArgs, never>
+	>;
+	ToggleFavourite?: Resolver<
+		Maybe<ResolversTypes['Favourites']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationToggleFavouriteArgs, never>
+	>;
 	UpdateFavouriteOrder?: Resolver<
 		Maybe<ResolversTypes['Favourites']>,
 		ParentType,
 		ContextType,
 		RequireFields<MutationUpdateFavouriteOrderArgs, never>
 	>;
-	SaveReview?: Resolver<Maybe<ResolversTypes['Review']>, ParentType, ContextType, RequireFields<MutationSaveReviewArgs, never>>;
-	DeleteReview?: Resolver<Maybe<ResolversTypes['Deleted']>, ParentType, ContextType, RequireFields<MutationDeleteReviewArgs, never>>;
-	RateReview?: Resolver<Maybe<ResolversTypes['Review']>, ParentType, ContextType, RequireFields<MutationRateReviewArgs, never>>;
+	SaveReview?: Resolver<
+		Maybe<ResolversTypes['Review']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationSaveReviewArgs, never>
+	>;
+	DeleteReview?: Resolver<
+		Maybe<ResolversTypes['Deleted']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationDeleteReviewArgs, never>
+	>;
+	RateReview?: Resolver<
+		Maybe<ResolversTypes['Review']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationRateReviewArgs, never>
+	>;
 	SaveRecommendation?: Resolver<
 		Maybe<ResolversTypes['Recommendation']>,
 		ParentType,
 		ContextType,
 		RequireFields<MutationSaveRecommendationArgs, never>
 	>;
-	SaveThread?: Resolver<Maybe<ResolversTypes['Thread']>, ParentType, ContextType, RequireFields<MutationSaveThreadArgs, never>>;
-	DeleteThread?: Resolver<Maybe<ResolversTypes['Deleted']>, ParentType, ContextType, RequireFields<MutationDeleteThreadArgs, never>>;
+	SaveThread?: Resolver<
+		Maybe<ResolversTypes['Thread']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationSaveThreadArgs, never>
+	>;
+	DeleteThread?: Resolver<
+		Maybe<ResolversTypes['Deleted']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationDeleteThreadArgs, never>
+	>;
 	ToggleThreadSubscription?: Resolver<
 		Maybe<ResolversTypes['Thread']>,
 		ParentType,
@@ -5840,7 +6172,12 @@ export interface MutationResolvers<ContextType = any, ParentType extends Resolve
 		ContextType,
 		RequireFields<MutationSaveThreadCommentArgs, never>
 	>;
-	DeleteThreadComment?: Resolver<Maybe<ResolversTypes['Deleted']>, ParentType, ContextType, RequireFields<MutationDeleteThreadCommentArgs, never>>;
+	DeleteThreadComment?: Resolver<
+		Maybe<ResolversTypes['Deleted']>,
+		ParentType,
+		ContextType,
+		RequireFields<MutationDeleteThreadCommentArgs, never>
+	>;
 	UpdateAniChartSettings?: Resolver<
 		Maybe<ResolversTypes['Json']>,
 		ParentType,
@@ -5888,19 +6225,47 @@ export interface NotificationUnionResolvers<
 	>;
 }
 
-export interface PageResolvers<ContextType = any, ParentType extends ResolversParentTypes['Page'] = ResolversParentTypes['Page']> {
+export interface PageResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Page'] = ResolversParentTypes['Page']
+> {
 	pageInfo?: Resolver<Maybe<ResolversTypes['PageInfo']>, ParentType, ContextType>;
-	users?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>, ParentType, ContextType, RequireFields<PageUsersArgs, never>>;
-	media?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Media']>>>, ParentType, ContextType, RequireFields<PageMediaArgs, never>>;
+	users?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageUsersArgs, never>
+	>;
+	media?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Media']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageMediaArgs, never>
+	>;
 	characters?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['Character']>>>,
 		ParentType,
 		ContextType,
 		RequireFields<PageCharactersArgs, never>
 	>;
-	staff?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Staff']>>>, ParentType, ContextType, RequireFields<PageStaffArgs, never>>;
-	studios?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Studio']>>>, ParentType, ContextType, RequireFields<PageStudiosArgs, never>>;
-	mediaList?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaList']>>>, ParentType, ContextType, RequireFields<PageMediaListArgs, never>>;
+	staff?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Staff']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageStaffArgs, never>
+	>;
+	studios?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Studio']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageStudiosArgs, never>
+	>;
+	mediaList?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['MediaList']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageMediaListArgs, never>
+	>;
 	airingSchedules?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['AiringSchedule']>>>,
 		ParentType,
@@ -5919,8 +6284,18 @@ export interface PageResolvers<ContextType = any, ParentType extends ResolversPa
 		ContextType,
 		RequireFields<PageNotificationsArgs, never>
 	>;
-	followers?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>, ParentType, ContextType, RequireFields<PageFollowersArgs, 'userId'>>;
-	following?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>, ParentType, ContextType, RequireFields<PageFollowingArgs, 'userId'>>;
+	followers?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageFollowersArgs, 'userId'>
+	>;
+	following?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageFollowingArgs, 'userId'>
+	>;
 	activities?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['ActivityUnion']>>>,
 		ParentType,
@@ -5933,25 +6308,43 @@ export interface PageResolvers<ContextType = any, ParentType extends ResolversPa
 		ContextType,
 		RequireFields<PageActivityRepliesArgs, never>
 	>;
-	threads?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Thread']>>>, ParentType, ContextType, RequireFields<PageThreadsArgs, never>>;
+	threads?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Thread']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageThreadsArgs, never>
+	>;
 	threadComments?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['ThreadComment']>>>,
 		ParentType,
 		ContextType,
 		RequireFields<PageThreadCommentsArgs, never>
 	>;
-	reviews?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['Review']>>>, ParentType, ContextType, RequireFields<PageReviewsArgs, never>>;
+	reviews?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['Review']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageReviewsArgs, never>
+	>;
 	recommendations?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['Recommendation']>>>,
 		ParentType,
 		ContextType,
 		RequireFields<PageRecommendationsArgs, never>
 	>;
-	likes?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>, ParentType, ContextType, RequireFields<PageLikesArgs, never>>;
+	likes?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['User']>>>,
+		ParentType,
+		ContextType,
+		RequireFields<PageLikesArgs, never>
+	>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface PageInfoResolvers<ContextType = any, ParentType extends ResolversParentTypes['PageInfo'] = ResolversParentTypes['PageInfo']> {
+export interface PageInfoResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['PageInfo'] = ResolversParentTypes['PageInfo']
+> {
 	total?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	perPage?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	currentPage?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -5968,14 +6361,37 @@ export interface ParsedMarkdownResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> {
+export interface QueryResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']
+> {
 	Page?: Resolver<Maybe<ResolversTypes['Page']>, ParentType, ContextType, RequireFields<QueryPageArgs, never>>;
 	Media?: Resolver<Maybe<ResolversTypes['Media']>, ParentType, ContextType, RequireFields<QueryMediaArgs, never>>;
-	MediaTrend?: Resolver<Maybe<ResolversTypes['MediaTrend']>, ParentType, ContextType, RequireFields<QueryMediaTrendArgs, never>>;
-	AiringSchedule?: Resolver<Maybe<ResolversTypes['AiringSchedule']>, ParentType, ContextType, RequireFields<QueryAiringScheduleArgs, never>>;
-	Character?: Resolver<Maybe<ResolversTypes['Character']>, ParentType, ContextType, RequireFields<QueryCharacterArgs, never>>;
+	MediaTrend?: Resolver<
+		Maybe<ResolversTypes['MediaTrend']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryMediaTrendArgs, never>
+	>;
+	AiringSchedule?: Resolver<
+		Maybe<ResolversTypes['AiringSchedule']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryAiringScheduleArgs, never>
+	>;
+	Character?: Resolver<
+		Maybe<ResolversTypes['Character']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryCharacterArgs, never>
+	>;
 	Staff?: Resolver<Maybe<ResolversTypes['Staff']>, ParentType, ContextType, RequireFields<QueryStaffArgs, never>>;
-	MediaList?: Resolver<Maybe<ResolversTypes['MediaList']>, ParentType, ContextType, RequireFields<QueryMediaListArgs, never>>;
+	MediaList?: Resolver<
+		Maybe<ResolversTypes['MediaList']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryMediaListArgs, never>
+	>;
 	MediaListCollection?: Resolver<
 		Maybe<ResolversTypes['MediaListCollection']>,
 		ParentType,
@@ -5991,13 +6407,38 @@ export interface QueryResolvers<ContextType = any, ParentType extends ResolversP
 	>;
 	User?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserArgs, never>>;
 	Viewer?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
-	Notification?: Resolver<Maybe<ResolversTypes['NotificationUnion']>, ParentType, ContextType, RequireFields<QueryNotificationArgs, never>>;
+	Notification?: Resolver<
+		Maybe<ResolversTypes['NotificationUnion']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryNotificationArgs, never>
+	>;
 	Studio?: Resolver<Maybe<ResolversTypes['Studio']>, ParentType, ContextType, RequireFields<QueryStudioArgs, never>>;
 	Review?: Resolver<Maybe<ResolversTypes['Review']>, ParentType, ContextType, RequireFields<QueryReviewArgs, never>>;
-	Activity?: Resolver<Maybe<ResolversTypes['ActivityUnion']>, ParentType, ContextType, RequireFields<QueryActivityArgs, never>>;
-	ActivityReply?: Resolver<Maybe<ResolversTypes['ActivityReply']>, ParentType, ContextType, RequireFields<QueryActivityReplyArgs, never>>;
-	Following?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryFollowingArgs, 'userId'>>;
-	Follower?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryFollowerArgs, 'userId'>>;
+	Activity?: Resolver<
+		Maybe<ResolversTypes['ActivityUnion']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryActivityArgs, never>
+	>;
+	ActivityReply?: Resolver<
+		Maybe<ResolversTypes['ActivityReply']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryActivityReplyArgs, never>
+	>;
+	Following?: Resolver<
+		Maybe<ResolversTypes['User']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryFollowingArgs, 'userId'>
+	>;
+	Follower?: Resolver<
+		Maybe<ResolversTypes['User']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryFollowerArgs, 'userId'>
+	>;
 	Thread?: Resolver<Maybe<ResolversTypes['Thread']>, ParentType, ContextType, RequireFields<QueryThreadArgs, never>>;
 	ThreadComment?: Resolver<
 		Maybe<ReadonlyArray<Maybe<ResolversTypes['ThreadComment']>>>,
@@ -6005,12 +6446,27 @@ export interface QueryResolvers<ContextType = any, ParentType extends ResolversP
 		ContextType,
 		RequireFields<QueryThreadCommentArgs, never>
 	>;
-	Recommendation?: Resolver<Maybe<ResolversTypes['Recommendation']>, ParentType, ContextType, RequireFields<QueryRecommendationArgs, never>>;
+	Recommendation?: Resolver<
+		Maybe<ResolversTypes['Recommendation']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryRecommendationArgs, never>
+	>;
 	Like?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryLikeArgs, never>>;
-	Markdown?: Resolver<Maybe<ResolversTypes['ParsedMarkdown']>, ParentType, ContextType, RequireFields<QueryMarkdownArgs, 'markdown'>>;
+	Markdown?: Resolver<
+		Maybe<ResolversTypes['ParsedMarkdown']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryMarkdownArgs, 'markdown'>
+	>;
 	AniChartUser?: Resolver<Maybe<ResolversTypes['AniChartUser']>, ParentType, ContextType>;
 	SiteStatistics?: Resolver<Maybe<ResolversTypes['SiteStatistics']>, ParentType, ContextType>;
-	MediaTagUser?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryMediaTagUserArgs, never>>;
+	MediaTagUser?: Resolver<
+		Maybe<ResolversTypes['User']>,
+		ParentType,
+		ContextType,
+		RequireFields<QueryMediaTagUserArgs, never>
+	>;
 }
 
 export interface RecommendationResolvers<
@@ -6046,7 +6502,8 @@ export interface RecommendationEdgeResolvers<
 
 export interface RelatedMediaAdditionNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['RelatedMediaAdditionNotification'] = ResolversParentTypes['RelatedMediaAdditionNotification']
+	ParentType extends
+		ResolversParentTypes['RelatedMediaAdditionNotification'] = ResolversParentTypes['RelatedMediaAdditionNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	type?: Resolver<Maybe<ResolversTypes['NotificationType']>, ParentType, ContextType>;
@@ -6057,7 +6514,10 @@ export interface RelatedMediaAdditionNotificationResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface ReportResolvers<ContextType = any, ParentType extends ResolversParentTypes['Report'] = ResolversParentTypes['Report']> {
+export interface ReportResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Report'] = ResolversParentTypes['Report']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	reporter?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
 	reported?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
@@ -6067,7 +6527,10 @@ export interface ReportResolvers<ContextType = any, ParentType extends Resolvers
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface ReviewResolvers<ContextType = any, ParentType extends ResolversParentTypes['Review'] = ResolversParentTypes['Review']> {
+export interface ReviewResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Review'] = ResolversParentTypes['Review']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	mediaId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -6097,7 +6560,10 @@ export interface ReviewConnectionResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface ReviewEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['ReviewEdge'] = ResolversParentTypes['ReviewEdge']> {
+export interface ReviewEdgeResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['ReviewEdge'] = ResolversParentTypes['ReviewEdge']
+> {
 	node?: Resolver<Maybe<ResolversTypes['Review']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
@@ -6131,17 +6597,55 @@ export interface SiteStatisticsResolvers<
 	ContextType = any,
 	ParentType extends ResolversParentTypes['SiteStatistics'] = ResolversParentTypes['SiteStatistics']
 > {
-	users?: Resolver<Maybe<ResolversTypes['SiteTrendConnection']>, ParentType, ContextType, RequireFields<SiteStatisticsUsersArgs, never>>;
-	anime?: Resolver<Maybe<ResolversTypes['SiteTrendConnection']>, ParentType, ContextType, RequireFields<SiteStatisticsAnimeArgs, never>>;
-	manga?: Resolver<Maybe<ResolversTypes['SiteTrendConnection']>, ParentType, ContextType, RequireFields<SiteStatisticsMangaArgs, never>>;
-	characters?: Resolver<Maybe<ResolversTypes['SiteTrendConnection']>, ParentType, ContextType, RequireFields<SiteStatisticsCharactersArgs, never>>;
-	staff?: Resolver<Maybe<ResolversTypes['SiteTrendConnection']>, ParentType, ContextType, RequireFields<SiteStatisticsStaffArgs, never>>;
-	studios?: Resolver<Maybe<ResolversTypes['SiteTrendConnection']>, ParentType, ContextType, RequireFields<SiteStatisticsStudiosArgs, never>>;
-	reviews?: Resolver<Maybe<ResolversTypes['SiteTrendConnection']>, ParentType, ContextType, RequireFields<SiteStatisticsReviewsArgs, never>>;
+	users?: Resolver<
+		Maybe<ResolversTypes['SiteTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<SiteStatisticsUsersArgs, never>
+	>;
+	anime?: Resolver<
+		Maybe<ResolversTypes['SiteTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<SiteStatisticsAnimeArgs, never>
+	>;
+	manga?: Resolver<
+		Maybe<ResolversTypes['SiteTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<SiteStatisticsMangaArgs, never>
+	>;
+	characters?: Resolver<
+		Maybe<ResolversTypes['SiteTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<SiteStatisticsCharactersArgs, never>
+	>;
+	staff?: Resolver<
+		Maybe<ResolversTypes['SiteTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<SiteStatisticsStaffArgs, never>
+	>;
+	studios?: Resolver<
+		Maybe<ResolversTypes['SiteTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<SiteStatisticsStudiosArgs, never>
+	>;
+	reviews?: Resolver<
+		Maybe<ResolversTypes['SiteTrendConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<SiteStatisticsReviewsArgs, never>
+	>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface SiteTrendResolvers<ContextType = any, ParentType extends ResolversParentTypes['SiteTrend'] = ResolversParentTypes['SiteTrend']> {
+export interface SiteTrendResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['SiteTrend'] = ResolversParentTypes['SiteTrend']
+> {
 	date?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	count?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	change?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -6166,13 +6670,21 @@ export interface SiteTrendEdgeResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface StaffResolvers<ContextType = any, ParentType extends ResolversParentTypes['Staff'] = ResolversParentTypes['Staff']> {
+export interface StaffResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Staff'] = ResolversParentTypes['Staff']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	name?: Resolver<Maybe<ResolversTypes['StaffName']>, ParentType, ContextType>;
 	language?: Resolver<Maybe<ResolversTypes['StaffLanguage']>, ParentType, ContextType>;
 	languageV2?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	image?: Resolver<Maybe<ResolversTypes['StaffImage']>, ParentType, ContextType>;
-	description?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<StaffDescriptionArgs, never>>;
+	description?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<StaffDescriptionArgs, never>
+	>;
 	primaryOccupations?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
 	gender?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	dateOfBirth?: Resolver<Maybe<ResolversTypes['FuzzyDate']>, ParentType, ContextType>;
@@ -6184,9 +6696,24 @@ export interface StaffResolvers<ContextType = any, ParentType extends ResolversP
 	isFavourite?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 	isFavouriteBlocked?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 	siteUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-	staffMedia?: Resolver<Maybe<ResolversTypes['MediaConnection']>, ParentType, ContextType, RequireFields<StaffStaffMediaArgs, never>>;
-	characters?: Resolver<Maybe<ResolversTypes['CharacterConnection']>, ParentType, ContextType, RequireFields<StaffCharactersArgs, never>>;
-	characterMedia?: Resolver<Maybe<ResolversTypes['MediaConnection']>, ParentType, ContextType, RequireFields<StaffCharacterMediaArgs, never>>;
+	staffMedia?: Resolver<
+		Maybe<ResolversTypes['MediaConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<StaffStaffMediaArgs, never>
+	>;
+	characters?: Resolver<
+		Maybe<ResolversTypes['CharacterConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<StaffCharactersArgs, never>
+	>;
+	characterMedia?: Resolver<
+		Maybe<ResolversTypes['MediaConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<StaffCharacterMediaArgs, never>
+	>;
 	updatedAt?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	staff?: Resolver<Maybe<ResolversTypes['Staff']>, ParentType, ContextType>;
 	submitter?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
@@ -6207,7 +6734,10 @@ export interface StaffConnectionResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface StaffEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['StaffEdge'] = ResolversParentTypes['StaffEdge']> {
+export interface StaffEdgeResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['StaffEdge'] = ResolversParentTypes['StaffEdge']
+> {
 	node?: Resolver<Maybe<ResolversTypes['Staff']>, ParentType, ContextType>;
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	role?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -6215,13 +6745,19 @@ export interface StaffEdgeResolvers<ContextType = any, ParentType extends Resolv
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface StaffImageResolvers<ContextType = any, ParentType extends ResolversParentTypes['StaffImage'] = ResolversParentTypes['StaffImage']> {
+export interface StaffImageResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['StaffImage'] = ResolversParentTypes['StaffImage']
+> {
 	large?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	medium?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface StaffNameResolvers<ContextType = any, ParentType extends ResolversParentTypes['StaffName'] = ResolversParentTypes['StaffName']> {
+export interface StaffNameResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['StaffName'] = ResolversParentTypes['StaffName']
+> {
 	first?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	middle?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	last?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -6242,7 +6778,10 @@ export interface StaffRoleTypeResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface StaffStatsResolvers<ContextType = any, ParentType extends ResolversParentTypes['StaffStats'] = ResolversParentTypes['StaffStats']> {
+export interface StaffStatsResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['StaffStats'] = ResolversParentTypes['StaffStats']
+> {
 	staff?: Resolver<Maybe<ResolversTypes['Staff']>, ParentType, ContextType>;
 	amount?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	meanScore?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -6274,11 +6813,19 @@ export interface StatusDistributionResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface StudioResolvers<ContextType = any, ParentType extends ResolversParentTypes['Studio'] = ResolversParentTypes['Studio']> {
+export interface StudioResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Studio'] = ResolversParentTypes['Studio']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	isAnimationStudio?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
-	media?: Resolver<Maybe<ResolversTypes['MediaConnection']>, ParentType, ContextType, RequireFields<StudioMediaArgs, never>>;
+	media?: Resolver<
+		Maybe<ResolversTypes['MediaConnection']>,
+		ParentType,
+		ContextType,
+		RequireFields<StudioMediaArgs, never>
+	>;
 	siteUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	isFavourite?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
 	favourites?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -6295,7 +6842,10 @@ export interface StudioConnectionResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface StudioEdgeResolvers<ContextType = any, ParentType extends ResolversParentTypes['StudioEdge'] = ResolversParentTypes['StudioEdge']> {
+export interface StudioEdgeResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['StudioEdge'] = ResolversParentTypes['StudioEdge']
+> {
 	node?: Resolver<Maybe<ResolversTypes['Studio']>, ParentType, ContextType>;
 	id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	isMain?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -6314,7 +6864,10 @@ export interface StudioStatsResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface TagStatsResolvers<ContextType = any, ParentType extends ResolversParentTypes['TagStats'] = ResolversParentTypes['TagStats']> {
+export interface TagStatsResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['TagStats'] = ResolversParentTypes['TagStats']
+> {
 	tag?: Resolver<Maybe<ResolversTypes['MediaTag']>, ParentType, ContextType>;
 	amount?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	meanScore?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
@@ -6343,7 +6896,10 @@ export interface TextActivityResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface ThreadResolvers<ContextType = any, ParentType extends ResolversParentTypes['Thread'] = ResolversParentTypes['Thread']> {
+export interface ThreadResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['Thread'] = ResolversParentTypes['Thread']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	body?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<ThreadBodyArgs, never>>;
@@ -6385,7 +6941,12 @@ export interface ThreadCommentResolvers<
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	threadId?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-	comment?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<ThreadCommentCommentArgs, never>>;
+	comment?: Resolver<
+		Maybe<ResolversTypes['String']>,
+		ParentType,
+		ContextType,
+		RequireFields<ThreadCommentCommentArgs, never>
+	>;
 	likeCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	isLiked?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	siteUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -6400,7 +6961,8 @@ export interface ThreadCommentResolvers<
 
 export interface ThreadCommentLikeNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ThreadCommentLikeNotification'] = ResolversParentTypes['ThreadCommentLikeNotification']
+	ParentType extends
+		ResolversParentTypes['ThreadCommentLikeNotification'] = ResolversParentTypes['ThreadCommentLikeNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -6416,7 +6978,8 @@ export interface ThreadCommentLikeNotificationResolvers<
 
 export interface ThreadCommentMentionNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ThreadCommentMentionNotification'] = ResolversParentTypes['ThreadCommentMentionNotification']
+	ParentType extends
+		ResolversParentTypes['ThreadCommentMentionNotification'] = ResolversParentTypes['ThreadCommentMentionNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -6432,7 +6995,8 @@ export interface ThreadCommentMentionNotificationResolvers<
 
 export interface ThreadCommentReplyNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ThreadCommentReplyNotification'] = ResolversParentTypes['ThreadCommentReplyNotification']
+	ParentType extends
+		ResolversParentTypes['ThreadCommentReplyNotification'] = ResolversParentTypes['ThreadCommentReplyNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -6448,7 +7012,8 @@ export interface ThreadCommentReplyNotificationResolvers<
 
 export interface ThreadCommentSubscribedNotificationResolvers<
 	ContextType = any,
-	ParentType extends ResolversParentTypes['ThreadCommentSubscribedNotification'] = ResolversParentTypes['ThreadCommentSubscribedNotification']
+	ParentType extends
+		ResolversParentTypes['ThreadCommentSubscribedNotification'] = ResolversParentTypes['ThreadCommentSubscribedNotification']
 > {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	userId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
@@ -6478,7 +7043,10 @@ export interface ThreadLikeNotificationResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> {
+export interface UserResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']
+> {
 	id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
 	name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 	about?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType, RequireFields<UserAboutArgs, never>>;
@@ -6490,7 +7058,12 @@ export interface UserResolvers<ContextType = any, ParentType extends ResolversPa
 	bans?: Resolver<Maybe<ResolversTypes['Json']>, ParentType, ContextType>;
 	options?: Resolver<Maybe<ResolversTypes['UserOptions']>, ParentType, ContextType>;
 	mediaListOptions?: Resolver<Maybe<ResolversTypes['MediaListOptions']>, ParentType, ContextType>;
-	favourites?: Resolver<Maybe<ResolversTypes['Favourites']>, ParentType, ContextType, RequireFields<UserFavouritesArgs, never>>;
+	favourites?: Resolver<
+		Maybe<ResolversTypes['Favourites']>,
+		ParentType,
+		ContextType,
+		RequireFields<UserFavouritesArgs, never>
+	>;
 	statistics?: Resolver<Maybe<ResolversTypes['UserStatisticTypes']>, ParentType, ContextType>;
 	unreadNotificationCount?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	siteUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -6515,7 +7088,10 @@ export interface UserActivityHistoryResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface UserAvatarResolvers<ContextType = any, ParentType extends ResolversParentTypes['UserAvatar'] = ResolversParentTypes['UserAvatar']> {
+export interface UserAvatarResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['UserAvatar'] = ResolversParentTypes['UserAvatar']
+> {
 	large?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	medium?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -6594,7 +7170,11 @@ export interface UserOptionsResolvers<
 	displayAdultContent?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	airingNotifications?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
 	profileColor?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-	notificationOptions?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['NotificationOption']>>>, ParentType, ContextType>;
+	notificationOptions?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['NotificationOption']>>>,
+		ParentType,
+		ContextType
+	>;
 	timezone?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 	activityMergeTime?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	staffNameLanguage?: Resolver<Maybe<ResolversTypes['UserStaffNameLanguage']>, ParentType, ContextType>;
@@ -6758,14 +7338,37 @@ export interface UserStatisticsResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface UserStatsResolvers<ContextType = any, ParentType extends ResolversParentTypes['UserStats'] = ResolversParentTypes['UserStats']> {
+export interface UserStatsResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['UserStats'] = ResolversParentTypes['UserStats']
+> {
 	watchedTime?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	chaptersRead?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
-	activityHistory?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['UserActivityHistory']>>>, ParentType, ContextType>;
-	animeStatusDistribution?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['StatusDistribution']>>>, ParentType, ContextType>;
-	mangaStatusDistribution?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['StatusDistribution']>>>, ParentType, ContextType>;
-	animeScoreDistribution?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['ScoreDistribution']>>>, ParentType, ContextType>;
-	mangaScoreDistribution?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['ScoreDistribution']>>>, ParentType, ContextType>;
+	activityHistory?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['UserActivityHistory']>>>,
+		ParentType,
+		ContextType
+	>;
+	animeStatusDistribution?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['StatusDistribution']>>>,
+		ParentType,
+		ContextType
+	>;
+	mangaStatusDistribution?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['StatusDistribution']>>>,
+		ParentType,
+		ContextType
+	>;
+	animeScoreDistribution?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['ScoreDistribution']>>>,
+		ParentType,
+		ContextType
+	>;
+	mangaScoreDistribution?: Resolver<
+		Maybe<ReadonlyArray<Maybe<ResolversTypes['ScoreDistribution']>>>,
+		ParentType,
+		ContextType
+	>;
 	animeListScores?: Resolver<Maybe<ResolversTypes['ListScoreStats']>, ParentType, ContextType>;
 	mangaListScores?: Resolver<Maybe<ResolversTypes['ListScoreStats']>, ParentType, ContextType>;
 	favouredGenresOverview?: Resolver<Maybe<ReadonlyArray<Maybe<ResolversTypes['GenreStats']>>>, ParentType, ContextType>;
@@ -6832,7 +7435,10 @@ export interface UserVoiceActorStatisticResolvers<
 	__isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 }
 
-export interface YearStatsResolvers<ContextType = any, ParentType extends ResolversParentTypes['YearStats'] = ResolversParentTypes['YearStats']> {
+export interface YearStatsResolvers<
+	ContextType = any,
+	ParentType extends ResolversParentTypes['YearStats'] = ResolversParentTypes['YearStats']
+> {
 	year?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	amount?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
 	meanScore?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
