@@ -27,7 +27,7 @@
     "vitest": "^0.34.6"
   },
   "dependencies": {
-    "undici": "^5.27.0"
+    "undici": "^5.28.1"
   },
   "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
   "repository": {
