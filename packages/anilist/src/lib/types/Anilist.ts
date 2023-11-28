@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /**
  * AUTO GENERATED FROM ANILIST API ENDPOINT. DO NOT MODIFY
  */

@@ -5,8 +5,8 @@ import { URLSearchParams } from 'node:url';
 import { fetch } from 'undici';
 
 export class Igdb {
-	private clientId: string;
-	private clientSecret: string;
+	private readonly clientId: string;
+	private readonly clientSecret: string;
 
 	private bearer: TwitchHelixBearerToken = {
 		expire: null,
@@ -20,6 +20,7 @@ export class Igdb {
 
 	public async search(variable: { game: string; offset?: number; limit?: number }): Promise<Game[]> {
 		const { game, offset = 0, limit = 10 } = variable;
+		// eslint-disable-next-line no-useless-catch
 		try {
 			const res = await fetch(`${BaseEndpoint}/games`, {
 				method: 'POST',
@@ -55,6 +56,7 @@ export class Igdb {
 		params.append('client_id', this.clientId);
 		params.append('client_secret', this.clientSecret);
 
+		// eslint-disable-next-line no-useless-catch
 		try {
 			const res = await fetch(BaseOAuth2, {
 				method: 'POST',

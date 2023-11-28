@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import { Spotify } from '../dist/index';
 import { isClass } from '@sapphire/utilities';
 import dotenv from 'dotenv';

@@ -1,6 +1,8 @@
 import { Anilist } from '../dist/index';
 import { isClass } from '@sapphire/utilities';
 
+import { describe, expect, test } from 'vitest';
+
 describe('Anilist', () => {
 	test('Anilist should be a class', () => {
 		expect(isClass(Anilist)).toBe(true);

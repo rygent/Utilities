@@ -1,3 +1,4 @@
+/* eslint-disable no-inline-comments, max-len */
 // Type definitions for The Spotify Web API (including changes March 29th 2016)
 // Project: https://developer.spotify.com/web-api/
 // Definitions by: Niels Kristian Hansen Skovmand <https://github.com/skovmand>
@@ -24,7 +25,7 @@
  * Object for search parameters for searching for tracks, playlists, artists or albums.
  * See: [Search for an item](https://developer.spotify.com/web-api/search-item/)
  *
- * `q` and `type` are required in the API. Previous versions of the type declarations marked them
+ * `q` and `type` are required in the API. Previous versions of the type declarations ma rked them
  * as optional in order for external libraries to "implement them as function call parameters instead".
  * Now, the type declaration shall mark them as required. If necessary, one can consider this to be a
  * "breaking change". In that case, one can use TypeScript's built-in utility type `Omit<T, K>`.
