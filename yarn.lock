@@ -907,7 +907,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.10.0":
+"@types/node@npm:*":
   version: 20.10.0
   resolution: "@types/node@npm:20.10.0"
   dependencies:
@@ -922,6 +922,15 @@ __metadata:
   dependencies:
     undici-types: "npm:~5.26.4"
   checksum: 5f1840f26b4c00e6b4945be678644a46e6689ef10d9d7795d587b76059045b99a14ca6075264296e6e91d73e098fe83df9580881278d9a6ce394b368d9c76700
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^20.10.2":
+  version: 20.10.2
+  resolution: "@types/node@npm:20.10.2"
+  dependencies:
+    undici-types: "npm:~5.26.4"
+  checksum: c24630d6bdd237f538d69886868fc29abba8c59f58996b6a6267c42e2253a84a18834c09408b3d887ec74f69e6828e25e3d23cf6fa0daac5902afccaf0568d7e
   languageName: node
   linkType: hard
 
@@ -5532,7 +5541,7 @@ __metadata:
     "@favware/cliff-jumper": "npm:^2.2.3"
     "@favware/npm-deprecate": "npm:^1.0.7"
     "@sapphire/utilities": "npm:^3.13.0"
-    "@types/node": "npm:^20.10.0"
+    "@types/node": "npm:^20.10.2"
     "@typescript-eslint/eslint-plugin": "npm:^6.13.1"
     "@typescript-eslint/parser": "npm:^6.13.1"
     "@vitest/coverage-v8": "npm:^0.34.6"
