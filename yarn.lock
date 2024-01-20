@@ -900,10 +900,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sapphire/utilities@npm:^3.15.2":
-  version: 3.15.2
-  resolution: "@sapphire/utilities@npm:3.15.2"
-  checksum: f5d6bf09228b76d735d7a524584597c69e27bbdd985be50d7417454d7fff535923103698a1ec658df1e25fa28f13d126a01721a7b770d4df7a3bca6d9a3a4295
+"@sapphire/utilities@npm:^3.15.3":
+  version: 3.15.3
+  resolution: "@sapphire/utilities@npm:3.15.3"
+  checksum: b1cb07f955b93f731b757f7f39fb9a9c9bc763bc5cddcd247e01beb5a4c7d38a6bb215d969b9aaf0891073333a63605861a219f5b5b457d73a2fd085c722f9c5
   languageName: node
   linkType: hard
 
@@ -5596,7 +5596,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:^18.4.4"
     "@favware/cliff-jumper": "npm:^2.2.3"
     "@favware/npm-deprecate": "npm:^1.0.7"
-    "@sapphire/utilities": "npm:^3.15.2"
+    "@sapphire/utilities": "npm:^3.15.3"
     "@types/node": "npm:^20.11.0"
     "@typescript-eslint/eslint-plugin": "npm:^6.18.1"
     "@typescript-eslint/parser": "npm:^6.18.1"
