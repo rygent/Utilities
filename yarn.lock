@@ -830,7 +830,7 @@ __metadata:
     "@vitest/coverage-v8": "npm:^0.34.6"
     graphql: "npm:^16.8.1"
     he: "npm:^1.2.0"
-    tsup: "npm:^8.0.1"
+    tsup: "npm:^8.0.2"
     typescript: "npm:^5.3.3"
     undici: "npm:^5.28.3"
     vitest: "npm:^0.34.6"
@@ -843,7 +843,7 @@ __metadata:
   dependencies:
     "@favware/cliff-jumper": "npm:^2.2.3"
     "@vitest/coverage-v8": "npm:^0.34.6"
-    tsup: "npm:^8.0.1"
+    tsup: "npm:^8.0.2"
     typescript: "npm:^5.3.3"
     undici: "npm:^5.28.3"
     vitest: "npm:^0.34.6"
@@ -857,7 +857,7 @@ __metadata:
     "@favware/cliff-jumper": "npm:^2.2.3"
     colorette: "npm:^2.0.20"
     moment: "npm:^2.30.1"
-    tsup: "npm:^8.0.1"
+    tsup: "npm:^8.0.2"
     typescript: "npm:^5.3.3"
     undici: "npm:^5.28.3"
     winston: "npm:^3.11.0"
@@ -870,7 +870,7 @@ __metadata:
   dependencies:
     "@favware/cliff-jumper": "npm:^2.2.3"
     "@vitest/coverage-v8": "npm:^0.34.6"
-    tsup: "npm:^8.0.1"
+    tsup: "npm:^8.0.2"
     typescript: "npm:^5.3.3"
     undici: "npm:^5.28.3"
     vitest: "npm:^0.34.6"
@@ -5608,7 +5608,7 @@ __metadata:
     eslint-plugin-import: "npm:^2.29.1"
     eslint-plugin-prettier: "npm:^5.1.3"
     prettier: "npm:^3.2.5"
-    tsup: "npm:^8.0.1"
+    tsup: "npm:^8.0.2"
     turbo: "npm:^1.12.3"
     typescript: "npm:^5.3.3"
     vitest: "npm:^0.34.6"
@@ -6339,9 +6339,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsup@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "tsup@npm:8.0.1"
+"tsup@npm:^8.0.2":
+  version: 8.0.2
+  resolution: "tsup@npm:8.0.2"
   dependencies:
     bundle-require: "npm:^4.0.0"
     cac: "npm:^6.7.12"
@@ -6374,7 +6374,7 @@ __metadata:
   bin:
     tsup: dist/cli-default.js
     tsup-node: dist/cli-node.js
-  checksum: 10c0/2869187881fd30ce883d2069a1948b80946fc09a1bedb2ceb5ec20ea29602a897177dc3d19617c489b0811b86a902f5c52f51cc0b2d7e1892cb5328c3a197bfe
+  checksum: 10c0/de3e8b2d9a7a504afb9394f2409ef88fd21dd338a78ebb572dd5c1719d73db816baa7ae4b7867016f08ba6a67560daec13a85768efff1d70e380972e39e27ce6
   languageName: node
   linkType: hard
 
