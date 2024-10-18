@@ -1,33 +1,23 @@
+import { relative, resolve as resolveDir } from 'node:path';
 import { defineConfig, type Options } from 'tsup';
 
-export const createTsupConfig = ({
-	globalName = undefined,
-	format = ['esm', 'cjs', 'iife'],
-	target = 'es2022',
-	sourcemap = true,
-	splitting = true,
-	bundle = true,
-	dts = true
-}: ConfigOptions = {}) =>
-	defineConfig({
-		bundle,
+export function createTsupConfig(options: EnhancedTsupOptions = {}) {
+	return defineConfig({
+		bundle: options.bundle ?? true,
 		clean: true,
-		dts,
-		entry: ['src/index.ts'],
-		format,
+		dts: options.dts ?? true,
+		entry: options.entry ?? ['src/index.ts'],
+		format: options.format ?? ['esm', 'cjs'],
 		keepNames: true,
 		minify: false,
 		platform: 'node',
 		skipNodeModulesBundle: true,
-		sourcemap,
-		splitting,
-		target,
+		sourcemap: options.sourcemap ?? true,
+		splitting: options.splitting ?? true,
+		target: options.target ?? 'es2022',
 		treeshake: true,
-		globalName: globalName
-			?.replace(/@/g, '')
-			.split(/[\\/-]/g)
-			.map((l) => l[0]?.toUpperCase() + l.slice(1))
-			.join('')
+		tsconfig: relative(__dirname, resolveDir(process.cwd(), 'tsconfig.json'))
 	});
+}
 
-type ConfigOptions = Pick<Options, 'globalName' | 'format' | 'target' | 'sourcemap' | 'splitting' | 'bundle' | 'dts'>;
+type EnhancedTsupOptions = Pick<Options, 'bundle' | 'dts' | 'entry' | 'format' | 'sourcemap' | 'splitting' | 'target'>;

@@ -1,4 +1,3 @@
-import { createTsupConfig } from '../../tsup.config';
-import { name } from './package.json';
+import { createTsupConfig } from '../../tsup.config.js';
 
-export default createTsupConfig({ globalName: name, format: ['esm', 'cjs'] });
+export default createTsupConfig();
