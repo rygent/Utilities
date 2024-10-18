@@ -1,23 +1,23 @@
 import type { ESBuildOptions } from 'vite';
 import { defineConfig, type UserConfig } from 'vitest/config';
 
-export const createVitestConfig = (options: UserConfig = {}) =>
-	defineConfig({
+export function createVitestConfig(options: UserConfig = {}) {
+	return defineConfig({
 		...options,
 		test: {
-			...options?.test,
+			...options.test,
 			globals: true,
 			coverage: {
 				...options.test?.coverage,
 				provider: 'v8',
 				enabled: true,
-				reporter: ['text', 'lcov', 'clover'],
+				reporter: ['text', 'lcov'],
 				exclude: [...(options.test?.coverage?.exclude ?? []), '**/node_modules/**', '**/dist/**', '**/tests/**']
-			},
-			threads: false
+			}
 		},
 		esbuild: {
 			...options?.esbuild,
 			target: (options?.esbuild as ESBuildOptions | undefined)?.target ?? 'es2022'
 		}
 	});
+}
