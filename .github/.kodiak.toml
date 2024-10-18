@@ -7,6 +7,7 @@ method = "squash"
 delete_branch_on_merge = true
 optimistic_updates = true
 prioritize_ready_to_merge = true
+do_not_merge = false
 
 [merge.automerge_dependencies]
 versions = ["minor", "patch"]
@@ -18,6 +19,8 @@ body = "github_default"
 include_pr_number = true
 body_type = "markdown"
 strip_html_comments = true
+include_coauthors = true
+include_pull_request_author = true
 
 [update]
 always = true
