@@ -1,9 +1,9 @@
 packages:anilist:
-  - packages/anilist/*
-  - packages/anilist/**/*
+  - changed-files:
+    - any-glob-to-any-file: ['packages/anilist/*', 'packages/anilist/**/*']
 packages:igdb:
-  - packages/igdb/*
-  - packages/igdb/**/*
+  - changed-files:
+    - any-glob-to-any-file: ['packages/igdb/*', 'packages/igdb/**/*']
 packages:spotify:
-  - packages/spotify/*
-  - packages/spotify/**/*
+  - changed-files:
+    - any-glob-to-any-file: ['packages/spotify/*', 'packages/spotify/**/*']
