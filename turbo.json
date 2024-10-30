@@ -1,32 +1,16 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": ["tsconfig.json"],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "package.json", "tsconfig.json", "tsup.config.ts", "vite.config.ts"],
-      "outputs": ["dist/**"],
-      "outputMode": "errors-only"
+      "outputs": ["dist/**"]
     },
     "lint": {
-      "dependsOn": ["^build"],
-      "inputs": [
-        "../../.eslintrc.json",
-        "../../.prettierrc.json",
-        "../../tsconfig.eslint.json",
-        ".prettierrc.js",
-        "src/**",
-        "package.json",
-        "tsconfig.eslint.json"
-      ],
-      "outputs": [],
-      "outputMode": "errors-only"
+      "dependsOn": ["^build"]
     },
     "test": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**", "tests/**", "package.json", "tsconfig.json"],
-      "outputs": ["coverage/**"],
-      "outputMode": "new-only"
+      "outputs": ["coverage/**"]
     }
   }
 }
