@@ -29,8 +29,8 @@ await anilist.search.manga({ search: 'Naruto' });
 
 > [!NOTE]
 >
-> - **page**: This property is optional and the default value is `1`.
-> - **perPage**: This property is optional and the default value is `20`.
+> -   **page**: This property is optional and the default value is `1`.
+> -   **perPage**: This property is optional and the default value is `20`.
 
 ---
 

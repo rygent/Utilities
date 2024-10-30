@@ -33,8 +33,8 @@ await spotify.search({ type: 'artist', q: 'Billie Eilish' });
 
 > [!NOTE]
 >
-> - **offset**: This property is optional and the default value is `0`.
-> - **limit**: This property is optional and the default value is `20`.
+> -   **offset**: This property is optional and the default value is `0`.
+> -   **limit**: This property is optional and the default value is `20`.
 
 ---
 

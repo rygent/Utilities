@@ -1,6 +1,6 @@
 {
   "name": "root-utilities",
-  "private": true,
+  "type": "module",
   "workspaces": [
     "packages/*"
   ],
@@ -11,37 +11,30 @@
     "format": "turbo run format --concurrency=3",
     "update": "yarn upgrade-interactive"
   },
+  "license": "MIT",
+  "private": true,
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
+    "@commitlint/config-angular": "^19.5.0",
     "@favware/cliff-jumper": "^2.2.3",
     "@favware/npm-deprecate": "^1.0.7",
     "@sapphire/utilities": "^3.17.0",
-    "@types/node": "^20.17.1",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
+    "@stylistic/eslint-plugin": "^2.9.0",
+    "@types/node": "^22.8.4",
     "@vitest/coverage-v8": "^2.1.3",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.4.5",
-    "eslint": "^8.57.1",
+    "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.11.0",
     "prettier": "^3.3.3",
     "tsup": "^8.3.5",
     "turbo": "^2.2.3",
     "typescript": "^5.6.3",
+    "typescript-eslint": "^8.12.2",
     "vitest": "^2.1.3"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "packageManager": "yarn@4.5.1"
 }

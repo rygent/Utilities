@@ -1,4 +1,5 @@
-/* eslint-disable max-len, no-inline-comments */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @stylistic/max-len, no-inline-comments */
 
 /**
  * Object for search parameters for searching for tracks, playlists, artists or albums.

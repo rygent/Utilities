@@ -1,5 +1,5 @@
-.yarn
+.turbo/
+.yarn/
+coverage/
+node_modules/
 CHANGELOG.md
-tsup.config.bundled*
-vitest.config.ts.timestamp*
-yarn.lock
