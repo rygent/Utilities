@@ -18,7 +18,7 @@
     "@commitlint/config-angular": "^19.5.0",
     "@favware/cliff-jumper": "^2.2.3",
     "@favware/npm-deprecate": "^1.0.7",
-    "@sapphire/utilities": "^3.17.0",
+    "@sapphire/utilities": "^3.18.0",
     "@stylistic/eslint-plugin": "^2.9.0",
     "@types/node": "^22.8.4",
     "@vitest/coverage-v8": "^2.1.4",
