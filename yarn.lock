@@ -2452,7 +2452,7 @@ __metadata:
     "@favware/cliff-jumper": "npm:^2.2.3"
     "@graphql-codegen/cli": "npm:^5.0.3"
     "@graphql-codegen/typescript": "npm:^4.1.1"
-    "@types/node": "npm:^22.8.4"
+    "@types/node": "npm:^22.8.6"
     "@vitest/coverage-v8": "npm:^2.1.4"
     eslint: "npm:^9.13.0"
     graphql: "npm:^16.9.0"
@@ -2469,7 +2469,7 @@ __metadata:
   resolution: "@rygent/igdb@workspace:packages/igdb"
   dependencies:
     "@favware/cliff-jumper": "npm:^2.2.3"
-    "@types/node": "npm:^22.8.4"
+    "@types/node": "npm:^22.8.6"
     "@vitest/coverage-v8": "npm:^2.1.4"
     eslint: "npm:^9.13.0"
     prettier: "npm:^3.3.3"
@@ -2485,7 +2485,7 @@ __metadata:
   resolution: "@rygent/spotify@workspace:packages/spotify"
   dependencies:
     "@favware/cliff-jumper": "npm:^2.2.3"
-    "@types/node": "npm:^22.8.4"
+    "@types/node": "npm:^22.8.6"
     "@vitest/coverage-v8": "npm:^2.1.4"
     eslint: "npm:^9.13.0"
     prettier: "npm:^3.3.3"
@@ -2609,12 +2609,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.8.4":
-  version: 22.8.4
-  resolution: "@types/node@npm:22.8.4"
+"@types/node@npm:^22.8.6":
+  version: 22.8.6
+  resolution: "@types/node@npm:22.8.6"
   dependencies:
     undici-types: "npm:~6.19.8"
-  checksum: 10c0/f88d030480630194a9168772462ec09b2d86454f34368c46d2b7fda5dc6e14594b1576fcc5c35cc53b57a4d1e8dd2865a85ae81f34ded0d1af753a0f5d294c25
+  checksum: 10c0/d3a11f2549234a91a4c5d0ff35ab4bdcb7ba34db4d3f1d189be39b8bd41c19aac98d117150a95a9c5a9d45b1014135477ea240b2b8317c86ae3d3cf1c3b3f8f4
   languageName: node
   linkType: hard
 
@@ -8061,7 +8061,7 @@ __metadata:
     "@favware/npm-deprecate": "npm:^1.0.7"
     "@sapphire/utilities": "npm:^3.17.0"
     "@stylistic/eslint-plugin": "npm:^2.9.0"
-    "@types/node": "npm:^22.8.4"
+    "@types/node": "npm:^22.8.6"
     "@vitest/coverage-v8": "npm:^2.1.4"
     cz-conventional-changelog: "npm:^3.3.0"
     dotenv: "npm:^16.4.5"
