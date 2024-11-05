@@ -32,7 +32,7 @@
     "@favware/cliff-jumper": "^2.2.3",
     "@graphql-codegen/cli": "^5.0.3",
     "@graphql-codegen/typescript": "^4.1.1",
-    "@types/node": "^22.8.6",
+    "@types/node": "^22.9.0",
     "@vitest/coverage-v8": "^2.1.4",
     "eslint": "^9.14.0",
     "graphql": "^16.9.0",
