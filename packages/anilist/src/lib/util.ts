@@ -29,8 +29,7 @@ const htmlEntityReplacements = Object.freeze({
 } as const);
 
 export function parseDescription(description: string) {
-	return decode(description.replace(htmlEntityRegex, (_, type: keyof typeof htmlEntityReplacements) => htmlEntityReplacements[type])).replace(
-		excessiveNewLinesRegex,
-		'\n\n'
-	);
+	return decode(
+		description.replace(htmlEntityRegex, (_, type: keyof typeof htmlEntityReplacements) => htmlEntityReplacements[type])
+	).replace(excessiveNewLinesRegex, '\n\n');
 }

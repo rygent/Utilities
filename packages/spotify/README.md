@@ -29,8 +29,8 @@ yarn add @rygent/spotify
 const { Spotify } = require('@rygent/spotify');
 
 const spotify = new Spotify({
-	id: 'your client id',
-	secret: 'your client secret'
+    id: 'your client id',
+    secret: 'your client secret'
 });
 
 // later on ...
