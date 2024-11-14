@@ -1,9 +1,9 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "@rygent/spotify",
   "version": "1.1.1",
   "description": "A simple to use API library for the Spotify REST API.",
   "type": "module",
-  "license": "MIT",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -14,12 +14,26 @@
   },
   "scripts": {
     "test": "vitest run",
+    "build": "tsup",
     "lint": "eslint src --ext ts --fix -c ../../.eslintrc",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
-    "build": "tsup",
     "prepack": "pnpm run build",
     "bump": "cliff-jumper"
+  },
+  "license": "MIT",
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rygent/utilities.git",
+    "directory": "packages/spotify"
+  },
+  "bugs": {
+    "url": "https://github.com/rygent/utilities/issues"
+  },
+  "funding": "https://github.com/rygent/utilities?sponsor",
+  "dependencies": {
+    "undici": "^5.28.4"
   },
   "devDependencies": {
     "@favware/cliff-jumper": "^2.2.3",
@@ -29,28 +43,17 @@
     "typescript": "^5.6.3",
     "vitest": "^0.34.6"
   },
-  "dependencies": {
-    "undici": "^5.28.4"
-  },
-  "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/spotify",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rygent/Utilities.git",
-    "directory": "packages/spotify"
-  },
-  "bugs": {
-    "url": "https://github.com/Rygent/Utilities/issues"
-  },
   "files": [
     "./dist/**/*.js*",
     "./dist/**/*.mjs*",
     "./dist/**/*.d*"
   ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
   "engines": {
     "node": ">=18.12.0"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "packageManager": "pnpm@9.13.0"
 }
