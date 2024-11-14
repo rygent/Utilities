@@ -17,15 +17,15 @@
 		"bump": "cliff-jumper"
 	},
 	"devDependencies": {
-		"@favware/cliff-jumper": "^2.2.0",
+		"@favware/cliff-jumper": "^2.2.3",
 		"tsup": "^7.2.0",
-		"typescript": "^5.2.2"
+		"typescript": "^5.6.3"
 	},
 	"dependencies": {
 		"colorette": "^2.0.20",
-		"moment": "^2.29.4",
-		"undici": "^5.27.0",
-		"winston": "^3.11.0"
+		"moment": "^2.30.1",
+		"undici": "^5.28.4",
+		"winston": "^3.17.0"
 	},
 	"homepage": "https://github.com/Rygent/Utilities/tree/main/packages/logger",
 	"repository": {
