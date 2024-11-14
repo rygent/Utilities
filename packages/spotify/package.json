@@ -15,7 +15,7 @@
 		"test": "vitest run",
 		"lint": "eslint src --ext ts --fix -c ../../.eslintrc",
 		"build": "tsup",
-		"prepack": "yarn build",
+		"prepack": "pnpm run build",
 		"bump": "cliff-jumper"
 	},
 	"devDependencies": {
@@ -48,5 +48,5 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"packageManager": "yarn@4.0.1"
+	"packageManager": "pnpm@9.13.0"
 }
