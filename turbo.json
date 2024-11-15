@@ -15,7 +15,8 @@
     },
     "test": {
       "dependsOn": [],
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "env": ["SPOTIFY_ID", "SPOTIFY_SECRET", "TWITCH_ID", "TWITCH_SECRET"]
     }
   }
 }

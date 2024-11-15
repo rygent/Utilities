@@ -1,6 +1,5 @@
 import { Igdb } from '../src';
 import { isClass } from '@sapphire/utilities';
-import 'dotenv/config';
 
 describe('Igdb', () => {
 	test('Igdb should be a class', () => {

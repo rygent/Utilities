@@ -1,6 +1,5 @@
 import { Spotify } from '../src';
 import { isClass } from '@sapphire/utilities';
-import 'dotenv/config';
 
 describe('Spotify', () => {
 	test('Spotify should be a class', () => {
