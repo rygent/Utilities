@@ -1,5 +1,4 @@
 import TransportStream from 'winston-transport';
-import type { LogCallback, LogEntry } from 'winston';
 import { clean } from '../util.js';
 import { fetch } from 'undici';
 
@@ -15,7 +14,7 @@ export class Webhook extends TransportStream {
 		this.error = options.error;
 	}
 
-	public override async log(info: LogEntry, callback: LogCallback) {
+	public override async log(info: any, callback: () => void) {
 		if (!this.client?.isReady()) return;
 
 		const embed = {
