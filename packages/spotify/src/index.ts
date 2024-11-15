@@ -5,8 +5,8 @@ export class Spotify {
 	private readonly endpoint = 'https://api.spotify.com/v1/';
 	private readonly oauth2 = 'https://accounts.spotify.com/api/token/';
 
-	private clientId: string;
-	private clientSecret: string;
+	private readonly clientId: string;
+	private readonly clientSecret: string;
 
 	private bearer: SpotifyBearerToken = {
 		expire: null,

@@ -4,9 +4,9 @@ import { clean } from '../util.js';
 import { fetch } from 'undici';
 
 export class Webhook extends TransportStream {
-	private url: string;
-	private client: any;
-	private error: Error;
+	private readonly url: string;
+	private readonly client: any;
+	private readonly error: Error;
 
 	public constructor(options: { url: string; client: any; error: Error }) {
 		super({ level: 'syserr' });

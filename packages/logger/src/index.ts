@@ -6,9 +6,9 @@ const { Console, File } = transports;
 const { combine, timestamp, printf } = format;
 
 export class Logger {
-	private client?: any;
+	private readonly client?: any;
 
-	private level = {
+	private readonly level = {
 		syslog: 0,
 		syserr: 1,
 		warn: 2,
@@ -16,7 +16,7 @@ export class Logger {
 		debug: 4
 	};
 
-	private format = combine(
+	private readonly format = combine(
 		timestamp(),
 		printf(({ timestamp, level, message }) => {
 			return `${resolveTimestamp(timestamp)} ${resolveLevel(level)}: ${resolveShardId(this.client?.shard?.ids[0])} ${message}`;
