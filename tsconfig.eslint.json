@@ -5,5 +5,12 @@
     "allowJs": true,
     "checkJs": true
   },
-  "include": ["packages/**/*.ts", "scripts/**/*.ts", "eslint.config.js", "prettier.config.js", "vitest.config.ts"]
+  "include": [
+    "packages/**/*.ts",
+    "scripts/**/*.ts",
+    "commitlint.config.js",
+    "eslint.config.js",
+    "prettier.config.js",
+    "vitest.config.ts"
+  ]
 }
