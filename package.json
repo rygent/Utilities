@@ -3,7 +3,7 @@
   "name": "root-utilities",
   "type": "module",
   "scripts": {
-    "test": "dotenvx run -f .env.test -- turbo run test",
+    "test": "dotenvx run -f .env.test -- vitest run",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "prettier --write \"packages/**/{src,tests,scripts}/**/*.{mjs,ts,js}\"",

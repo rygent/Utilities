@@ -11,6 +11,7 @@
     "commitlint.config.js",
     "eslint.config.js",
     "prettier.config.js",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    "vitest.workspace.ts"
   ]
 }
