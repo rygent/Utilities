@@ -1,5 +1,6 @@
 {
   "eslint.validate": ["typescript"],
+  "eslint.useFlatConfig": true,
   "search.exclude": {
     "**/node_modules": true,
     "**/.git/": true

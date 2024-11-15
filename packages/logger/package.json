@@ -13,7 +13,8 @@
   },
   "scripts": {
     "build": "tsup",
-    "lint": "eslint src --ext ts --fix -c ../../.eslintrc",
+    "lint": "eslint \"src/**/*.ts\" --format=pretty",
+    "lint:fix": "eslint \"src/**/*.ts\" --fix --format=pretty",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepack": "pnpm run build",
@@ -38,6 +39,8 @@
   },
   "devDependencies": {
     "@favware/cliff-jumper": "^2.2.3",
+    "eslint": "^9.14.0",
+    "eslint-formatter-pretty": "^6.0.1",
     "prettier": "^3.3.3",
     "tsup": "^7.2.0",
     "typescript": "^5.6.3"
