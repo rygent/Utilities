@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 /**
  * AUTO GENERATED FROM ANILIST API ENDPOINT. DO NOT MODIFY
  */
@@ -6,6 +7,7 @@ import type { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } f
 
 export type NonNullObject = Record<string, unknown> & object;
 export type Maybe<T> = T | null;
+// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
@@ -4425,7 +4427,9 @@ export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
 ) => TResult | Promise<TResult>;
 
 export interface SubscriptionSubscriberObject<TResult, TKey extends string, TParent, TContext, TArgs> {
+	// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 	subscribe: SubscriptionSubscribeFn<{ [key in TKey]: TResult }, TParent, TContext, TArgs>;
+	// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 	resolve?: SubscriptionResolveFn<TResult, { [key in TKey]: TResult }, TContext, TArgs>;
 }
 
