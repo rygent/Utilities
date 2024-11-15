@@ -7,6 +7,7 @@
     "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "prettier --write \"packages/**/{src,tests,scripts}/**/*.{mjs,ts,js}\"",
+    "check-update": "turbo run check-update",
     "postinstall": "is-ci || husky",
     "update": "pnpm --recursive update --interactive",
     "update:latest": "pnpm --recursive update --interactive --latest"
@@ -21,7 +22,6 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-angular": "^19.5.0",
     "@dotenvx/dotenvx": "^1.23.0",
-    "@favware/cliff-jumper": "^2.2.3",
     "@favware/npm-deprecate": "^1.0.7",
     "@sapphire/node-utilities": "^1.0.2",
     "@types/lodash.merge": "^4.6.9",

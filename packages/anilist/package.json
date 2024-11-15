@@ -27,7 +27,8 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepack": "pnpm run build",
-    "bump": "cliff-jumper"
+    "check-update": "cliff-jumper --dry-run",
+    "release": "cliff-jumper"
   },
   "license": "MIT",
   "keywords": [],
@@ -46,7 +47,7 @@
     "he": "^1.2.0"
   },
   "devDependencies": {
-    "@favware/cliff-jumper": "^2.2.3",
+    "@favware/cliff-jumper": "^5.0.0",
     "@sapphire/utilities": "^3.18.1",
     "@types/he": "^1.2.3",
     "@vitest/coverage-v8": "^2.1.5",

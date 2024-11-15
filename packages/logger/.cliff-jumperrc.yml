@@ -1,3 +1,9 @@
 name: logger
 org: rygent
 packagePath: packages/logger
+identifierBase: false
+pushTag: true
+githubRelease: true
+githubReleaseLatest: true
+gitRepo: rygent/utilities
+gitHostVariant: github

@@ -9,14 +9,18 @@
       "dependsOn": [],
       "outputs": []
     },
-    "bump": {
-      "dependsOn": [],
-      "outputs": ["CHANGELOG.md"]
-    },
     "test": {
       "dependsOn": [],
       "outputs": ["coverage/**"],
       "env": ["SPOTIFY_ID", "SPOTIFY_SECRET", "TWITCH_ID", "TWITCH_SECRET"]
+    },
+    "check-update": {
+      "dependsOn": [],
+      "outputs": []
+    },
+    "release": {
+      "dependsOn": [],
+      "outputs": ["CHANGELOG.md"]
     }
   }
 }

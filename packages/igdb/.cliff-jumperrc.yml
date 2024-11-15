@@ -1,3 +1,9 @@
 name: igdb
 org: rygent
 packagePath: packages/igdb
+identifierBase: false
+pushTag: true
+githubRelease: true
+githubReleaseLatest: true
+gitRepo: rygent/utilities
+gitHostVariant: github

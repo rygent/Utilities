@@ -26,7 +26,8 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "prepack": "pnpm run build",
-    "bump": "cliff-jumper"
+    "check-update": "cliff-jumper --dry-run",
+    "release": "cliff-jumper"
   },
   "license": "MIT",
   "keywords": [],
@@ -46,7 +47,7 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@favware/cliff-jumper": "^2.2.3",
+    "@favware/cliff-jumper": "^5.0.0",
     "eslint": "^9.14.0",
     "eslint-formatter-pretty": "^6.0.1",
     "prettier": "^3.3.3",
