@@ -19,7 +19,7 @@ export class Logger {
 	private readonly format = combine(
 		timestamp(),
 		printf(({ timestamp, level, message }) => {
-			return `${resolveTimestamp(timestamp)} ${resolveLevel(level)}: ${resolveShardId(this.client?.shard?.ids[0])} ${message}`;
+			return `${resolveTimestamp(timestamp as string)} ${resolveLevel(level)}: ${resolveShardId(this.client?.shard?.ids[0])} ${message}`;
 		})
 	);
 
