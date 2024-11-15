@@ -1,37 +1,42 @@
-import { relative, resolve } from 'node:path';
+import { esbuildPluginFilePathExtensions } from 'esbuild-plugin-file-path-extensions';
 import { defineConfig, type Options } from 'tsup';
+import { relative, resolve } from 'node:path';
 
-export const createTsupConfig = ({
-	globalName = undefined,
-	format = ['esm', 'cjs', 'iife'],
-	target = 'es2021',
-	sourcemap = true,
-	dts = true,
-	esbuildOptions = (options, context) => {
-		if (context.format === 'cjs') {
-			options.banner = {
-				js: '"use strict";'
-			};
-		}
-	}
-}: ConfigOptions = {}) =>
-	defineConfig({
-		clean: true,
-		dts,
-		entry: ['src/index.ts'],
-		format,
-		minify: false,
-		skipNodeModulesBundle: true,
-		sourcemap,
-		target,
-		tsconfig: relative(__dirname, resolve(process.cwd(), 'src', 'tsconfig.json')),
-		keepNames: true,
-		globalName: globalName
-			?.replace(/@/g, '')
-			.split(/[\/-]/g)
-			.map((l) => l[0].toUpperCase() + l.slice(1))
-			.join(''),
-		esbuildOptions
-	});
+const baseOptions: Options = {
+	bundle: true,
+	clean: true,
+	dts: true,
+	entry: ['src/index.ts'],
+	keepNames: true,
+	minify: false,
+	platform: 'node',
+	skipNodeModulesBundle: true,
+	sourcemap: true,
+	target: 'esnext',
+	treeshake: true,
+	tsconfig: relative(__dirname, resolve(process.cwd(), 'tsconfig.json')),
+	esbuildPlugins: [esbuildPluginFilePathExtensions()]
+};
 
-type ConfigOptions = Pick<Options, 'esbuildOptions' | 'sourcemap' | 'target' | 'format' | 'globalName' | 'dts'>;
+export function createTsupConfig(options?: EnhancedTsupOptions) {
+	return [
+		defineConfig({
+			...baseOptions,
+			outDir: 'dist/cjs',
+			format: 'cjs',
+			...options?.cjsOptions
+		}),
+		defineConfig({
+			...baseOptions,
+			outDir: 'dist/esm',
+			format: 'esm',
+			outExtension: () => ({ js: '.mjs' }),
+			...options?.esmOptions
+		})
+	];
+}
+
+interface EnhancedTsupOptions {
+	cjsOptions?: Options;
+	esmOptions?: Options;
+}

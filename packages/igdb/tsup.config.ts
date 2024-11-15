@@ -1,4 +1,9 @@
 import { createTsupConfig } from '../../scripts/tsup.config';
-import { name } from './package.json';
+import type { Options } from 'tsup';
 
-export default createTsupConfig({ globalName: name, format: ['esm', 'cjs'] });
+const options: Options = { target: 'esnext' };
+
+export default createTsupConfig({
+	cjsOptions: options,
+	esmOptions: options
+});

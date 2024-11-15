@@ -3,16 +3,24 @@
   "name": "@rygent/logger",
   "version": "1.0.0",
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/cjs/index.d.ts",
   "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs",
-    "types": "./dist/index.d.ts"
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.mts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
   },
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && pnpm run build:rename-mjs-index",
+    "build:rename-mjs-index": "tsx ../../scripts/rename-mjs-index.ts",
     "lint": "eslint \"src/**/*.ts\" --format=pretty",
     "lint:fix": "eslint \"src/**/*.ts\" --fix --format=pretty",
     "format": "prettier . --write",
@@ -42,13 +50,12 @@
     "eslint": "^9.14.0",
     "eslint-formatter-pretty": "^6.0.1",
     "prettier": "^3.3.3",
-    "tsup": "^7.2.0",
+    "tsup": "^8.3.5",
+    "tsx": "^4.19.2",
     "typescript": "^5.6.3"
   },
   "files": [
-    "./dist/**/*.js*",
-    "./dist/**/*.mjs*",
-    "./dist/**/*.d*"
+    "./dist/"
   ],
   "publishConfig": {
     "access": "public",

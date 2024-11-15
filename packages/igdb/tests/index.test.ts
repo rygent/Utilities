@@ -1,4 +1,4 @@
-import { Igdb } from '../dist/index';
+import { Igdb } from '../src';
 import { isClass } from '@sapphire/utilities';
 import 'dotenv/config';
 

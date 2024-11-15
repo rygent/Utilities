@@ -1,4 +1,4 @@
-import { Spotify } from '../dist/index';
+import { Spotify } from '../src';
 import { isClass } from '@sapphire/utilities';
 import 'dotenv/config';
 

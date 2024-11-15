@@ -1,4 +1,4 @@
-import { Anilist } from '../dist/index';
+import { Anilist } from '../src';
 import { isClass } from '@sapphire/utilities';
 
 describe('Anilist', () => {
