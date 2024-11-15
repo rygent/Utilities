@@ -3,7 +3,7 @@
   "name": "root-utilities",
   "type": "module",
   "scripts": {
-    "test": "vitest run",
+    "test": "turbo run test",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "format": "prettier --write \"packages/**/{src,tests,scripts}/**/*.{mjs,ts,js}\"",
@@ -24,7 +24,7 @@
     "@sapphire/node-utilities": "^1.0.2",
     "@types/lodash.merge": "^4.6.9",
     "@types/node": "^22.9.0",
-    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/coverage-v8": "^2.1.5",
     "colorette": "^2.0.20",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^16.4.5",
@@ -39,7 +39,7 @@
     "turbo": "^2.2.3",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.14.0",
-    "vitest": "^0.34.6"
+    "vitest": "^2.1.5"
   },
   "commitlint": {
     "extends": [
