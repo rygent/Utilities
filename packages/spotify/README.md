@@ -1,46 +1,47 @@
-# Spotify API
+# Spotify Wrapper
 
-A simple to use API library for the Spotify REST API.
-Only supports searching for `track | album | artist` however the 2 former ones have not been tested.
+An UNOFFICIAL wrapper for Spotify REST API written in typescript.
 
-#### What's Different?
+You can visit the official docs for Spotify [here][spotify docs] to find out everything you can do.
 
--   Uses `undici` instead.
--   The code base has been completely rewritten to typescript.
+> [!IMPORTANT]
+>
+> This project is still under development, not everything supported yet.
 
 ## Installation
 
-```sh-session
+```sh
+# NPM
 npm i @rygent/spotify
+
+# Yarn
 yarn add @rygent/spotify
+
+# PNPM
+pnpm add @rygent/spotify
 ```
 
-## API
+## Example
 
-### Search
-
-```js
-<spotify>.search({ type: 'artist|album|track', query: 'My search query', offset: 0, limit: 20 });
-```
-
-#### Example
-
-```js
-const { Spotify } = require('@rygent/spotify');
+```ts
+import { Spotify } from '@rygent/spotify';
 
 const spotify = new Spotify({
     id: 'your client id',
     secret: 'your client secret'
 });
 
-// later on ...
-await spotify.search({ type: 'track', query: 'I Me Mine' });
-await spotify.search({ type: 'album', query: 'Let It Be' });
-await spotify.search({ type: 'artist', query: 'The Beatles' });
+await spotify.search({ type: 'track,album', query: 'Happier Than Ever' });
+await spotify.search({ type: 'artist', query: 'Billie Eilish' });
 ```
 
-> **Note**
-> The `offset` property is optional and the search will default to `0` if one is not supplied.
+> [!NOTE]
+>
+> -   **offset**: This property is optional and the default value is `0`.
+> -   **limit**: This property is optional and the default value is `20`.
 
-> **Note**
-> The `limit` property is optional and the search will default to `20` if one is not supplied.
+---
+
+<!-- LINKS -->
+
+[spotify docs]: https://developer.spotify.com/documentation/web-api
