@@ -41,6 +41,7 @@
     "url": "https://github.com/rygent/utilities/issues"
   },
   "funding": "https://github.com/rygent/utilities?sponsor",
+  "homepage": "https://github.com/rygent/utilities/tree/main/packages/anilist",
   "dependencies": {
     "axios": "^1.7.7",
     "graphql": "^16.9.0",

@@ -40,6 +40,7 @@
     "url": "https://github.com/rygent/utilities/issues"
   },
   "funding": "https://github.com/rygent/utilities?sponsor",
+  "homepage": "https://github.com/rygent/utilities/tree/main/packages/logger",
   "dependencies": {
     "colorette": "^2.0.20",
     "logform": "^2.7.0",
