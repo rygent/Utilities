@@ -38,7 +38,7 @@
     "vitest": "^2.1.4"
   },
   "dependencies": {
-    "undici": "^6.20.1"
+    "undici": "^6.21.0"
   },
   "homepage": "https://github.com/Rygent/Utilities/tree/main/packages/igdb",
   "repository": {
