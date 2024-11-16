@@ -2,67 +2,54 @@ name: Continuous Integration
 
 on:
   push:
-    branches: ['main']
   pull_request:
+concurrency:
+  # Group based on workflow name and PR if it exists, if no PR, let it run so carryforward flags work
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
 
 jobs:
-  Linting:
-    name: Linting
+  tests:
+    name: Tests
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - name: Checkout Project
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Use pnpm
         uses: pnpm/action-setup@v4
-      - name: Use Node.js v20
+      - name: Use Node.js v22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: pnpm
-      - name: Install Dependencies
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
-      - name: Run ESLint
-        run: pnpm run lint --fix=false
-
-  Testing:
-    name: Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Use pnpm
-        uses: pnpm/action-setup@v4
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
-      - name: Build test dependencies
-        run: pnpm exec turbo run build
-      - name: Run tests
-        run: |
-          curl -L ${ENV_FILE_URL} -o .env
-
-          pnpm run test
+      - name: Install dotenvx
+        run: curl -sfS https://dotenvx.sh/install.sh | sh
+      - name: Build packages (PR)
+        if: ${{ github.event_name != 'push' }}
+        run: pnpm exec turbo run build --filter="...[origin/${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'main' }}]" --concurrency=4
+      - name: Build packages (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: pnpm exec turbo run build --filter="...[HEAD^1]" --concurrency=4
+      - name: Tests (PR)
+        if: ${{ github.event_name != 'push' }}
+        run: dotenvx run -- pnpm exec turbo run test --filter="...[origin/${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'main' }}]" --concurrency=4
         env:
-          ENV_FILE_URL: ${{ secrets.ENV_FILE_URL }}
-
-  Building:
-    name: Compile source code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v4
-      - name: Use pnpm
-        uses: pnpm/action-setup@v4
-      - name: Use Node.js v20
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: pnpm
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
-      - name: Compile Projects
-        run: pnpm run build
+          DOTENV_PRIVATE_KEY_CI: ${{ secrets.DOTENV_PRIVATE_KEY_CI }}
+      - name: Tests (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: dotenvx run -- pnpm exec turbo run test --filter="...[HEAD^1]" --concurrency=4
+        env:
+          DOTENV_PRIVATE_KEY_CI: ${{ secrets.DOTENV_PRIVATE_KEY_CI }}
+      - name: ESLint (PR)
+        if: ${{ github.event_name != 'push' }}
+        run: pnpm exec turbo run lint --filter="...[origin/${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref || 'main' }}]" --concurrency=4
+      - name: ESLint (Push)
+        if: ${{ github.event_name == 'push' }}
+        run: pnpm exec turbo run lint --filter="...[HEAD^1]" --concurrency=4

@@ -1,0 +1,66 @@
+name: Publish release
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: The package to release
+        required: true
+        type: choice
+        options:
+          - '@rygent/anilist'
+          - '@rygent/igdb'
+          - '@rygent/spotify'
+      skip-automatic-bump:
+        description: Whether to skip the automatic bumping of the packageversion
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  npm-publish:
+    name: Publish ${{ inputs.package }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    if: github.repository_owner == 'rygent'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+          token: ${{ secrets.BOT_TOKEN }}
+      - name: Use pnpm
+        uses: pnpm/action-setup@v4
+      - name: Use Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Set Git User and Email
+        run: |
+          git remote set-url origin "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GITHUB_REPOSITORY}.git"
+          git config --local user.name "${GITHUB_USER}"
+          git config --local user.email "${GITHUB_EMAIL}"
+        env:
+          GITHUB_USER: github-actions[bot]
+          GITHUB_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bump version & make release
+        run: |
+          if [ "${{ inputs.skip-automatic-bump }}" = "true" ]; then
+            pnpm --filter=${{ inputs.package }} run release --skip-automatic-bump
+          else
+            pnpm --filter=${{ inputs.package }} run release
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to NPM
+        run: pnpm --filter=${{ inputs.package }} publish --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}

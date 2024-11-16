@@ -1,6 +1,6 @@
-import { defineConfig, type UserConfig } from 'vitest/config';
+import { defineConfig, type ViteUserConfig } from 'vitest/config';
 
-export function createVitestConfig(options?: UserConfig) {
+export function createVitestConfig(options?: ViteUserConfig) {
 	return defineConfig({
 		...options,
 		test: {
@@ -9,14 +9,15 @@ export function createVitestConfig(options?: UserConfig) {
 			coverage: {
 				...options?.test?.coverage,
 				enabled: true,
-				reporter: ['text', 'lcov'],
+				reporter: ['text', 'lcov', 'cobertura'],
 				provider: 'v8',
 				exclude: [
 					...(options?.test?.coverage?.exclude ?? []),
-					'**/node_modules/**',
+					'**/coverage/**',
 					'**/dist/**',
+					'**/node_modules/**',
 					'**/tests/**',
-					'**/prettier.config.ts',
+					'**/prettier.config.js',
 					'**/tsup.config.ts',
 					'**/vitest.config.ts'
 				]

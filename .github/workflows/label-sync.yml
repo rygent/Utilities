@@ -1,4 +1,4 @@
-name: Automatic Label Sync
+name: Label Synchronization
 
 on:
   schedule:
@@ -6,13 +6,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  label_sync:
-    name: Automatic Label Synchronization
+  synchronization:
+    name: Synchronization
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Project
+      - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Run Label Sync
+      - name: Synchronize
         uses: crazy-max/ghaction-github-labeler@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}

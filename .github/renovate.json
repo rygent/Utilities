@@ -16,7 +16,8 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["major"],
-      "dependencyDashboardApproval": true
+      "dependencyDashboardApproval": true,
+      "addLabels": ["blocked"]
     },
     {
       "matchPackagePatterns": ["*"],

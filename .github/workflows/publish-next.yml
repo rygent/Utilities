@@ -1,0 +1,60 @@
+name: Publish next
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: The package to release @next version
+        required: true
+        type: choice
+        options:
+          - '@rygent/anilist'
+          - '@rygent/igdb'
+          - '@rygent/spotify'
+
+jobs:
+  npm-publish:
+    name: Publish ${{ inputs.package }}@next
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    if: github.repository_owner == 'rygent'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Use pnpm
+        uses: pnpm/action-setup@v4
+      - name: Use Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org/
+      - name: Check current ${{ inputs.package }}@next version
+        id: release-check
+        run: |
+          if [[ $(pnpm view ${{ inputs.package }}@next version | grep -e "$(git rev-parse --short HEAD)") ]]; \
+            then echo "RELEASE=0" >> "$GITHUB_OUTPUT"; \
+            else echo "RELEASE=1" >> "$GITHUB_OUTPUT"; \
+          fi
+      - name: Install dependencies
+        if: steps.release-check.outputs.release == '1'
+        run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Bump version
+        if: steps.release-check.outputs.release == '1'
+        run: pnpm --filter=${{ inputs.package }} run release --preid "next.$(git rev-parse --verify --short HEAD)" --skip-changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish new ${{ inputs.package }}@next version to NPM
+        if: steps.release-check.outputs.release == '1'
+        run: |
+          pnpm --filter=${{ inputs.package }} publish --no-git-checks --tag next || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      - name: Deprecate old ${{ inputs.package }}@next versions
+        if: steps.release-check.outputs.release == '1'
+        run: pnpm dlx @favware/npm-deprecate@latest --name="*next*" --package ${{ inputs.package }} --message "No longer supported. Install the latest @next release" || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
