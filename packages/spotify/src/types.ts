@@ -1,43 +1,36 @@
-/* eslint-disable @typescript-eslint/no-empty-object-type */
 /* eslint-disable @stylistic/max-len */
-// Type definitions for The Spotify Web API (including changes March 29th 2016)
-// Project: https://developer.spotify.com/web-api/
-// Definitions by: Niels Kristian Hansen Skovmand <https://github.com/skovmand>
-//                 Magnar Ovedal Myrtveit <https://github.com/Stadly>
-//                 Nils Måsén <https://github.com/piksel>
-//                 Basti Ortiz <https://github.com/Some-Dood>
-// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
-// TypeScript Version: 2.2
+export interface SpotifyOptions {
+	id: string;
+	secret: string;
+}
 
-// Release comments:
-// -----------------
+export interface SpotifyBearerToken {
+	expire: number | null;
+	token: string | null;
+}
 
-// The audio analysis object is not yet in the Object Model at Spotify, therefore it is typed as any in this file.
-
-// TrackObjects and AlbumObjects is specified in the docs as always having the available_markets property,
-// but when it is sent in https://developer.spotify.com/web-api/console/get-current-user-saved-tracks
-// the available_markets are missing. Therefore it is marked as optional in this source code.
-
-//
-// Parameter Objects for searching
-//
+export interface SpotifyOauth2Result {
+	access_token: string;
+	expires_in: number;
+	token_type: string;
+}
 
 /**
  * Object for search parameters for searching for tracks, playlists, artists or albums.
  * See: [Search for an item](https://developer.spotify.com/web-api/search-item/)
  *
- * `q` and `type` are required in the API. Previous versions of the type declarations marked them
+ * `query` and `type` are required in the API. Previous versions of the type declarations marked them
  * as optional in order for external libraries to "implement them as function call parameters instead".
  * Now, the type declaration shall mark them as required. If necessary, one can consider this to be a
  * "breaking change". In that case, one can use TypeScript's built-in utility type `Omit<T, K>`.
- * For example, one can remove the `q` and `type` by annotating the type
- * as `Omit<SpotifyApi.SearchForItemParameterObject, "q" | "type">`.
+ * For example, one can remove the `query` and `type` by annotating the type
+ * as `Omit<SpotifyApi.SearchForItemParameterObject, "query" | "type">`.
  */
 export interface SearchForItemParameterObject {
 	/**
 	 * The search query's keywords (and optional field filters and operators).
 	 */
-	q: string;
+	query: string;
 	/**
 	 * A comma-separated list of item types to search across. Valid types are: `album`, `artist`, `playlist`, and `track`.
 	 * Search results include hits from all the specified item types.
@@ -150,7 +143,7 @@ export interface DeviceSpecificParameterObject {
 	context_uri?: string | undefined;
 	position_ms?: number | undefined;
 	uris?: string[] | undefined;
-	offset?: NonNullObject | undefined;
+	offset?: object | undefined;
 }
 
 export interface PlayParameterObject {
@@ -180,7 +173,7 @@ export interface RestrictionsObject {
 /**
  * Void Response
  */
-export interface VoidResponse {}
+export type VoidResponse = object;
 
 /**
  * Response with Playlist Snapshot
@@ -197,7 +190,7 @@ export interface PlaylistSnapshotResponse {
  * GET /v1/albums/{id}
  * https://developer.spotify.com/web-api/get-album/
  */
-export interface SingleAlbumResponse extends AlbumObjectFull {}
+export type SingleAlbumResponse = AlbumObjectFull;
 
 /**
  * Get Several Albums
@@ -215,7 +208,7 @@ export interface MultipleAlbumsResponse {
  * GET /v1/albums/{id}/tracks
  * https://developer.spotify.com/web-api/get-albums-tracks/
  */
-export interface AlbumTracksResponse extends PagingObject<TrackObjectSimplified> {}
+export type AlbumTracksResponse = PagingObject<TrackObjectSimplified>;
 
 /**
  * Get an Artist
@@ -223,7 +216,7 @@ export interface AlbumTracksResponse extends PagingObject<TrackObjectSimplified>
  * GET /v1/artists/{id}
  * https://developer.spotify.com/web-api/get-artist/
  */
-export interface SingleArtistResponse extends ArtistObjectFull {}
+export type SingleArtistResponse = ArtistObjectFull;
 
 /**
  * Get Several Artists
@@ -241,7 +234,7 @@ export interface MultipleArtistsResponse {
  * GET /v1/artists/{id}/albums
  * https://developer.spotify.com/web-api/get-artists-albums/
  */
-export interface ArtistsAlbumsResponse extends PagingObject<AlbumObjectSimplified> {}
+export type ArtistsAlbumsResponse = PagingObject<AlbumObjectSimplified>;
 
 /**
  * Get an Artist’s Top Tracks
@@ -272,7 +265,7 @@ export interface ArtistsRelatedArtistsResponse {
  * At the time of typing, the Audio Analysis Object is absent from the Object Model, so it is typed as any.
  * Object Model: https://developer.spotify.com/web-api/object-model/
  */
-export interface AudioAnalysisResponse extends AudioAnalysisObject {}
+export type AudioAnalysisResponse = AudioAnalysisObject;
 
 /**
  * Get audio features for a track
@@ -280,7 +273,7 @@ export interface AudioAnalysisResponse extends AudioAnalysisObject {}
  * GET /v1/audio-features/{id}
  * https://developer.spotify.com/web-api/get-audio-features/
  */
-export interface AudioFeaturesResponse extends AudioFeaturesObject {}
+export type AudioFeaturesResponse = AudioFeaturesObject;
 
 /**
  * Get audio features for several tracks
@@ -330,7 +323,7 @@ export interface MultipleCategoriesResponse {
  * GET /v1/browse/categories/{id}
  * https://developer.spotify.com/web-api/get-category/
  */
-export interface SingleCategoryResponse extends CategoryObject {}
+export type SingleCategoryResponse = CategoryObject;
 
 /**
  * Get a categorys playlists
@@ -348,7 +341,7 @@ export interface CategoryPlaylistsResponse {
  * https://developer.spotify.com/web-api/get-categorys-playlists/
  * @deprecated Use `CategoryPlaylistsResponse` instead
  */
-export interface CategoryPlaylistsReponse extends CategoryPlaylistsResponse {}
+export type CategoryPlaylistsReponse = CategoryPlaylistsResponse;
 
 /**
  * Get Playlist Cover Image
@@ -356,7 +349,7 @@ export interface CategoryPlaylistsReponse extends CategoryPlaylistsResponse {}
  * GET /v1/playlists/playlist_id/image
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/get-playlist-cover
  */
-export interface PlaylistCoverImageResponse extends Array<ImageObject> {}
+export type PlaylistCoverImageResponse = Array<ImageObject>;
 
 /**
  * Get Current User’s Profile
@@ -364,7 +357,7 @@ export interface PlaylistCoverImageResponse extends Array<ImageObject> {}
  * GET /v1/me
  * https://developer.spotify.com/web-api/get-current-users-profile/
  */
-export interface CurrentUsersProfileResponse extends UserObjectPrivate {}
+export type CurrentUsersProfileResponse = UserObjectPrivate;
 
 /**
  * Get User’s Followed Artists
@@ -382,7 +375,7 @@ export interface UsersFollowedArtistsResponse {
  * PUT /v1/me/following
  * https://developer.spotify.com/web-api/follow-artists-users/
  */
-export interface FollowArtistsOrUsersResponse extends VoidResponse {}
+export type FollowArtistsOrUsersResponse = VoidResponse;
 
 /**
  * Unfollow artists or users
@@ -390,7 +383,7 @@ export interface FollowArtistsOrUsersResponse extends VoidResponse {}
  * DELETE /v1/me/following
  * https://developer.spotify.com/web-api/unfollow-artists-users/
  */
-export interface UnfollowArtistsOrUsersResponse extends VoidResponse {}
+export type UnfollowArtistsOrUsersResponse = VoidResponse;
 
 /**
  * Check if User Follows Users or Artists
@@ -398,7 +391,7 @@ export interface UnfollowArtistsOrUsersResponse extends VoidResponse {}
  * GET /v1/me/following/contains
  * https://developer.spotify.com/web-api/check-current-user-follows/
  */
-export interface UserFollowsUsersOrArtistsResponse extends Array<boolean> {}
+export type UserFollowsUsersOrArtistsResponse = Array<boolean>;
 
 /**
  * Follow a Playlist
@@ -406,7 +399,7 @@ export interface UserFollowsUsersOrArtistsResponse extends Array<boolean> {}
  * PUT /v1/users/{owner_id}/playlists/{playlist_id}/followers
  * https://developer.spotify.com/web-api/follow-playlist/
  */
-export interface FollowPlaylistResponse extends VoidResponse {}
+export type FollowPlaylistResponse = VoidResponse;
 /**
  * Follow a Playlist
  *
@@ -414,7 +407,7 @@ export interface FollowPlaylistResponse extends VoidResponse {}
  * https://developer.spotify.com/web-api/follow-playlist/
  * @deprecated Use `FollowPlaylistResponse` instead
  */
-export interface FollowPlaylistReponse extends FollowPlaylistResponse {}
+export type FollowPlaylistReponse = FollowPlaylistResponse;
 
 /**
  * Unfollow a Playlist
@@ -422,7 +415,7 @@ export interface FollowPlaylistReponse extends FollowPlaylistResponse {}
  * DELETE /v1/users/{owner_id}/playlists/{playlist_id}/followers
  * https://developer.spotify.com/web-api/unfollow-playlist/
  */
-export interface UnfollowPlaylistResponse extends VoidResponse {}
+export type UnfollowPlaylistResponse = VoidResponse;
 /**
  * Unfollow a Playlist
  *
@@ -430,7 +423,7 @@ export interface UnfollowPlaylistResponse extends VoidResponse {}
  * https://developer.spotify.com/web-api/unfollow-playlist/
  * @deprecated Use `UnfollowPlaylistResponse` instead
  */
-export interface UnfollowPlaylistReponse extends UnfollowPlaylistResponse {}
+export type UnfollowPlaylistReponse = UnfollowPlaylistResponse;
 
 /**
  * Save tracks for user
@@ -438,7 +431,7 @@ export interface UnfollowPlaylistReponse extends UnfollowPlaylistResponse {}
  * PUT /v1/me/tracks?ids={ids}
  * https://developer.spotify.com/web-api/save-tracks-user/
  */
-export interface SaveTracksForUserResponse extends VoidResponse {}
+export type SaveTracksForUserResponse = VoidResponse;
 
 /**
  * Get user's saved tracks
@@ -446,7 +439,7 @@ export interface SaveTracksForUserResponse extends VoidResponse {}
  * GET /v1/me/tracks
  * https://developer.spotify.com/web-api/get-users-saved-tracks/
  */
-export interface UsersSavedTracksResponse extends PagingObject<SavedTrackObject> {}
+export type UsersSavedTracksResponse = PagingObject<SavedTrackObject>;
 
 /**
  * Remove User’s Saved Tracks
@@ -454,7 +447,7 @@ export interface UsersSavedTracksResponse extends PagingObject<SavedTrackObject>
  * DELETE /v1/me/tracks?ids={ids}
  * https://developer.spotify.com/web-api/remove-tracks-user/
  */
-export interface RemoveUsersSavedTracksResponse extends VoidResponse {}
+export type RemoveUsersSavedTracksResponse = VoidResponse;
 
 /**
  * Check User’s Saved Tracks
@@ -462,7 +455,7 @@ export interface RemoveUsersSavedTracksResponse extends VoidResponse {}
  * GET /v1/me/tracks/contains?ids={ids}
  * https://developer.spotify.com/web-api/check-users-saved-tracks/
  */
-export interface CheckUsersSavedTracksResponse extends Array<boolean> {}
+export type CheckUsersSavedTracksResponse = Array<boolean>;
 
 /**
  * Save albums for user
@@ -470,7 +463,7 @@ export interface CheckUsersSavedTracksResponse extends Array<boolean> {}
  * PUT /v1/me/albums?ids={ids}
  * https://developer.spotify.com/web-api/save-albums-user/
  */
-export interface SaveAlbumsForUserResponse extends VoidResponse {}
+export type SaveAlbumsForUserResponse = VoidResponse;
 
 /**
  * Get user's saved albums
@@ -478,7 +471,7 @@ export interface SaveAlbumsForUserResponse extends VoidResponse {}
  * GET /v1/me/albums
  * https://developer.spotify.com/web-api/get-users-saved-albums/
  */
-export interface UsersSavedAlbumsResponse extends PagingObject<SavedAlbumObject> {}
+export type UsersSavedAlbumsResponse = PagingObject<SavedAlbumObject>;
 
 /**
  * Remove Albums for Current User
@@ -486,7 +479,7 @@ export interface UsersSavedAlbumsResponse extends PagingObject<SavedAlbumObject>
  * DELETE /v1/me/albums?ids={ids}
  * https://developer.spotify.com/web-api/remove-albums-user/
  */
-export interface RemoveAlbumsForUserResponse extends VoidResponse {}
+export type RemoveAlbumsForUserResponse = VoidResponse;
 
 /**
  * Check user's saved albums
@@ -494,7 +487,7 @@ export interface RemoveAlbumsForUserResponse extends VoidResponse {}
  * GET /v1/me/albums/contains?ids={ids}
  * https://developer.spotify.com/web-api/check-users-saved-albums/
  */
-export interface CheckUserSavedAlbumsResponse extends Array<boolean> {}
+export type CheckUserSavedAlbumsResponse = Array<boolean>;
 
 /**
  * Get user's saved shows
@@ -510,7 +503,7 @@ export type UsersSavedShowsResponse = PagingObject<SavedShowObject>;
  * PUT /v1/me/shows
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/save-shows-user
  */
-export interface SaveShowsForUserResponse extends VoidResponse {}
+export type SaveShowsForUserResponse = VoidResponse;
 
 /**
  * Remove User's Saved Shows
@@ -518,7 +511,7 @@ export interface SaveShowsForUserResponse extends VoidResponse {}
  * DELETE /v1/me/shows
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/remove-shows-user
  */
-export interface RemoveShowsForUserResponse extends VoidResponse {}
+export type RemoveShowsForUserResponse = VoidResponse;
 
 /**
  * Check User's Saved Shows
@@ -526,7 +519,7 @@ export interface RemoveShowsForUserResponse extends VoidResponse {}
  * GET /v1/me/shows/contains
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/check-users-saved-shows
  */
-export interface CheckUserSavedShowsResponse extends Array<boolean> {}
+export type CheckUserSavedShowsResponse = Array<boolean>;
 
 /**
  * Get User's Saved Episodes
@@ -542,7 +535,7 @@ export type UsersSavedEpisodesResponse = PagingObject<SavedEpisodeObject>;
  * PUT /v1/me/episodes
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/save-episodes-user
  */
-export interface SaveEpisodesForUserResponse extends VoidResponse {}
+export type SaveEpisodesForUserResponse = VoidResponse;
 
 /**
  * Remove User's Saved Episodes
@@ -550,7 +543,7 @@ export interface SaveEpisodesForUserResponse extends VoidResponse {}
  * DELETE /v1/me/episodes
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/remove-episodes-user
  */
-export interface RemoveEpisodesForUserResponse extends VoidResponse {}
+export type RemoveEpisodesForUserResponse = VoidResponse;
 
 /**
  * Check User's Saved Episodes
@@ -558,7 +551,7 @@ export interface RemoveEpisodesForUserResponse extends VoidResponse {}
  * GET /v1/me/shows/episodes
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/check-users-saved-episodes
  */
-export interface CheckUserSavedEpisodesResponse extends Array<boolean> {}
+export type CheckUserSavedEpisodesResponse = Array<boolean>;
 
 /**
  * Get a User’s Top Artists and Tracks (Note: This is only Artists)
@@ -566,7 +559,7 @@ export interface CheckUserSavedEpisodesResponse extends Array<boolean> {}
  * GET /v1/me/top/{type}
  * https://developer.spotify.com/web-api/get-users-top-artists-and-tracks/
  */
-export interface UsersTopArtistsResponse extends PagingObject<ArtistObjectFull> {}
+export type UsersTopArtistsResponse = PagingObject<ArtistObjectFull>;
 
 /**
  * Get a User’s Top Artists and Tracks (Note: This is only Tracks)
@@ -574,7 +567,7 @@ export interface UsersTopArtistsResponse extends PagingObject<ArtistObjectFull> 
  * GET /v1/me/top/{type}
  * https://developer.spotify.com/web-api/get-users-top-artists-and-tracks/
  */
-export interface UsersTopTracksResponse extends PagingObject<TrackObjectFull> {}
+export type UsersTopTracksResponse = PagingObject<TrackObjectFull>;
 
 /**
  * Get a User’s Recently Played Tracks
@@ -582,7 +575,7 @@ export interface UsersTopTracksResponse extends PagingObject<TrackObjectFull> {}
  * GET /v1/me/player/recently-played
  * https://developer.spotify.com/web-api/get-users-top-artists-and-tracks/
  */
-export interface UsersRecentlyPlayedTracksResponse extends CursorBasedPagingObject<PlayHistoryObject> {}
+export type UsersRecentlyPlayedTracksResponse = CursorBasedPagingObject<PlayHistoryObject>;
 
 /**
  * Add an item to the end of the user’s current playback queue.
@@ -590,7 +583,7 @@ export interface UsersRecentlyPlayedTracksResponse extends CursorBasedPagingObje
  * POST /v1/me/player/queue
  * https://developer.spotify.com/documentation/web-api/reference/player/add-to-queue/
  */
-export interface AddToQueueResponse extends VoidResponse {}
+export type AddToQueueResponse = VoidResponse;
 
 /**
  * Get the list of objects that make up the user's queue.
@@ -609,7 +602,7 @@ export interface UsersQueueResponse {
  * GET /v1/recommendations
  * https://developer.spotify.com/get-recommendations/
  */
-export interface RecommendationsFromSeedsResponse extends RecommendationsObject {}
+export type RecommendationsFromSeedsResponse = RecommendationsObject;
 
 /**
  * Get available genre seeds
@@ -755,7 +748,7 @@ export interface MultipleEpisodesResponse {
  * GET /v1/tracks/{id}
  * https://developer.spotify.com/web-api/get-track/
  */
-export interface SingleTrackResponse extends TrackObjectFull {}
+export type SingleTrackResponse = TrackObjectFull;
 
 /**
  * Get multiple tracks
@@ -773,7 +766,7 @@ export interface MultipleTracksResponse {
  * GET /v1/users/{user_id}
  * https://developer.spotify.com/web-api/get-users-profile/
  */
-export interface UserProfileResponse extends UserObjectPublic {}
+export type UserProfileResponse = UserObjectPublic;
 
 /**
  * Get a list of a user's playlists
@@ -781,7 +774,7 @@ export interface UserProfileResponse extends UserObjectPublic {}
  * GET /v1/users/{user_id}/playlists
  * https://developer.spotify.com/web-api/get-list-users-playlists/
  */
-export interface ListOfUsersPlaylistsResponse extends PagingObject<PlaylistObjectSimplified> {}
+export type ListOfUsersPlaylistsResponse = PagingObject<PlaylistObjectSimplified>;
 
 /**
  * Get a list of the current user's playlists
@@ -789,7 +782,7 @@ export interface ListOfUsersPlaylistsResponse extends PagingObject<PlaylistObjec
  * GET /v1/me/playlists
  * https://developer.spotify.com/web-api/get-list-users-playlists/
  */
-export interface ListOfCurrentUsersPlaylistsResponse extends PagingObject<PlaylistObjectSimplified> {}
+export type ListOfCurrentUsersPlaylistsResponse = PagingObject<PlaylistObjectSimplified>;
 
 /**
  * Get a playlist
@@ -797,7 +790,7 @@ export interface ListOfCurrentUsersPlaylistsResponse extends PagingObject<Playli
  * GET /v1/users/{user_id}/playlists/{playlist_id}
  * https://developer.spotify.com/web-api/get-playlist/
  */
-export interface SinglePlaylistResponse extends PlaylistObjectFull {}
+export type SinglePlaylistResponse = PlaylistObjectFull;
 
 /**
  * Get a playlist's tracks
@@ -805,7 +798,7 @@ export interface SinglePlaylistResponse extends PlaylistObjectFull {}
  * GET /v1/users/{user_id}/playlists/{playlist_id}/tracks
  * https://developer.spotify.com/web-api/get-playlists-tracks/
  */
-export interface PlaylistTrackResponse extends PagingObject<PlaylistTrackObject> {}
+export type PlaylistTrackResponse = PagingObject<PlaylistTrackObject>;
 
 /**
  * Create a Playlist
@@ -813,7 +806,7 @@ export interface PlaylistTrackResponse extends PagingObject<PlaylistTrackObject>
  * POST /v1/users/{user_id}/playlists
  * https://developer.spotify.com/web-api/create-playlist/
  */
-export interface CreatePlaylistResponse extends PlaylistObjectFull {}
+export type CreatePlaylistResponse = PlaylistObjectFull;
 
 /**
  * Change a Playlist’s Details
@@ -821,7 +814,7 @@ export interface CreatePlaylistResponse extends PlaylistObjectFull {}
  * PUT /v1/users/{user_id}/playlists/{playlist_id}
  * https://developer.spotify.com/web-api/change-playlist-details/
  */
-export interface ChangePlaylistDetailsResponse extends VoidResponse {}
+export type ChangePlaylistDetailsResponse = VoidResponse;
 /**
  * Change a Playlist’s Details
  *
@@ -829,7 +822,7 @@ export interface ChangePlaylistDetailsResponse extends VoidResponse {}
  * https://developer.spotify.com/web-api/change-playlist-details/
  * @deprecated Use `ChangePlaylistDetailsResponse` instead
  */
-export interface ChangePlaylistDetailsReponse extends ChangePlaylistDetailsResponse {}
+export type ChangePlaylistDetailsReponse = ChangePlaylistDetailsResponse;
 
 /**
  * Add Tracks to a Playlist
@@ -837,7 +830,7 @@ export interface ChangePlaylistDetailsReponse extends ChangePlaylistDetailsRespo
  * POST /v1/users/{user_id}/playlists/{playlist_id}/tracks
  * https://developer.spotify.com/web-api/add-tracks-to-playlist/
  */
-export interface AddTracksToPlaylistResponse extends PlaylistSnapshotResponse {}
+export type AddTracksToPlaylistResponse = PlaylistSnapshotResponse;
 
 /**
  * Remove Tracks from a Playlist
@@ -845,7 +838,7 @@ export interface AddTracksToPlaylistResponse extends PlaylistSnapshotResponse {}
  * DELETE /v1/users/{user_id}/playlists/{playlist_id}/tracks
  * https://developer.spotify.com/web-api/remove-tracks-playlist/
  */
-export interface RemoveTracksFromPlaylistResponse extends PlaylistSnapshotResponse {}
+export type RemoveTracksFromPlaylistResponse = PlaylistSnapshotResponse;
 
 /**
  * Reorder a Playlist’s Tracks
@@ -853,7 +846,7 @@ export interface RemoveTracksFromPlaylistResponse extends PlaylistSnapshotRespon
  * PUT /v1/users/{user_id}/playlists/{playlist_id}/tracks
  * https://developer.spotify.com/web-api/reorder-playlists-tracks/
  */
-export interface ReorderPlaylistTracksResponse extends PlaylistSnapshotResponse {}
+export type ReorderPlaylistTracksResponse = PlaylistSnapshotResponse;
 
 /**
  * Replace a Playlist’s Tracks
@@ -861,7 +854,7 @@ export interface ReorderPlaylistTracksResponse extends PlaylistSnapshotResponse 
  * PUT /v1/users/{user_id}/playlists/{playlist_id}/tracks
  * https://developer.spotify.com/web-api/replace-playlists-tracks/
  */
-export interface ReplacePlaylistTracksResponse extends PlaylistSnapshotResponse {}
+export type ReplacePlaylistTracksResponse = PlaylistSnapshotResponse;
 
 /**
  * Upload a Custom Playlist Cover Image
@@ -869,7 +862,7 @@ export interface ReplacePlaylistTracksResponse extends PlaylistSnapshotResponse 
  * PUT /v1/users/{user_id}/playlists/{playlist_id}/images
  * https://developer.spotify.com/web-api/upload-a-custom-playlist-cover-image/
  */
-export interface UploadCustomPlaylistCoverImageResponse extends VoidResponse {}
+export type UploadCustomPlaylistCoverImageResponse = VoidResponse;
 /**
  * Upload a Custom Playlist Cover Image
  *
@@ -877,7 +870,7 @@ export interface UploadCustomPlaylistCoverImageResponse extends VoidResponse {}
  * https://developer.spotify.com/web-api/upload-a-custom-playlist-cover-image/
  * @deprecated Use `UploadCustomPlaylistCoverImageResponse` instead
  */
-export interface UploadCustomPlaylistCoverImageReponse extends UploadCustomPlaylistCoverImageResponse {}
+export type UploadCustomPlaylistCoverImageReponse = UploadCustomPlaylistCoverImageResponse;
 
 /**
  * Check if Users Follow a Playlist
@@ -885,7 +878,7 @@ export interface UploadCustomPlaylistCoverImageReponse extends UploadCustomPlayl
  * GET /v1/users/{user_id}/playlists/{playlist_id}/followers/contains
  * https://developer.spotify.com/web-api/check-user-following-playlist/
  */
-export interface UsersFollowPlaylistResponse extends Array<boolean> {}
+export type UsersFollowPlaylistResponse = Array<boolean>;
 /**
  * Check if Users Follow a Playlist
  *
@@ -893,7 +886,7 @@ export interface UsersFollowPlaylistResponse extends Array<boolean> {}
  * https://developer.spotify.com/web-api/check-user-following-playlist/
  * @deprecated Use `UsersFollowPlaylistResponse` instead
  */
-export interface UsersFollowPlaylistReponse extends UsersFollowPlaylistResponse {}
+export type UsersFollowPlaylistReponse = UsersFollowPlaylistResponse;
 
 export interface UserDevicesResponse {
 	devices: UserDevice[];
@@ -901,7 +894,7 @@ export interface UserDevicesResponse {
 
 export interface CurrentPlaybackResponse extends CurrentlyPlayingObject, PlaybackObject {}
 
-export interface CurrentlyPlayingResponse extends CurrentlyPlayingObject {}
+export type CurrentlyPlayingResponse = CurrentlyPlayingObject;
 
 //
 // Objects from the Object Models of the Spotify Web Api, ordered alphabetically.
@@ -1569,7 +1562,7 @@ export interface EpisodeObject extends EpisodeObjectSimplified {
 	uri: string;
 }
 
-export interface EpisodeObjectFull extends EpisodeObject {}
+export type EpisodeObjectFull = EpisodeObject;
 
 /**
  * Simplified Episode Object
@@ -1665,7 +1658,7 @@ export interface ShowObject extends ShowObjectSimplified {
 	external_urls: ExternalUrlObject;
 }
 
-export interface ShowObjectFull extends ShowObject {}
+export type ShowObjectFull = ShowObject;
 
 /**
  * Simplified Show Object
@@ -1834,17 +1827,4 @@ export interface DisallowsObject {
 	transferring_playback?: boolean | undefined;
 }
 
-export interface SpotifyBearerToken {
-	expire: number | null;
-	token: string | null;
-}
-
-export interface SpotifyOauth2Result {
-	access_token: string;
-	expires_in: number;
-	token_type: string;
-}
-
 export type SearchType = 'artist' | 'album' | 'track' | 'playlist' | 'show' | 'episode';
-
-type NonNullObject = Record<string, unknown> & object;
