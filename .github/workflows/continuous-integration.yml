@@ -53,3 +53,8 @@ jobs:
       - name: ESLint (Push)
         if: ${{ github.event_name == 'push' }}
         run: pnpm exec turbo run lint --filter="...[HEAD^1]" --concurrency=4
+      - name: Upload Coverage
+        if: github.repository_owner == 'rygent'
+        uses: ./.github/actions/uploadCoverage
+        with:
+          codecov_token: ${{ secrets.CODECOV_TOKEN }}

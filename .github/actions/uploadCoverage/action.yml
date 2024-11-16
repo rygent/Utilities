@@ -1,0 +1,34 @@
+name: 'Upload Coverage'
+description: 'Uploads code coverage reports to codecov with separate flags for separate packages'
+inputs:
+  codecov_token:
+    description: 'Codecov token.'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Upload coverage for packages/anilist'
+      if: ${{ hashFiles('packages/anilist/coverage/cobertura-coverage.xml') != '' }}
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./packages/anilist/coverage/cobertura-coverage.xml
+        disable_search: true
+        flags: anilist
+        token: ${{ inputs.CODECOV_TOKEN }}
+    - name: 'Upload coverage for packages/igdb'
+      if: ${{ hashFiles('packages/igdb/coverage/cobertura-coverage.xml') != '' }}
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./packages/igdb/coverage/cobertura-coverage.xml
+        disable_search: true
+        flags: igdb
+        token: ${{ inputs.CODECOV_TOKEN }}
+    - name: 'Upload coverage for packages/spotify'
+      if: ${{ hashFiles('packages/spotify/coverage/cobertura-coverage.xml') != '' }}
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./packages/spotify/coverage/cobertura-coverage.xml
+        disable_search: true
+        flags: spotify
+        token: ${{ inputs.CODECOV_TOKEN }}
