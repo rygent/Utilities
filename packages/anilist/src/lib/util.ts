@@ -1,5 +1,4 @@
-import he from 'he';
-const { decode } = he;
+import { decode } from 'html-entities';
 
 export function gql(...args: any[]): string {
 	return args[0].reduce((acc: string, str: string, idx: number) => {
@@ -11,7 +10,7 @@ export function gql(...args: any[]): string {
 
 const excessiveNewLinesRegex = /\n{3,}/g;
 
-const htmlEntityRegex = /<\/?(i|b|br)>/g;
+const htmlEntityRegex = /<\/?(i|b|br|strong)>/g;
 
 const htmlEntityReplacements = Object.freeze({
 	i: '',
@@ -25,10 +24,14 @@ const htmlEntityReplacements = Object.freeze({
 	kbd: '',
 	s: '',
 	wbr: '',
-	u: ''
+	u: '',
+	strong: ''
 } as const);
 
-export function parseDescription(description: string) {
+export function parseDescription(description: string | null | undefined) {
+	if (description === null) return null;
+	if (description === undefined) return undefined;
+
 	return decode(
 		description.replace(htmlEntityRegex, (_, type: keyof typeof htmlEntityReplacements) => htmlEntityReplacements[type])
 	).replace(excessiveNewLinesRegex, '\n\n');
