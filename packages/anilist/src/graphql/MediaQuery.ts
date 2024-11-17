@@ -1,6 +1,6 @@
-import { gql } from './util.js';
+import { graphql } from '../util/gql.js';
 
-const MediaFragment = gql`
+const MediaFragment = graphql`
 	fragment MediaFragment on Media {
 		id
 		idMal
@@ -47,7 +47,7 @@ const MediaFragment = gql`
 	}
 `;
 
-export const AnimeFragment = gql`
+export const AnimeQuery = graphql`
 	${MediaFragment}
 	query ($search: String!, $page: Int, $perPage: Int) {
 		Page(page: $page, perPage: $perPage) {
@@ -72,7 +72,7 @@ export const AnimeFragment = gql`
 	}
 `;
 
-export const MangaFragment = gql`
+export const MangaQuery = graphql`
 	${MediaFragment}
 	query ($search: String!, $page: Int, $perPage: Int) {
 		Page(page: $page, perPage: $perPage) {

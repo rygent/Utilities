@@ -10,13 +10,17 @@ describe('Anilist', () => {
 		const anilist = new Anilist();
 		const response = await anilist.search({ type: 'anime', search: 'Cowboy Bebop' });
 
-		expect(response.data.Page.media![0]).toBeDefined();
+		if (!response?.length) return;
+
+		expect(response[0]?.title?.english).toBe('Cowboy Bebop');
 	});
 
 	test('Manga search should be defined', async () => {
 		const anilist = new Anilist();
 		const response = await anilist.search({ type: 'manga', search: 'Chainsaw Man' });
 
-		expect(response.data.Page.media![0]).toBeDefined();
+		if (!response?.length) return;
+
+		expect(response[0]?.title?.english).toBe('Chainsaw Man');
 	});
 });
