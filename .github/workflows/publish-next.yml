@@ -42,6 +42,8 @@ jobs:
       - name: Install dependencies
         if: steps.release-check.outputs.release == '1'
         run: pnpm install --frozen-lockfile --prefer-offline
+        env:
+          HUSKY: '0'
       - name: Bump version
         if: steps.release-check.outputs.release == '1'
         run: pnpm --filter=${{ inputs.package }} run release --preid "next.$(git rev-parse --verify --short HEAD)" --skip-changelog

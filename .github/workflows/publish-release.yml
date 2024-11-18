@@ -42,6 +42,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
+        env:
+          HUSKY: '0'
       - name: Set Git User and Email
         run: |
           git remote set-url origin "https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${GITHUB_REPOSITORY}.git"

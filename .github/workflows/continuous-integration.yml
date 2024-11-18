@@ -29,6 +29,8 @@ jobs:
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
+        env:
+          HUSKY: '0'
       - name: Install dotenvx
         run: curl -sfS https://dotenvx.sh/install.sh | sh
       - name: Build packages (PR)

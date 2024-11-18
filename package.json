@@ -8,7 +8,7 @@
     "lint": "turbo run lint --concurrency=4",
     "format": "turbo run format --concurrency=4",
     "check-update": "turbo run check-update --concurrency=4",
-    "postinstall": "is-ci || husky",
+    "prepare": "husky",
     "update": "pnpm --recursive update --interactive",
     "update:latest": "pnpm --recursive update --interactive --latest"
   },
@@ -33,7 +33,6 @@
     "eslint-config-terrax": "^0.3.1",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.7",
-    "is-ci": "^3.0.1",
     "lodash.merge": "^4.6.2",
     "prettier": "^3.3.3",
     "tsup": "^8.3.5",
