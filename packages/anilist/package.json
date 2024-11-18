@@ -22,6 +22,7 @@
     "test": "vitest run",
     "build": "tsup && pnpm run build:rename-mjs-index",
     "build:rename-mjs-index": "tsx ../../scripts/rename-mjs-index.ts",
+    "codegen": "pnpm exec graphql-codegen --config ./scripts/codegen.ts",
     "lint": "eslint \"src/**/*.ts\" --format=pretty",
     "lint:fix": "eslint \"src/**/*.ts\" --fix --format=pretty",
     "format": "prettier . --write",
@@ -43,16 +44,19 @@
   "funding": "https://github.com/rygent/utilities?sponsor",
   "homepage": "https://github.com/rygent/utilities/tree/main/packages/anilist",
   "dependencies": {
-    "axios": "^1.7.7",
-    "graphql": "^16.9.0",
-    "html-entities": "^2.5.2"
+    "html-entities": "^2.5.2",
+    "undici": "^6.21.0"
   },
   "devDependencies": {
     "@favware/cliff-jumper": "^5.0.0",
+    "@graphql-codegen/cli": "^5.0.3",
+    "@graphql-codegen/typescript": "^4.1.1",
+    "@graphql-codegen/typescript-operations": "^4.3.1",
     "@sapphire/utilities": "^3.18.1",
     "@vitest/coverage-v8": "^2.1.5",
     "eslint": "9.14.0",
     "eslint-formatter-pretty": "^6.0.1",
+    "graphql": "^16.9.0",
     "prettier": "^3.3.3",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
