@@ -1,5 +1,6 @@
 import type { Query } from './types/Anilist.js';
 import { AnimeFragment, MangaFragment } from './lib/constants.js';
+import { formatMedia } from './util/functions.js';
 import { fetch } from 'undici';
 
 type SearchType = 'anime' | 'manga';
@@ -23,6 +24,17 @@ export class Anilist {
 
 		if (response.ok) {
 			const data = await response.json().then<Query>((res: any) => res.data);
+
+			if (data.Page) {
+				if (data.Page.media) {
+					data.Page.media.forEach((media) => {
+						if (media) {
+							formatMedia(media);
+						}
+					});
+				}
+			}
+
 			return data;
 		}
 
