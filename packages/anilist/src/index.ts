@@ -41,5 +41,4 @@ function resolveQueryFragment(type: SearchType): string {
 	}
 }
 
-export { parseDescription } from './lib/util.js';
-export * from './lib/types/Anilist.js';
+export { ExternalLinkType, MediaFormat, MediaSeason, MediaSource, MediaStatus, MediaType } from './types/Anilist.js';
