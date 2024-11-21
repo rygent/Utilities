@@ -1,6 +1,6 @@
 import type { AnilistResponse, SearchType } from './lib/types/Anilist.js';
 import { AnimeFragment, MangaFragment } from './lib/constants.js';
-import axios, { AxiosError } from 'axios';
+import { fetch } from 'undici';
 
 export class Anilist {
 	public async search(variables: {
@@ -9,18 +9,22 @@ export class Anilist {
 		page?: number;
 		perPage?: number;
 	}): Promise<AnilistResponse> {
-		const { type, search, page = 1, perPage = 10 } = variables;
+		const { type, search, page = 1, perPage = 20 } = variables;
 
-		try {
-			const body = JSON.stringify({ query: resolveQueryFragment(type), variables: { search, page, perPage } });
-			const response = await axios.post('https://graphql.anilist.co/', body, {
-				headers: { 'Content-Type': 'application/json' }
-			});
+		const response = await fetch('https://graphql.anilist.co/', {
+			method: 'POST',
+			body: JSON.stringify({ query: resolveQueryFragment(type), variables: { search, page, perPage } }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 
-			return response.data as AnilistResponse;
-		} catch (error: unknown) {
-			throw new Error(`Received status ${(error as AxiosError).status} (${(error as AxiosError).message})`);
+		if (response.ok) {
+			const data = await response.json();
+			return data as AnilistResponse;
 		}
+
+		throw new Error(`Received status ${response.status} (${response.statusText})`);
 	}
 }
 

@@ -6,14 +6,14 @@ describe('Anilist', () => {
 		expect(isClass(Anilist)).toBe(true);
 	});
 
-	test('Anime search should be defined', async () => {
+	test('Searching for the anime "Cowboy Bebop" should be defined', async () => {
 		const anilist = new Anilist();
 		const response = await anilist.search({ type: 'anime', search: 'Cowboy Bebop' });
 
 		expect(response.data.Page.media![0]).toBeDefined();
 	});
 
-	test('Manga search should be defined', async () => {
+	test('Searching for the manga "Chainsaw Man" should be defined', async () => {
 		const anilist = new Anilist();
 		const response = await anilist.search({ type: 'manga', search: 'Chainsaw Man' });
 
