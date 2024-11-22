@@ -1,3 +1,4 @@
+import { CharacterSort, MediaType, StudioSort } from '../types/Anilist.js';
 import { graphql } from '../util/gql.js';
 
 const MediaFragment = graphql`
@@ -29,7 +30,7 @@ const MediaFragment = graphql`
 		averageScore
 		popularity
 		favourites
-		characters(sort: RELEVANCE) {
+		characters(sort: ${CharacterSort.Relevance}) {
 			nodes {
 				name {
 					full
@@ -47,17 +48,17 @@ const MediaFragment = graphql`
 	}
 `;
 
-export const AnimeFragment = graphql`
+export const AnimeQuery = graphql`
 	${MediaFragment}
 	query ($search: String!, $page: Int, $perPage: Int) {
 		Page(page: $page, perPage: $perPage) {
-			media(search: $search, type: ANIME) {
+			media(search: $search, type: ${MediaType.Anime}) {
 				...MediaFragment
 				season
 				seasonYear
 				episodes
 				duration
-				studios(sort: NAME, isMain: true) {
+				studios(sort: ${StudioSort.Name}, isMain: true) {
 					nodes {
 						name
 						isAnimationStudio
@@ -72,11 +73,11 @@ export const AnimeFragment = graphql`
 	}
 `;
 
-export const MangaFragment = graphql`
+export const MangaQuery = graphql`
 	${MediaFragment}
 	query ($search: String!, $page: Int, $perPage: Int) {
 		Page(page: $page, perPage: $perPage) {
-			media(search: $search, type: MANGA) {
+			media(search: $search, type: ${MediaType.Manga}) {
 				...MediaFragment
 				chapters
 				volumes
