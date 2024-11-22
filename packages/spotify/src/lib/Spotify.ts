@@ -46,13 +46,17 @@ export class Spotify {
 			}
 		);
 
-		if (response.status !== 200) {
+		if (response.ok) {
+			const result = await response.json();
+
+			return result as SearchResponse;
+		}
+
+		if (response.statusText) {
 			throw new Error(`Received status ${response.status} (${response.statusText})`);
 		}
 
-		const result = await response.json();
-
-		return result as SearchResponse;
+		throw new Error(`Received status ${response.status}`);
 	}
 
 	/**
@@ -85,12 +89,16 @@ export class Spotify {
 			})
 		});
 
-		if (response.status !== 200) {
+		if (response.ok) {
+			const result = (await response.json()) as SpotifyOauth2Result;
+			this.bearer = { token: result.access_token, expire: Date.now() + result.expires_in * 1e3 };
+			return result.access_token;
+		}
+
+		if (response.statusText) {
 			throw new Error(`Received status ${response.status} (${response.statusText})`);
 		}
 
-		const result = (await response.json()) as SpotifyOauth2Result;
-		this.bearer = { token: result.access_token, expire: Date.now() + result.expires_in * 1e3 };
-		return result.access_token;
+		throw new Error(`Received status ${response.status}`);
 	}
 }
