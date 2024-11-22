@@ -1,6 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@rygent/anilist",
+  "description": "An UNOFFICIAL lightweight Node.js wrapper for Anilist GraphQL API written in typescript.",
   "version": "1.4.0",
   "type": "module",
   "main": "./dist/cjs/index.cjs",
