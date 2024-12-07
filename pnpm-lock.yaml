@@ -15,8 +15,8 @@ importers:
         specifier: ^19.6.0
         version: 19.6.0
       '@dotenvx/dotenvx':
-        specifier: ^1.26.0
-        version: 1.26.0
+        specifier: ^1.28.0
+        version: 1.28.0
       '@sapphire/node-utilities':
         specifier: ^1.0.2
         version: 1.0.2
@@ -611,8 +611,8 @@ packages:
   '@dabh/diagnostics@2.0.3':
     resolution: {integrity: sha512-hrlQOIi7hAfzsMqlGSFyVucrx38O+j6wiGOf//H2ecvIEqYN4ADBSS2iLMh5UFyDunCNniUIPk/q3riFv45xRA==}
 
-  '@dotenvx/dotenvx@1.26.0':
-    resolution: {integrity: sha512-EWsxqjmDRaMFnLeeE9xWfRY+01E7orW5xDvBoPho45DZ4V7jn6sIkcJdJrFvIrsRbiCFnbVpEubET0ydl/1K0g==}
+  '@dotenvx/dotenvx@1.28.0':
+    resolution: {integrity: sha512-JJ9HgYBuvZpFvepGMnTj6/NQQX/Ska1N30GVln0Mw+wuL6oXZMOR2t/XrkSBjnjYr2rCiWtgDtTt8FajTJcbiA==}
     hasBin: true
 
   '@ecies/ciphers@0.2.1':
@@ -4876,7 +4876,7 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@dotenvx/dotenvx@1.26.0':
+  '@dotenvx/dotenvx@1.28.0':
     dependencies:
       commander: 11.1.0
       dotenv: 16.4.5
